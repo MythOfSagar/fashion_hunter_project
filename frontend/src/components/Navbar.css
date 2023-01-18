@@ -1,0 +1,105 @@
+
+    #navbar{
+        height:100px;
+        width:100%;
+        border-top: 5px solid #2f4254;
+        border-bottom: 5px solid #b99b13;
+        display: flex;
+        padding-bottom: 8px;
+    }
+    #navbar-left{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height:65px;
+        width:25%;
+        margin-top: 20px;
+    }
+    #navbar-right{
+        height:100%;
+        width:90%;        
+    }
+
+    #right-upper{
+        height:50% ;
+        width:100%;
+        display:flex;
+        justify-content: right;
+        gap:22px;
+        align-items: center;
+        text-decoration: none;
+    }
+    #right-upper:hover{
+        cursor: pointer;
+    }
+    #right-lower{
+        height:50% ;
+        width:100%;
+        display:flex;
+        align-items: center;
+        font-family: sans-serif;
+        font-size: 16px;
+        gap: 65px;
+        color:rgb(106,106,106);
+        margin-top: 3px;
+    }
+    #rl:hover{
+        font-weight: bold;
+        cursor: pointer;
+    }
+    #site-logo{
+        height:100%;
+        width:35%;
+
+    }
+    #navbar-button{
+        background-color: black;
+        color:white;
+        font-size: 12px;
+        font-family: sans-serif;
+        margin-right: 30px;
+        cursor: pointer;
+        padding:10px 15px;
+        font-weight: 700;
+       
+    }
+    #navbar-button:hover{
+        text-decoration: underline;
+    }
+    #navbar-input{
+        border-radius: 20px;
+        width: 300px;
+        height:20px;
+        padding: 10px;
+        background-color: rgb(255, 255, 203);
+        font-size: 16px;
+    }
+    #ru{
+        font-size: 12px;
+        color:rgb(106,106,106);
+        font-family: sans-serif;
+        font-size: 16px;
+    }
+  
+   #ru:hover{
+    text-decoration: underline;
+   }
+
+  .icon{
+    display: flex;
+    font-size: 20px;
+
+    gap :10px;
+
+  }
+.icon-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    background-color: #2f4254;
+    color: white;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
