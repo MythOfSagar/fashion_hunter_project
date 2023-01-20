@@ -1,0 +1,55 @@
+.errorText {
+    color: red;
+    font-size: 12px;
+    /* margin-top: 3px; */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+input[type=text] {
+    width: 330px;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+
+input[type=email] {
+    width: 330px;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+
+input[type=password] {
+    width: 150px;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=Date] {
+    width: 150px;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.buttonBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonRegister{
+    width: 150px;
+    margin-top: 10px;
+    padding: 7px;
+    color: white;
+    background-color: #3182ce;
+    border-radius: 5px;
+    cursor: pointer;
+    /* color: rgb(149, 149, 149); */
+}

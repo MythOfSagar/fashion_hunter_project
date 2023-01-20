@@ -1,42 +1,22 @@
-import { Box, Button, HStack } from '@chakra-ui/react'
-import React from 'react'
-import { useState } from 'react'
-import { PinInput, PinInputField } from '@chakra-ui/react'
-import { useDispatch } from 'react-redux'
-import { verifyOtp } from '../Redux/action'
+// import { Box, Button, HStack, Input } from '@chakra-ui/react'
+// import React from 'react'
+// import { useState } from 'react'
+// import { } from '@chakra-ui/react'
+// import { useDispatch } from 'react-redux'
+// import { verifyOtp } from '../Redux/action'
+// import { getLocalData } from '../Utils/LocalStorage'
 
-const Otp = () => {
-    const dispatch = useDispatch()
-    const [otp,setOtp] = useState("")
-    let [bag,setBag] = useState("")
+// // const initialState={
+// //     userID:"",
+// //     otp:""
+// // }
 
-    const handlePinChange=(e)=>{
-        // bag+=e.target.value
-        setOtp(bag=>bag + e.target.value)
-    }
+// const Otp = () => {
 
-    const handleClick=()=>{
-        dispatch(verifyOtp(otp))
-        .then((res)=>{
-            console.log(res)
-        }).catch((err)=>{
-            console.log(err)
-        })
-    }
 
-    return (
-        <Box>
-            <HStack>
-                <PinInput>
-                    <PinInputField value={otp} onChange={handlePinChange}/>
-                    <PinInputField value={otp} onChange={handlePinChange}/>
-                    <PinInputField value={otp} onChange={handlePinChange}/>
-                    <PinInputField value={otp} onChange={handlePinChange}/>
-                </PinInput>
-            </HStack>
-            <Button onClick={handleClick}>Verify</Button>
-        </Box>
-    )
-}
+//     return (
 
-export default Otp
+//     )
+// }
+
+// export default Otp

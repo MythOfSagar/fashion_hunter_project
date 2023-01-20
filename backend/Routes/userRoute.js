@@ -53,7 +53,7 @@ userRotes.post("/register", (req, res) => {
     } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password)) {
         res.json({
             status: "FAILED",
-            message: "Password should contain alphanumeric and one uppercase letter."
+            message: "Password should be alphanumeric and contain one uppercase letter."
         })
     } else {
         userModel.find({ email }).then((result) => {
@@ -257,7 +257,7 @@ userRotes.post("/verifyotp", async (req, res) => {
         } else {
             console.log(req.body)
             const userOTPVerificationRecords = await userOTPVerificationModel.find({
-                otp
+                userID,
             });
 
             console.log(userOTPVerificationRecords)

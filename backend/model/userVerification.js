@@ -1,10 +1,10 @@
 const mongoose = require("mongoose")
 
 const userOTPVerificationSchema = mongoose.Schema({
-    userID : {type:String,required:true},
+    userID : String,
     otp: {type:String,required:true},
-    createAt: {type:Date,required:true},
-    expriseAt:{type:Date,required:true}
+    createAt: String,
+    expriseAt:String
 })
 
 const userOTPVerificationModel = mongoose.model("userOTPVerification",userOTPVerificationSchema)
