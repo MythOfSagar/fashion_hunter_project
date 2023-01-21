@@ -226,7 +226,7 @@ const sendOTPVerificationEmail = async ({ _id, email, name }, res) => {
         const hashedOtp = await bcrypt.hash(otp, 5);
         const newOtpVerfication = await new userOTPVerificationModel({
             userID: _id,
-            otp: hashedOtp,
+            otp:hashedOtp,
             createAt: Date.now(),
             expriseAt: Date.now() + 3600000
         })
@@ -263,7 +263,7 @@ userRotes.post("/verifyotp", async (req, res) => {
             console.log(userOTPVerificationRecords)
 
             if (userOTPVerificationRecords.length <= 0) {
-                throw new Error("Acount record doesn't exist or has been verified already please register and login.")
+                throw new Error("Account record doesn't exist or has been verified already please register and login.")
             } else {
                 const { expriseAt } = userOTPVerificationRecords[0];
                 const hashedOtp = userOTPVerificationRecords[0].otp;

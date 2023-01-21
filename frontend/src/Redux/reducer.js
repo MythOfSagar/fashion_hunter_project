@@ -1,7 +1,7 @@
 import * as types from "./actiontypes"
 
 const initialState = {
-    alldata: null,
+    loginData: null,
     massage: null,
     otpDetail:null,
     isLoading: false,
@@ -46,7 +46,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 isError: false,
-                alldata: payload
+                loginData: payload
             }
 
         case types.LOGIN_FAILURE:
@@ -54,7 +54,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 isError: true,
-                alldata: null
+                loginData: null
             }
 
             case types.OTP_REQUEST:
