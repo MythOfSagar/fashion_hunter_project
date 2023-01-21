@@ -1,9 +1,14 @@
 import React from "react";
+import useWindowsize from "../Hook/HandW.hook";
 import "./Navbar.css";
+import DraweExample from "./dwrawer"
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
+import Action from "./action"
 
 const Navbar = () => {
+  const [height,width]=useWindowsize();
+  console.log(height,width);
   return (
     <div id="navbar">
       <div id="navbar-left">
@@ -13,16 +18,16 @@ const Navbar = () => {
           alt=""
         />
       </div>
-
+  { width>900 ?
       <div id="navbar-right">
         <div id="right-upper">
-          
-            <p id="ru">Sign In / Join AJIO</p>
         
           
             <p id="ru">Customer Care</p>
           
           <button id="navbar-button">Visit AJIOLUXE</button>
+          <Action/>
+           
         </div>
         <div id="right-lower">
           <p id="rl">MEN</p>
@@ -41,7 +46,9 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> :
+        <DraweExample className="draw"/>
+      }
     </div>
   );
 };

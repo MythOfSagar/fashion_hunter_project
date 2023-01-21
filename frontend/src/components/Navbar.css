@@ -103,3 +103,23 @@
     height: 40px;
     width: 40px;
 }
+
+@media screen and (max-width:900px) {
+    #navbar{
+        width: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* border: 1px solid red; */
+    }
+}
+@media screen and (max-width:500px) {
+    #navbar-left{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height:65px;
+        width:25%;
+        margin-top: 20px;
+    }
+}

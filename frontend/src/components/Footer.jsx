@@ -4,9 +4,9 @@ import "./Footer.css"
 const Footer = () => {
   return (
     <div>
-      <footer class="footer">
-        <div class="row">
-          <div class="footer-col">
+      <footer className="footer">
+        <div className="row">
+          <div className="footer-col">
             <h4>Ajio</h4>
             <ul>
               <li>
@@ -32,7 +32,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div class="footer-col">
+          <div className="footer-col">
             <h4>HELP</h4>
             <ul>
               <li>
@@ -59,7 +59,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div class="footer-col">
+          <div className="footer-col">
             <h4>Shop by</h4>
             <ul>
               <li>
@@ -92,7 +92,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div class="footer-col">
+          <div className="footer-col">
             <h4>Follow us</h4>
             <ul>
               <li>
