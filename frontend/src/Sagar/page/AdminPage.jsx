@@ -8,7 +8,7 @@ import { EditIcon, DeleteIcon, AddIcon } from "@chakra-ui/icons"
 
 const AdminPage = () => {
 
-    const dataUrl = "https://data-vercel-sagar1079.vercel.app/data/"
+    const dataUrl = "https://data-vercel-sagar1079.vercel.app/ajio-data/"
 
     // const dataUrl="http://localhost:7777/data/"
 
@@ -297,8 +297,8 @@ const AdminPage = () => {
                     margin={"auto"}
                     marginBottom={5}
                 >
-                    <Heading marginBottom={10} fontSize={60} color="blue">Admin Panel</Heading>
-
+                    <Heading marginBottom={10} fontSize={{ base: 40, md: 50, lg: 60 }} color="blue">Admin Panel</Heading>
+                    
                     <Button
                         onClick={addProduct}
                         leftIcon={<AddIcon />} colorScheme='orange'>Add New Product</Button>
