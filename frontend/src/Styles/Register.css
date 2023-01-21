@@ -1,0 +1,107 @@
+.errorText {
+    color: red;
+    font-size: 12px;
+    /* margin-top: 3px; */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+input[type=text] {
+    width: 300px;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+
+input[type=email] {
+    width: 300px;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+
+input[type=password] {
+    width: 140px;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=Date] {
+    width: 140px;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.buttonBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.buttonRegister{
+    width: 140px;
+    margin-top: 10px;
+    padding: 7px;
+    color: white;
+    background-color: #3182ce;
+    border-radius: 5px;
+    cursor: pointer;
+    /* color: rgb(149, 149, 149); */
+}
+
+
+.select{
+    width: 150px;
+    height: 35px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 0.5px solid #8d8d8d;
+}
+
+.label{
+    width: 70px;
+    border: 1px solid;
+    text-align: left;
+    color: red;
+}
+
+
+.firstBox{
+    width: 340px;
+    margin: auto;
+    /* border: 1px solid lightgray; */
+}
+
+.b{
+    color: #3182ce;
+    border-bottom: 1px solid #3182ce;
+}
+
+/* .resFlex{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+    margin-right: -50px;
+} */
+
+/* .resImage{
+    width: 80%;
+    margin-left: 100px;
+    border-right: 1px solid lightgray;
+    padding-right: 100px;
+} */
+
+.resFlex{
+    width: 100%;
+    display: flex;
+}
