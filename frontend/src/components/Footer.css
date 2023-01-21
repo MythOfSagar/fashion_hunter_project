@@ -153,3 +153,12 @@ ul {
     cursor: pointer;
     
 }
+
+@media screen and (max-width:900px) {
+    .footer{
+        display: none;
+    }
+    #bottom-footer{
+        display: none;
+    }
+}
