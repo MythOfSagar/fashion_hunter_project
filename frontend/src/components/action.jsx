@@ -11,7 +11,7 @@ const Action = () => {
   return (
     <div>
       <Menu>
-  <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+  <MenuButton  color={"white"} bgColor={"#2f4254"} as={Button} rightIcon={<ChevronDownIcon />}>
     My Account
   </MenuButton>
   <MenuList>

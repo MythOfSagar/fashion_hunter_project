@@ -21,10 +21,7 @@ const Navbar = () => {
   { width>900 ?
       <div id="navbar-right">
         <div id="right-upper">
-        
-          
             <p id="ru">Customer Care</p>
-          
           <button id="navbar-button">Visit AJIOLUXE</button>
           <Action/>
            
@@ -47,7 +44,10 @@ const Navbar = () => {
           </div>
         </div>
       </div> :
-        <DraweExample className="draw"/>
+         <div className="draw">
+
+           <DraweExample />
+         </div>
       }
     </div>
   );

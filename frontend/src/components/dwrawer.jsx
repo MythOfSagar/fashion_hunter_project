@@ -3,6 +3,7 @@ import React from "react"
 import {HamburgerIcon } from '@chakra-ui/icons'
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
+import Action from "./action";
 
 function DrawerExample() {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -25,13 +26,20 @@ function DrawerExample() {
             <DrawerBody>
               <Stack spacing='24px'>
               <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" mt={20} gap={10}>
+             <Action/>
         <a href="#">Men</a>
         <a href="#">Women</a>
         <a href="#" >KIDS</a>
         <a href="#">INDIE</a>
         <a href="#">Home AND KITCHEN</a>
-        <AiOutlineHeart bgColor={"#2f4254"} />
-        <BsHandbag/>
+        <div className="icon">
+            <div className="icon-div">
+              <AiOutlineHeart />
+            </div>
+            <div className="icon-div"> 
+              <BsHandbag />
+            </div>
+          </div>
       </Box>
 
               </Stack>
