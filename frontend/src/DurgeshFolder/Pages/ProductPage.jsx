@@ -13,7 +13,7 @@ import { getDataProduct } from "../../Redux/Laptop_reducer/action"
 import { useState } from 'react' 
 import axios from 'axios'
 import {ChevronLeftIcon, ChevronRightIcon} from "@chakra-ui/icons" 
-
+import Navbar from "../../components/Navbar"
 
 
 
@@ -99,8 +99,11 @@ const PaginationFunction = (queryParams)=>{
 
   //  pagination logic ends --------------------------------------------------> 
   return (
+    
     <Box>
-   <hr className='horizatalRule'/> 
+       <Navbar/>
+
+   {/* <hr className='horizatalRule'/>  */}
    
    <Box style={{width:"92%" , border:"2px  red" , margin:"auto"}}>
    <ProductHeadings productPageName="Mens" anotherPage="Fashion for mens" />

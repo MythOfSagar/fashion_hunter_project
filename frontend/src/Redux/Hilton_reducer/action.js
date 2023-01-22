@@ -1,4 +1,4 @@
-import * as types from "./actiontypes"
+import * as types from "../actiontypes"
 import axios from "axios";
 
 export const getRegistration = (data) => (dispatch) => {
