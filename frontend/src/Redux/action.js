@@ -13,6 +13,7 @@ export const getRegistration = (data) => (dispatch) => {
 }
 
 
+
 export const getLogin = (data) => (dispatch) => {
     dispatch({ type: types.LOGIN_REQUEST })
     return axios.post("http://localhost:4500/user/login", data)
