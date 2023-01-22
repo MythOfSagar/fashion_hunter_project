@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRegistration, resendOtp, verifyOtp } from '../Redux/action';
+import { getRegistration, resendOtp, verifyOtp } from '../Redux/Hilton_reducer/action';
 import { useEffect } from 'react';
 import { getLocalData, saveLocalData } from '../Utils/LocalStorage';
 import { FaFacebook } from "react-icons/fa"

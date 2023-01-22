@@ -1,0 +1,46 @@
+
+.image{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.image > .img{
+  /* border: 2px solid green; */
+  /* width: 100%; */
+  transition: 0.1 s all ease-in-out;
+}
+.image>img:hover{
+    transform: scale(1.7);
+}
+
+
+/*  Its for rating ------------------ */
+
+*{
+  margin: 0;
+  padding: 0;
+}
+.ratingReviewBox{
+  display: flex;
+}
+@media  (min-width: 0px) and (max-width: 350px)  { 
+  .ratingReviewBox{
+    display: block;
+   
+  }
+}
+/*  Media for display of rating and review --------------- */
+ 
+
+/* Customer feeling responsive ---------------- */
+.customerFeels{
+  display: flex;
+}
+@media  (min-width: 0px) and (max-width: 850px)  { 
+  .customerFeels{
+    flex-direction: column;
+  }
+}

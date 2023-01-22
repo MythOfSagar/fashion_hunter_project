@@ -1,0 +1,18 @@
+
+.PlaceOrderPosition{
+    display: none ;
+   
+}
+.PlaceOrder{
+    display: flex;
+}
+/*  for changing the position------------------------ */
+@media  (min-width: 300px) and (max-width: 768px)  {
+    .PlaceOrderPosition{
+        display: flex ;
+       
+    }
+    .PlaceOrder{
+        display: none;
+    }
+}

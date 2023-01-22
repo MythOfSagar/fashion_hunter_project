@@ -1,0 +1,24 @@
+.cartCompo:hover{
+  border-bottom: 2px solid #2874f0;
+}
+.wishlistCompo:hover{
+    border-bottom: 2px solid #2874f0;
+
+}
+
+
+/* FOR HIDING EXTRA HEADING */
+.control{
+    --max-lines : 1 ; 
+
+     display: -webkit-box;
+     overflow: hidden;
+     -webkit-box-orient: vertical;
+     -webkit-line-clamp: var(--max-lines);
+}
+
+/* For every wishlist box on hover */
+.hoverProductDivWishlist:hover{
+        transition: box-shadow .1s;
+       box-shadow: 0 0 11px rgba(33,33,33,.2);
+   }

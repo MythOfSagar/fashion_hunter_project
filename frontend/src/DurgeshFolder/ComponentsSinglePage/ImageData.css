@@ -1,0 +1,36 @@
+
+.ThreeImagesChange:hover{
+    border: 2px solid #2874f0 ;
+width:  90px;
+height:70px ; 
+padding: 3px ;
+}
+
+
+
+/*  Media queries for single page -------------------------------------------- */
+
+.SingleMagnify{
+    display: none;
+}
+.SingleImagesMagnify{
+    display: flex;
+}
+
+@media  (min-width: 300px) and (max-width: 776px)  { 
+    .SingleMagnify{
+        display: flex;
+    } 
+    .SingleImagesMagnify{
+        display: none;
+    }
+    .ThreeImagesChange:hover{
+        border: 2px solid #2874f0 ;
+        width: 40%;
+        
+        padding: 5px ;
+    }
+    
+    
+
+ } 

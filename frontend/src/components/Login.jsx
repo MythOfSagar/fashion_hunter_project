@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLogin } from '../Redux/action';
+import { getLogin } from '../Redux/Hilton_reducer/action';
 import "../Styles/Register.css"
 import { getLocalData, saveLocalData } from '../Utils/LocalStorage';
 import { AiFillUnlock } from "react-icons/ai"

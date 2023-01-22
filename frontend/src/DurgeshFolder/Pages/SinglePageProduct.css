@@ -1,0 +1,14 @@
+
+@media  (min-width: 300px) and (max-width: 776px)  { 
+   
+    .SingleProductMainImage{
+        margin: auto;
+    }
+
+ } 
+
+ .SingleProductMainDiv{
+    max-width: 100%;
+    overflow-x: hidden;
+ }
+ 
