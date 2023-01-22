@@ -8,6 +8,8 @@ import "./SinglePageProduct.css"
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons' 
 import { RecentBought } from '../ComponentsSinglePage/recentBought'
 import { Rating } from '../ComponentsSinglePage/rating'
+import Navbar from '../../components/Navbar'
+import Footer from "../../components/Footer"
 
 
 
@@ -150,7 +152,8 @@ var answerRating = 0
      
 
   return (
-    <Box className="SingleProductMainDiv" background="#f1f3f6"  style={{border:"1px   green" , height:"auto" , }}>
+    <Box className="SingleProductMainDiv"  background="#f1f3f6"  style={{border:"1px   green" , height:"auto" , }}>
+       <Navbar/>
       {/* Button -----left----------------------- */}
         <ChevronLeftIcon onClick={handleChangeRemove} position="absolute" left="-4px" cursor="pointer" top="250px" w={{base:'32px',sm: "45px", md: "50px", lg: "50px" ,xl: "66px",'2xl': "66px",}} h={{base:'32px',sm: "45px", md: "50px", lg: "50px" ,xl: "66px",'2xl': "66px",}}/> 
 
@@ -159,7 +162,7 @@ var answerRating = 0
 
 
         {/*  Main Box of Single Page ------------------------------------------------ */}
-        <Box className='SingleProductMain' flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} shadow="2xl"  mt="10px" pb="20px" background='#ffffff' style={{border:"1px  red" , height:"auto"  , width:"90%" , margin:"auto" , display:"flex" ,justifyContent:"space-between"}}>
+        <Box className='SingleProductMain' border="2px  red"  flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} shadow="2xl"  mt="25px" ml="auto" mr="auto" pb="20px" background='#ffffff' style={{height:"auto"  , width:"90%" , display:"flex" ,justifyContent:"space-between"}}>
 
         {/* Image Data Main box ---------------------------------------------------- */}
         <Box className='SingleProductMainImage' mt={5}  width={{base:"96%", sm: "62vw", md: "50vw", lg: "42vw",xl: "40vw",'2xl': "40vw"}} style={{border:"1px   yellow" , height:"auto"}}>
@@ -191,7 +194,7 @@ var answerRating = 0
 {/* Rating ends here ----------------------------------------------------------- */}
 
 
-
+   <Footer />
     </Box> 
     
   )

@@ -3,14 +3,15 @@ import React from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import "../Styles/FirstSlider.css"
+import { Link } from 'react-router-dom';
 
 const FirstSlider = () => {
   return (
     <Box>
         <Carousel infiniteLoop autoPlay>
-            <Box className='Image'>
+           <Link to="/mens"> <Box className='Image'>
                 <Image src='https://user-images.githubusercontent.com/103739534/212889238-2cbc3000-ec5b-4bb6-9f01-6f6f6107fdab.png' />
-            </Box>
+            </Box> </Link>
             <Box className='Image'>
                 <Image src='https://user-images.githubusercontent.com/103739534/212889254-0a195f67-f132-43a5-8ad4-8955a06c82b5.png' />
             </Box>

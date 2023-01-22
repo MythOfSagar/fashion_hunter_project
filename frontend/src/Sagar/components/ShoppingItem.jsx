@@ -5,7 +5,7 @@ const ShoppingItem = ({ mainImage, color, Images, categories, title, price, real
     return (
         <Box
             margin={"auto"}
-            boxShadow='dark-lg' p='6' rounded='md' bg='white'
+            boxShadow='lg' p='6' rounded='md' bg='white'
             display={"flex"} align={"left"} width={{ base: 320, md: 400, lg: 430 }} >
             <Box >
                 <Image src={mainImage} width={120}></Image>

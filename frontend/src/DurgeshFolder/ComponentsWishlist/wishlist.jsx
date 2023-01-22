@@ -8,7 +8,7 @@ const Wishlistmain = ({page , src}) => {
 
 
   return (
-    <Box  height="auto" mt="8px">
+    <Box  height="auto" mt="8px" mb="15px" >
      
     
       {/*  Cart empty */}

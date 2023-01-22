@@ -3,6 +3,8 @@ import { useEffect } from 'react'
 import ShoppingItem from '../components/ShoppingItem'
 import { Box, Button, FormControl, FormLabel, Grid, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Text, useDisclosure, useToast } from "@chakra-ui/react"
 import { EditIcon, DeleteIcon, AddIcon } from "@chakra-ui/icons"
+import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
 
 
 
@@ -155,7 +157,9 @@ const AdminPage = () => {
     }, [])
 
     return (
-        <div>
+        <div> 
+            <Navbar />
+            <Box style={{backgroundColor:"#f0f2f5"}} pb="80px">
             <>
                 <Modal
                     size={"xl"}
@@ -354,6 +358,9 @@ const AdminPage = () => {
                     </Box>)}
                 </Grid>
             </Box>
+            </Box>
+            <Footer />
+
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import { Box,Image,Text } from '@chakra-ui/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import FifthSlider from '../components/FifthSlider'
 import FirstSlider from '../components/FirstSlider'
 import Footer from '../components/Footer'
@@ -14,12 +15,12 @@ const HomePage = () => {
   return (
     <Box>
         <Navbar/>
-      <FirstSlider/>
+    <FirstSlider/> 
       <SecondSlider/>
       <Setinterval/>
-      <Image w={"100%"} marginTop={"10px"} marginBottom={"10px"} src='https://user-images.githubusercontent.com/103739534/212957836-f93537a9-ba5f-4940-b42d-7dca88ff59b9.png' alt='mobile'/>
+     <Link to="/mens"> <Image w={"100%"} marginTop={"10px"} marginBottom={"10px"} src='https://user-images.githubusercontent.com/103739534/212957836-f93537a9-ba5f-4940-b42d-7dca88ff59b9.png' alt='men'/> </Link>
       <ThirdSlider/>
-      <Image w={"100%"} marginTop={"10px"} marginBottom={"10px"} src='https://user-images.githubusercontent.com/103739534/212979558-977a6fb3-2791-47c5-9834-8e7c2bc10c5b.png' alt='mobile'/>
+      <Link to="/mens"> <Image w={"100%"} marginTop={"10px"} marginBottom={"10px"} src='https://user-images.githubusercontent.com/103739534/212979558-977a6fb3-2791-47c5-9834-8e7c2bc10c5b.png' alt='mobile'/> </Link>
       <Image w={"100%"} marginTop={"10px"} marginBottom={"10px"} src='https://user-images.githubusercontent.com/103739534/212979520-173fe9ac-84ed-4b22-863f-d7b038889b85.png' alt='mobile'/>
       <FourhSlider/>
       <Image w={"100%"} marginTop={"-30px"} marginBottom={"10px"} src='https://user-images.githubusercontent.com/103739534/212991984-cc6c708a-b5dc-46c8-87a4-164499776875.png'/>

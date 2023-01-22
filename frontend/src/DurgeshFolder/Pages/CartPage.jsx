@@ -8,6 +8,9 @@ import "../ComponentsCart/cartBox.css"
 import {useDispatch , useSelector} from "react-redux"
 import { useEffect } from 'react' 
 import { deleteCartData, getCartData } from '../../Redux/Cart_reducer/action'
+import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
+import { Link } from 'react-router-dom'
 
 const CartPage = () => {
  
@@ -58,6 +61,7 @@ const CartPage = () => {
 
   return (
     <Box>
+      <Navbar />
       <WishlistTop cartLength={cartArrayData.length} />
       {cartArrayData?.length == 0 && <Wishlistmain page="basket" src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/08dddd59-c0ff-4efd-8723-6d847f5df25f.png?q=90" /> }
        
@@ -77,7 +81,7 @@ const CartPage = () => {
 
         <Box className='PlaceOrder' position="sticky" bottom="0px" style={{zIndex:"100"}} borderTop="1px solid  #dbdddf" borderBottom="1px solid  #dbdddf" shadow="Dark lg" height="10vh" p="30px" mt="-13px" background='#ffffff'  justifyContent="flex-end" alignItems="center">
 
-        <Button display="flex"  backgroundColor='#fb641b' variant='unstyled' width={{base:"105%", sm: "100%", md: "53%", lg: "47%",xl: "47%",'2xl': "33%"}} height="52px"  borderRadius="2px" > <Text color="#fffcfa" ml="2"  fontSize="17px">PLACE ORDER</Text></Button>
+       <Link to="/shipping"> <Button display="flex"  backgroundColor='#fb641b' variant='unstyled' width={{base:"105%", sm: "100%", md: "220px", lg: "240px",xl: "240px",'2xl': "240px"}} height="52px"  borderRadius="2px" > <Text color="#fffcfa" ml="2"  fontSize="17px">PAYMENT</Text></Button></Link>
 
         </Box>
         </Box>
@@ -95,9 +99,12 @@ const CartPage = () => {
 
         <Box className='PlaceOrderPosition' position="sticky" ml="auto" mr="auto" bottom="0px" style={{zIndex:"100"}}  shadow="Dark lg" height="10vh"  mt="-13px" background='#ffffff'  justifyContent="flex-end" alignItems="center"width={{base:"100%", sm: "90vw", md: "50vw", lg: "50vw" ,xl: "50vw",'2xl': "50vw",}}>
 
-        <Button display="flex" textAlign="center"  backgroundColor='#fb641b' variant='unstyled' width={{base:"100%", sm: "100%", md: "53%", lg: "47%",xl: "47%",'2xl': "33%"}} height="50px"  borderRadius="2px" > <Text color="#fffcfa" fontSize="17px">PLACE ORDER</Text></Button>
+       <Link to="/shipping"> <Button display="flex" textAlign="center"  backgroundColor='#fb641b' variant='unstyled' width={{base:"100vw", sm: "90vw", md: "53%", lg: "47%",xl: "47%",'2xl': "33%"}} height="50px"  borderRadius="2px" > <Text color="#fffcfa" fontSize="17px">PAYMENT</Text></Button></Link>
 
         </Box>
+          
+          {/* FOOTER IS HERE ------------------------- */}
+          <Footer />
 
     </Box>
   )
