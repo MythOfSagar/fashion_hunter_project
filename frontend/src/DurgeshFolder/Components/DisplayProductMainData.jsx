@@ -96,16 +96,16 @@ const closeProductHover = ()=>{
           isClosable: true,
         })
      }
-     else{
-      dispatch(deleteWishListData(uniqueId))
-      toast({
-        title: 'Product Removed from Wishlist',
-        status: 'error',
-        position: 'top',
-        duration: 3000,
-        isClosable: true,
-      })
-     }
+    //  else{
+    //   dispatch(deleteWishListData(uniqueId))
+    //   toast({
+    //     title: 'Product Removed from Wishlist',
+    //     status: 'error',
+    //     position: 'top',
+    //     duration: 3000,
+    //     isClosable: true,
+    //   })
+    //  }
     
   }
 

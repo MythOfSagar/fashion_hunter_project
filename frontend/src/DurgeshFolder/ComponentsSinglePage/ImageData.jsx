@@ -1,5 +1,5 @@
 import "./ImageData.css"
-import { Box, Button, Image , Text} from '@chakra-ui/react'
+import { Box, Button, Image , Text, useToast} from '@chakra-ui/react'
 import React,{useEffect, useState} from 'react'
 import ReactImageMagnify from 'react-image-magnify' 
 import {AiFillHeart} from "react-icons/ai" ;
@@ -40,7 +40,8 @@ const ImageData = ({image ,mainImage ,value ,setValue ,item}) => {
        }
       }
       const dispatch = useDispatch()
-      
+      const toast = useToast()
+
       const handleCartProduct = (item)=>{
         const payloadData ={ 
           mainImage:item.mainImage ,
@@ -50,7 +51,14 @@ const ImageData = ({image ,mainImage ,value ,setValue ,item}) => {
           realPrice:item.realPrice ,
           quantity:1 , 
         }
-           dispatch(sendCartData(payloadData)) 
+           dispatch(sendCartData(payloadData))
+           toast({
+            title: 'Product Added to Cart',
+            status: 'success',
+            position: 'top',
+            duration: 3000,
+            isClosable: true,
+          }) 
           
       }
       

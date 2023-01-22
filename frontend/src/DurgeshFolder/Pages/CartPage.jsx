@@ -73,7 +73,7 @@ const CartPage = () => {
         {cartArrayData.length > 0 && cartArrayData.map((item, i)=>{
           return (
             <Box key={i}>
-            <Cartbox mainImage={item.mainImage} handleDeleteProduct={handleDeleteProduct} id={item.id} isLoadingCart={isLoadingCart} quantity={item.quantity} categories={item.categories} title={item.title} price={item.price} realPrice={item.realPrice}/>
+            <Cartbox mainImage={item.mainImage} item={item} handleDeleteProduct={handleDeleteProduct} id={item._id} isLoadingCart={isLoadingCart} quantity={item.quantity} categories={item.categories} title={item.title} price={item.price} realPrice={item.realPrice}/>
             <hr  style={{marginTop:"10px" }}/>
             </Box>
           )

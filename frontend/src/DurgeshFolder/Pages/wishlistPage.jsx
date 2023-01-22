@@ -38,8 +38,8 @@ const newData = (uniqueID)=>{
       dispatch(getWishListData)
     },[])
 
-    // console.log(wishListArray , isLoadingWishlist ,"isErrorWishlist" ,isErrorWishlist)
-
+    console.log(wishListArray )
+//  console.log(wishListArray.length ,  "length")
 
   return (
     <Box>
@@ -52,7 +52,7 @@ const newData = (uniqueID)=>{
       <SimpleGrid columns={{base:"1", sm: "2", md: "2", lg: "3" ,xl: "3",'2xl': "3",}} spacingY={10} spacingX={4}>
          {wishListArray?.length > 0  && wishListArray?.map((item , i)=>{
            return (
-          <WishlistBox key={i} deleteWishlistItem={newData} mainImage={item.mainImage} categories={item.categories} title={item.title} price={item.price} realPrice={item.realPrice} uniqueID={item.id} isLoadingWishlist={isLoadingWishlist} />
+          <WishlistBox key={i} deleteWishlistItem={newData} mainImage={item.mainImage} categories={item.categories} title={item.title} price={item.price} realPrice={item.realPrice} uniqueID={item._id} isLoadingWishlist={isLoadingWishlist} />
            )
         })}
         

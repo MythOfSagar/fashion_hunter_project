@@ -1,5 +1,6 @@
 import { Box, Image, Text } from '@chakra-ui/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const PaymentHeader = () => {
     return (
@@ -13,7 +14,7 @@ const PaymentHeader = () => {
             paddingRight={{ base: 5, md: 5, lg: 40 }}
             justifyContent={"space-between"}
             display={"flex"}>
-            <Box><Image width={220} src={"https://i.ibb.co/4srNbCm/FH.png"}></Image></Box>
+            <Link to="/"><Box><Image width={220} src={"https://i.ibb.co/4srNbCm/FH.png"}></Image></Box></Link>
             <Box display={{ base: 'block', md: 'flex', lg: 'flex' }}
             alignItems={"center"}
             ><Image margin={'auto'}

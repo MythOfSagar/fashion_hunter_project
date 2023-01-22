@@ -10,7 +10,7 @@ const ProductHeadings = ({productPageName ,anotherPage}) => {
     return (
       <div> 
         <div className="productNavigationBar">
-          <Text fontSize='15px' className="HomeHover" fontWeight="600" >Best Buy</Text>
+         <Link to="/"> <Text fontSize='15px' className="HomeHover" fontWeight="600" >Fashion Hunter</Text></Link>
             <ChevronRightIcon w={6} h={6} color="grey" /> 
             <Text fontSize='15px' color="#585858" fontWeight="500">{productPageName}</Text>
           </div>

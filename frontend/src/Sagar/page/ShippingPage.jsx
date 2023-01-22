@@ -5,6 +5,7 @@ import PaymentFooter from '../components/PaymentFooter'
 import PaymentHeader from '../components/PaymentHeader'
 import { StarIcon,EditIcon, AddIcon  } from "@chakra-ui/icons"
 import { useEffect } from 'react'
+import { getLocalData } from '../../Utils/LocalStorage'
 
 const ShippingPage = () => {
 
@@ -15,7 +16,12 @@ const ShippingPage = () => {
     const [finalPrice,setFinal]=useState(0)
     
     const getData = async () => {
-        const resp = await fetch("https://data-vercel-sagar1079.vercel.app/ajio-data/")
+        const resp = await fetch("http://localhost:4500/cart",{
+            headers:{
+                "Authorization":getLocalData("token")
+            },
+            
+        })
         const data = await resp.json()
         setCartData(data)
         
@@ -24,6 +30,7 @@ const ShippingPage = () => {
 
         
     }
+    // console.log(cartData , "sagar")
     const toast = useToast()
     const emptyAddress={
         fullname: "",
@@ -229,7 +236,7 @@ const ShippingPage = () => {
             display={"grid"} gridTemplateColumns={"repeat(5,1fr)"}>
                 
                 {cartData.map((item)=>
-                    <Box key={item.id}><Image
+                    <Box key={item._id}><Image
                     width={79}
                     src={item.mainImage}
                     ></Image>

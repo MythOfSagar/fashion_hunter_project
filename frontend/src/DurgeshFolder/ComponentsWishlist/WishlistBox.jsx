@@ -28,7 +28,7 @@ const WishlistBox = ({mainImage ,categories ,title ,price,realPrice ,deleteWishl
     }
     dispatch(sendCartData(payloadData)).then(()=>deleteWishlistItem(uniqueID)) 
     toast({
-      title: 'Product Added to Wishlist',
+      title: 'Product Added to Cart',
       status: 'success',
       position: 'top',
       duration: 3000,
