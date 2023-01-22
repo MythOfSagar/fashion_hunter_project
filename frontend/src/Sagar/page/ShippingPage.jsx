@@ -16,7 +16,7 @@ const ShippingPage = () => {
     const [finalPrice,setFinal]=useState(0)
     
     const getData = async () => {
-        const resp = await fetch("http://localhost:4500/cart",{
+        const resp = await fetch("https://handsome-blue-crab.cyclic.app/cart",{
             headers:{
                 "Authorization":getLocalData("token")
             },
@@ -25,8 +25,8 @@ const ShippingPage = () => {
         const data = await resp.json()
         setCartData(data)
         
-        setFinal(data.reduce((acc,item)=>{return item.realPrice + acc},0))
-        setTotal(data.reduce((acc,item)=>{return item.price + acc},0))
+        setFinal(data.reduce((acc,item)=>{return (item.realPrice * item.quantity)+ acc},0))
+        setTotal(data.reduce((acc,item)=>{return (item.price * item.quantity) + acc},0))
 
         
     }

@@ -57,7 +57,14 @@ const Login = () => {
         e.preventDefault();
         if (adminuser === "admin") {
             if (email === "hilton@gmail.com" && password === "Abc123") {
+                saveLocalData("name", "Admin panel")
                 navigate("/admin")
+            } else {
+                toast({
+                    title: `You enter wrong credentials`,
+                    status: 'error',
+                    isClosable: true,
+                  })
             }
         } else {
             dispatch(getLogin(data))

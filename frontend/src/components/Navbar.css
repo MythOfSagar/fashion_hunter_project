@@ -97,6 +97,7 @@
     font-size: 20px;
 
     gap :10px;
+    margin-right: 29px ; 
 
   }
 .icon-div{
@@ -109,7 +110,13 @@
     border-radius: 50%;
     height: 40px;
     width: 40px;
+    /* position: relative; */
+    /* bottom: 10px; */
 }
+/* .manoj{
+    position: relative;
+    top: -10px;
+} */
 .draw{
     margin-right: 10px;
 }

@@ -3,15 +3,37 @@ import useWindowsize from "../Hook/HandW.hook";
 import "./Navbar.css";
 import DraweExample from "./dwrawer"
 import { AiOutlineHeart } from "react-icons/ai";
-import { BsHandbag } from "react-icons/bs";
+import { BsFillHandbagFill, BsHandbag } from "react-icons/bs";
 import Action from "./action"
-import { Link } from "react-router-dom";
-import { InputGroup, InputLeftElement , Input } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
+import { InputGroup, InputLeftElement , Input, useToast, Box } from "@chakra-ui/react";
 import { AiOutlineSearch } from "react-icons/ai";
+import { getLocalData } from "../Utils/LocalStorage";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getCartData } from "../Redux/Cart_reducer/action";
 
 const Navbar = () => {
+  const dispatch = useDispatch()
+  const cartArrayData = useSelector(state=>state.CartReducer.cartArrayData)
   const [height,width]=useWindowsize();
-  // console.log(height,width);
+  const navigate = useNavigate()
+  const toast = useToast()
+  const handleLogin=()=>{
+    if (!getLocalData("token")){
+      navigate("/login")
+      toast({
+        title: `You are not login, login first`,
+        status: 'error',
+        isClosable: true,
+      })
+    }
+  }
+  
+  useEffect(()=>{
+    dispatch(getCartData)
+  },[])
+
   return (
     <div id="navbar">
    <div id="navbar-left">
@@ -41,18 +63,22 @@ const Navbar = () => {
           {/*  Search bar ------------------------------------ */}
           {/* <input id="navbar-input" type="search"  placeholder="Search Products" style={{outline:"none", borderRadius:"4px"}} /> */}
           <InputGroup>
-    <InputLeftElement pointerEvents='none' children={<AiOutlineSearch color='gray.300' />} />
+    <InputLeftElement pointerEvents='none' children={<AiOutlineSearch color='gray.300' />} t/>
     <Input type='tel' placeholder='Search Products'  variant="" border="1px solid #2f4254" width="200px"/>
   </InputGroup>
   {/*  Search bar end ----------------------- */}
 
-          <div className="icon" >
+          <div className="icon" onClick={handleLogin}>
             <div className="icon-div">
              <Link to="/wishlist"> <AiOutlineHeart /> </Link>
             </div>
-            <div className="icon-div"> 
-             <Link to="/cart"> <BsHandbag /> </Link>
-            </div>
+            {/*  Main ------------- */}
+            <Box className="icon-div" position="relative" > 
+            <Link to="/cart"> <Box><BsFillHandbagFill /></Box></Link>
+               
+            <Box className="manoj" position="absolute" left="22px" top="-2px" color="#ffffff" backgroundColor="#ff6161" width="23px" height="25px" fontWeight="700" borderRadius="50%"  fontSize="18px" border="1px solid #ffffff" >{cartArrayData?.length }</Box>
+            </Box>
+            {/* main end ------------------- */}
           </div>
         </div>
       </div> :

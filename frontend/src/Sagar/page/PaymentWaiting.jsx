@@ -1,6 +1,8 @@
 import { Box, Heading, Image } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import Footer from '../../components/Footer'
+import Navbar from '../../components/Navbar'
 
 const PaymentWaiting = () => {
 
@@ -19,10 +21,12 @@ const PaymentWaiting = () => {
 
     return (
         <Box align="center" marginTop={{ base: '60px', md: '90px', lg: '56px' }}>
-            <Image src={`https://i.ibb.co/${params.img}/upi.png`}></Image>
+          <Navbar/>
+            <Image mt={"30px"} mb={"30px"} src={`https://i.ibb.co/${params.img}/upi.png`}></Image>
             <Heading>Open {params.service} mobile app</Heading>
             <Heading>and approve the payment</Heading>
             <Heading>within 4:{time} seconds</Heading>
+            <Footer/>
         </Box>
     )
 }

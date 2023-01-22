@@ -7,7 +7,7 @@ import {GETCARTREQUEST ,GETCARTSUCCESS ,GETCARTFAILURE} from "./actionType"
 
 const getCartData = (dispatch)=>{
     dispatch({type:GETCARTREQUEST})
-    return axios.get('http://localhost:4500/cart',{
+    return axios.get('https://handsome-blue-crab.cyclic.app/cart',{
         headers:{
             "Authorization":getLocalData("token")
         },
@@ -21,7 +21,7 @@ const getCartData = (dispatch)=>{
 //  Post --------------------------------------------
 const sendCartData = (payload)=>(dispatch)=>{
     dispatch({type:"POSTCARTREQUEST"})
-    return axios.post('http://localhost:4500/cart/add',payload, {
+    return axios.post('https://handsome-blue-crab.cyclic.app/cart/add',payload, {
         headers:{
             "Authorization":getLocalData("token")
         },
@@ -34,7 +34,7 @@ const sendCartData = (payload)=>(dispatch)=>{
 //  delete req --------------------------------------
 const deleteCartData = (id)=>(dispatch)=>{
     dispatch({type:"DELETECARTREQUEST"})
-  return axios.delete(`http://localhost:4500/cart/delete/${id}`,{
+  return axios.delete(`https://handsome-blue-crab.cyclic.app/cart/delete/${id}`,{
     headers:{
         "Authorization":getLocalData("token")
     },
@@ -48,7 +48,7 @@ const deleteCartData = (id)=>(dispatch)=>{
 const changeCartData = (id , payload)=>(dispatch)=>{
    
     dispatch({type:"PATCH_CART_REQUEST"})
-  return axios.patch(`http://localhost:4500/cart/update/${id}`,payload , {
+  return axios.patch(`https://handsome-blue-crab.cyclic.app/cart/update/${id}`,payload , {
     headers:{
         "Authorization":getLocalData("token")
     },

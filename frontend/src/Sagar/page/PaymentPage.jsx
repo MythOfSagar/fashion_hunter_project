@@ -10,6 +10,7 @@ import CardPayment from '../components/CardPayment'
 import UpiTypes from '../components/UpiTypes'
 import data from "../db"
 import OfferCard from '../components/OfferCard'
+import { getLocalData } from '../../Utils/LocalStorage'
 
 const PaymentPage = () => {
 
@@ -19,11 +20,16 @@ const PaymentPage = () => {
     const [finalPrice,setFinal]=useState(0)
     
     const getData = async () => {
-        const resp = await fetch("https://data-vercel-sagar1079.vercel.app/ajio-data/")
+        const resp = await fetch("https://handsome-blue-crab.cyclic.app/cart",{
+            headers:{
+                "Authorization":getLocalData("token")
+            },
+            
+        })
         const data = await resp.json()
         
-        setFinal(data.reduce((acc,item)=>{return item.realPrice + acc},0))
-        setTotal(data.reduce((acc,item)=>{return item.price + acc},0))
+        setFinal(data.reduce((acc,item)=>{return (item.realPrice * item.quantity)+ acc},0))
+        setTotal(data.reduce((acc,item)=>{return (item.price * item.quantity) + acc},0))
  
     }
        useEffect(()=>{

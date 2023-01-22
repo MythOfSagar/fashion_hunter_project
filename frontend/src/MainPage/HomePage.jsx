@@ -1,5 +1,7 @@
 import { Box,Image,Text } from '@chakra-ui/react'
 import React from 'react'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import FifthSlider from '../components/FifthSlider'
 import FirstSlider from '../components/FirstSlider'
@@ -12,6 +14,7 @@ import ThirdSlider from '../components/ThirdSlider'
 
 
 const HomePage = () => {
+
   return (
     <Box>
         <Navbar/>

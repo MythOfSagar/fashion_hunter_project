@@ -7,7 +7,7 @@ import {POSTWISHLISTREQUEST , POSTWISHLISTSUCCESS , POSTWISHLISTFAILURE} from ".
 
 const getWishListData = (dispatch)=>{
     dispatch({type:GETWISHLISTREQUEST}) 
-    return axios.get('http://localhost:4500/wishlist' , {
+    return axios.get('https://handsome-blue-crab.cyclic.app/wishlist' , {
         headers:{
             "Authorization":getLocalData("token")
         }
@@ -19,7 +19,7 @@ const getWishListData = (dispatch)=>{
 
 const sendWishListData =(payload)=>(dispatch)=>{
     dispatch({type:POSTWISHLISTREQUEST})
-    return axios.post('http://localhost:4500/wishlist/add',payload ,{
+    return axios.post('https://handsome-blue-crab.cyclic.app/wishlist/add',payload ,{
         headers:{
             "Authorization":getLocalData("token")
         },
@@ -31,7 +31,7 @@ const sendWishListData =(payload)=>(dispatch)=>{
 
 const deleteWishListData =(id)=>(dispatch)=>{
     dispatch({type:"DELETEWISHLISTREQUEST"})
-    return axios.delete(`http://localhost:4500/wishlist/delete/${id}`,{
+    return axios.delete(`https://handsome-blue-crab.cyclic.app/wishlist/delete/${id}`,{
         headers:{
             "Authorization":getLocalData("token")
         },
