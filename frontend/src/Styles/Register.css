@@ -94,14 +94,70 @@ input[type=Date] {
     margin-right: -50px;
 } */
 
-/* .resImage{
-    width: 80%;
+.resImage{
+    width: 40%;
     margin-left: 100px;
     border-right: 1px solid lightgray;
-    padding-right: 100px;
-} */
+    /* padding-right: 100px; */
+}
+
+.resImage1{
+    width: 40%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+    padding-right: 50px;
+    margin-top: 50px;
+    border-right: 1px solid lightgray;
+    /* padding-right: 100px; */
+}
 
 .resFlex{
     width: 100%;
     display: flex;
+    margin-bottom:20px
+}
+
+.mainBox{
+    width: 80%;
+    margin: auto;
+    border-bottom: 1px solid lightgray;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .mainBox{
+        width: 80%;
+        margin: auto;
+    }
+    .resImage{
+        width: 60%;
+        margin-left: 100px;
+        border-left: 1px soli lightgray;
+        /* padding-right: 100px; */
+    }
+    
+    .resImage1{
+        width: 70%;
+        height: 70%;
+
+        margin-bottom: 40px;
+        padding-right: 100px;
+    }
+    
+    .resFlex{
+        width: 100%;
+        display: grid;
+        
+    }
+
+    .firstBox{
+        width: 90%;
+        margin: auto;
+        /* border: 1px solid lightgray; */
+    }
 }

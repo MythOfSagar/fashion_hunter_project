@@ -5,14 +5,6 @@ import {
     Button,
     Flex,
     Text,
-    useDisclosure,
-    ModalOverlay,
-    ModalContent,
-    ModalCloseButton,
-    ModalBody,
-    Modal,
-    ModalFooter,
-    ModalHeader,
     Spinner,
     Image,
     Divider,
@@ -20,11 +12,13 @@ import {
 } from "@chakra-ui/react";
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLogin } from '../Redux/Hilton_reducer/action';
 import "../Styles/Register.css"
 import { getLocalData, saveLocalData } from '../Utils/LocalStorage';
 import { AiFillUnlock } from "react-icons/ai"
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { getLogin } from '../Redux/Hilton_reducer/action';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 const initialState = {
     email: "",
@@ -36,13 +30,13 @@ const Login = () => {
     const dispatch = useDispatch()
     const { loginData, isLoading, isError } = useSelector((state) => {
         return {
-            loginData: state.loginData,
-            isLoading: state.isLoading,
-            isError: state.isError
+            loginData: state.HiltonReducer.loginData,
+            isLoading: state.HiltonReducer.isLoading,
+            isError: state.HiltonReducer.isError
         }
     });
     const [data, setData] = useState(initialState);
-    const [adminuser,setuseradmin] = useState("")
+    const [adminuser, setuseradmin] = useState("")
     const toast = useToast()
     const [show, setShow] = useState(false)
 
@@ -55,14 +49,14 @@ const Login = () => {
         setData({ ...data, [name]: value })
     }
 
-    const hanldeAdmin=(e)=>{
+    const hanldeAdmin = (e) => {
         setuseradmin(e.target.value)
-    }  
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (adminuser==="admin"){
-            if (email==="hilton@gmail.com" && password==="Abc123"){
+        if (adminuser === "admin") {
+            if (email === "hilton@gmail.com" && password === "Abc123") {
                 navigate("/admin")
             }
         } else {
@@ -80,6 +74,7 @@ const Login = () => {
                             duration: 9000,
                             isClosable: true,
                         })
+                        navigate("/")
                     }
                     if (res.payload.status === "FAILED") {
                         toast({
@@ -98,120 +93,64 @@ const Login = () => {
     }
 
 
- 
+
 
 
 
     return (
-        <Box width={"90%"} margin={'auto'}>
-            <Box className='resFlex'>
-            <Image w={"50%"} margin={"auto"} src='https://user-images.githubusercontent.com/103739534/213816226-4a749b53-b4c8-4dec-b9b7-973b4c964df7.gif' alt='git' />
+        <Box>
 
-                <Box className='firstBox'>
+            <Navbar />
 
-                    {
-                        getLocalData("token") ? <Flex w={"300px"} gap={"2px"} justifyContent={"center"} alignItems="center" margin={"auto"}><Box><AiFillUnlock /></Box><Text textAlign={"center"} m={"10px"}>You are Logged in</Text></Flex> : null
-                    }
-                    <Flex className="flexLogin" justifyContent={"center"}>
-                        <Box className="boxLogin">
-                            <form className="formLogin" onSubmit={handleSubmit}>
-                                {/* <Text>{loginData ? loginData.message : null}</Text> */}
-                                <Text className='lebel' textAlign={"center"} marginRight={"250px"} marginBottom={"-20px"}>Email</Text><br />
-                                <Input type="email" name="email" variant={"unstyled"} border={"0.5px solid #8d8d8d"} value={email} onChange={handleChange} required /><br />
+            <Box className='mainBox'>
+                <Box className='resFlex' marginBottom={"20px"}>
+                    <Image className='resImage' margin={"auto"} src='https://user-images.githubusercontent.com/103739534/213816226-4a749b53-b4c8-4dec-b9b7-973b4c964df7.gif' alt='git' />
 
-                                <Flex w={"300px"} justifyContent={"space-between"} alignItems={"center"}>
-                                    <Box w={"125px"}>
-                                        <Text id='Text' marginLeft={'-50px'} marginBottom={"-20px"}>Password</Text><br />
-                                        <Input w="160px" type="password" name="password" variant={"unstyled"} border={"0.5px solid #8d8d8d"} value={password} onChange={handleChange} required />
-                                    </Box>
-                                    <Box lineHeight={"15px"}>
-                                        <Text marginLeft={'-110px'} >Role</Text><br />
-                                        <select className='select' placeholder='Select Role' onChange={hanldeAdmin}>
-                                            <option value='Explorer'>Explorer</option>
-                                            <option value='admin'>Admin</option>
-                                        </select>
-                                    </Box>
-                                </Flex>
+                    <Box className='firstBox' paddingTop={"20px"} paddingBottom={"20px"}>
 
-                                <Text fontSize={"13px"} marginTop={"5px"} marginBottom={'5px'}>Doesn't have an account ? <b className='b' onClick={() => <Login />}>Register here</b></Text>
+                        <Text fontSize={"17px"}>Login with your existing acount</Text>
+                        <Divider w={"280px"} margin={"auto"} marginTop={"10px"} marginBottom={"20px"} border={"1px solid lightgray"} />
 
-                                {
-                                    isLoading ? <Box width={"300px"} display={"flex"} justifyContent={"center"} alignItems={"center"}><Spinner /> </Box> : null
-                                }
-                                <Box className='buttonBox'>
-                                    <input className="buttonRegister" type="submit" value="Login" disabled={show} />
-                                </Box>
-                            </form>
-                        </Box>
-                    </Flex>
-                </Box>
-            </Box>
-
-
-
-
-
-
-
-
-            {/* <Button onClick={onOpen}>Login</Button>
-
-            <Modal
-                initialFocusRef={initialRef}
-                finalFocusRef={finalRef}
-                isOpen={isOpen}
-                onClose={onClose}
-            >
-                <ModalOverlay />
-                <ModalContent w={"350px"}>
-                    <ModalHeader fontSize={"17px"}>Login with your existing acount</ModalHeader>
-                    <Divider w={"320px"} margin={"auto"} border={"1px solid lightgray"} />
-                    <ModalCloseButton />
-                    <ModalBody pb={6}>
-                        <Image w={"50%"} margin={"auto"} src='https://user-images.githubusercontent.com/103739534/213816226-4a749b53-b4c8-4dec-b9b7-973b4c964df7.gif' alt='git' />
                         {
-                            getLocalData("token") ? <Flex w={"300px"} gap={"2px"} justifyContent={"center"} alignItems="center"><Box><AiFillUnlock/></Box><Text textAlign={"center"} m={"10px"}>You are Logged in</Text></Flex> : null
+                            getLocalData("token") ? <Flex w={"300px"} gap={"2px"} justifyContent={"center"} alignItems="center" margin={"auto"}><Box><AiFillUnlock /></Box><Text textAlign={"center"} m={"10px"}>You are Logged in</Text></Flex> : null
                         }
-                        <Flex className="flexLogin">
+                        <Flex className="flexLogin" justifyContent={"center"}>
                             <Box className="boxLogin">
                                 <form className="formLogin" onSubmit={handleSubmit}>
-                                    
-                                    <Text>Email</Text><br />
+                                    {/* <Text>{loginData ? loginData.message : null}</Text> */}
+                                    <Text className='lebel' textAlign={"center"} marginRight={"250px"} marginBottom={"-20px"}>Email</Text><br />
                                     <Input type="email" name="email" variant={"unstyled"} border={"0.5px solid #8d8d8d"} value={email} onChange={handleChange} required /><br />
 
                                     <Flex w={"300px"} justifyContent={"space-between"} alignItems={"center"}>
-                                        <Box>
-                                            <Text id='Text'>Password</Text><br />
+                                        <Box w={"125px"}>
+                                            <Text id='Text' marginLeft={'-50px'} marginBottom={"-20px"}>Password</Text><br />
                                             <Input w="160px" type="password" name="password" variant={"unstyled"} border={"0.5px solid #8d8d8d"} value={password} onChange={handleChange} required />
                                         </Box>
-                                        <Box>
-                                            <Text>Role</Text><br />
-                                            <select className='select' placeholder='Select Role'>
+                                        <Box lineHeight={"15px"}>
+                                            <Text marginLeft={'-110px'} >Role</Text><br />
+                                            <select className='select' placeholder='Select Role' onChange={hanldeAdmin}>
                                                 <option value='Explorer'>Explorer</option>
                                                 <option value='admin'>Admin</option>
                                             </select>
                                         </Box>
                                     </Flex>
 
+                                    <Text fontSize={"13px"} marginTop={"5px"} marginBottom={'5px'}>Doesn't have an account ? <Link to={"/register"}><b className='b'>Register here</b></Link></Text>
 
                                     {
-                    isLoading ? <Box width={"300px"} display={"flex"} justifyContent={"center"} alignItems={"center"}><Spinner /> </Box> : null
-                  }
+                                        isLoading ? <Box width={"300px"} display={"flex"} justifyContent={"center"} alignItems={"center"}><Spinner /> </Box> : null
+                                    }
                                     <Box className='buttonBox'>
-                                        <input className="buttonRegister" type="submit" value="Submit" disabled={show}/>
+                                        <input className="buttonRegister" type="submit" value="Login" disabled={show} />
                                     </Box>
                                 </form>
                             </Box>
                         </Flex>
-                    </ModalBody>
+                    </Box>
+                </Box>
 
-                    <ModalFooter>
-                        <Button onClick={()=>{onClose();setData("");setShow(false)}}>{
-                            show ? "Done" : "Cancel"
-                        }</Button>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal> */}
+            </Box>
+            <Footer/>
         </Box>
     )
 }

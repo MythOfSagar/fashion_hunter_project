@@ -8,7 +8,7 @@ const initialState = {
     isError: false
 }
 
-export const reducer = (state = initialState, action) => {
+export const HiltonReducer = (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
         case types.REGISTRATION_REQUEST:
