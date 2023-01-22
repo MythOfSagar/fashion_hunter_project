@@ -12,14 +12,16 @@ import ShippingPage from './ShippingPage'
 const AllRoutes = () => {
   return (
     <Routes>
-      <Route  path='/' element={<HomePage/>}></Route>
+      {/* <Route  path='/' element={<HomePage/>}></Route>
         <Route  path='/admin' element={<AdminPage/>}></Route>
         <Route  path='/login' element={<Login/>}></Route>
         <Route  path='/register' element={<Register/>}></Route>
         <Route  path='/shipping' element={<ShippingPage/>}></Route>
         <Route  path='/payment' element={<PaymentPage/>}></Route>
         <Route  path='/paymentwaiting/:service/:img' element={<PaymentWaiting/>}></Route>
-        <Route  path='/paymentsuccess' element={<PaymentSuccess/>}></Route>
+        <Route  path='/paymentsuccess' element={<PaymentSuccess/>}></Route> */}
+   
+        
     </Routes>
   )
 }

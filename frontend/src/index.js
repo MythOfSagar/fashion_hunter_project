@@ -13,12 +13,14 @@ root.render(
   <Provider store={store}>
   <ChakraProvider>
     <BrowserRouter>
-  <React.StrictMode>
+  
     <App />
-  </React.StrictMode>
+ 
   </BrowserRouter>
   </ChakraProvider>
   </Provider>
+
+  //  App. restrict mode removed ---------
 );
 
 // If you want to start measuring performance in your app, pass a function
