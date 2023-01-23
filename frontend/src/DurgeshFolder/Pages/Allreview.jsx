@@ -21,7 +21,58 @@ const Allreview = () => {
 useEffect(()=>{
     dispatch(getReviewData(1))
 },[])
-console.log(reviewData)
+
+
+//  Calculating everything 
+var answer  = 0 
+const arrayReview = []
+const reviewTitleUser = []
+
+if(reviewData != undefined  && reviewData.length > 0 ){
+let sum = reviewData.map((item)=>{
+  return (
+     item.review
+  )
+})
+
+
+let titleRating = reviewData.map((item)=>{
+  return (
+     item.title
+  )
+})
+// console.log(titleRating , sum.length , "title") 
+
+for(var i=0 ; i<titleRating.length ; i++){
+  if(titleRating[i] != "" && titleRating[i] !== undefined && titleRating[i] != null && titleRating[i] != false && titleRating[i] != 0){
+    reviewTitleUser.push(titleRating[i])
+  }
+}
+
+
+
+// console.log(sum.length , sum , "sum")
+for(var i=0 ; i<sum.length ; i++){
+   if(sum[i] != "" && sum[i] !== undefined && sum[i] != null && sum[i] != false && sum[i] != 0 ){
+    arrayReview.push(sum[i])
+   }
+  }
+  
+  answer = arrayReview.reduce((a , item)=>{
+    return (a+item)
+  })
+  }
+  
+  const calculate = ((answer)/(arrayReview.length)) || 0 
+  const calculateRating = calculate.toFixed(1)
+
+
+ 
+
+
+
+
+
 
   return (
     <Box>
@@ -67,9 +118,9 @@ console.log(reviewData)
                <Box p="20px" border="2px  red" display="flex" flexDirection={{base:"column", sm: "row", md: "row", lg: "row",xl: "row",'2xl': "row"}} >   
                {/*  Rating image */}
                <Box border="1px  #26a541" display="flex" flexDirection="column" >
-             <Text color="#ffffff" display="flex" alignItems="center" justifyContent="center" fontSize="22px"  borderRadius="20px" width="70px"   background="#26a541">2.4 <StarIcon fontSize="15px" ml="4px" color="#ffffff" /></Text> 
+             <Text color="#ffffff" display="flex" alignItems="center" justifyContent="center" fontSize="22px"  borderRadius="20px" width="70px"   background="#26a541">{calculateRating || 0}<StarIcon fontSize="15px" ml="4px" color="#ffffff" /></Text> 
 
-            <Box color="#8f8a8f" ml="-15px" mb="10px" width="128px"  ><Text textAlign="center"  lineHeight="20px" fontWeight="500" fontSize="15px" ml="6px">4 ratings and 4 reviews</Text></Box>
+            <Box color="#8f8a8f" ml="-15px" mb="10px" width="128px"  ><Text textAlign="center"  lineHeight="20px" fontWeight="500" fontSize="15px" ml="6px">{arrayReview.length} ratings and {reviewTitleUser.length} reviews</Text></Box>
             </Box>
             {/*  rating box length --------- */}
             <Box  ml={{base:"0px", sm: "30px", md: "30px", lg: "30px",xl: "30px",'2xl': "30px"}} >
