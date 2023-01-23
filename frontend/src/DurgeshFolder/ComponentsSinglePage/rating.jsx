@@ -9,7 +9,7 @@ import axios from 'axios';
 import { Modelreview } from './modelReview';
 
 const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , handleStarRating ,ratingLength}) => {
-  
+ 
  
 
 
@@ -34,15 +34,6 @@ const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , hand
   }
   // console.log("dataImages" , dataImages)
      
- 
-
-  
-
-  
-  
-
-
-
   const getData = [
     {
       feeling:"Fabric Quality" } ,
@@ -64,6 +55,30 @@ const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , hand
   ]
   getData.reverse()
   reviewData.reverse()
+ 
+//  SHOW REVIEWS TO THE USER only three  ------------------------
+   
+
+let arrDataReview = []
+  if(reviewData.length > 0){
+    
+   for(var i=0 ; i<reviewData.length ; i++){
+     if(reviewData[i]?.review >=1 && reviewData[i]?.title.length > 1 && reviewData[i].title != "" ){
+      arrDataReview.push(reviewData[i])
+     }
+ 
+   }
+ 
+ }
+
+
+
+
+
+
+
+
+
  
   return (
     <Box>
@@ -160,10 +175,11 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
 
 
       
-        {reviewData.map((item , i)=>{
-          if(item?.review >=1 && item?.title.length > 1){
-          return (
+        {arrDataReview?.length > 0 && arrDataReview?.map((item , i)=>{
+          
+          if(item?.review >=1 && item?.title.length > 1 && i < 3){
             
+          return (
             <Box  ml="20px" mb="15px" key={i}>
 
             <Box display="flex" alignItems="center" mb="13px">
