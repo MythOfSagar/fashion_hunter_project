@@ -3,7 +3,7 @@ import { Box  , Heading, Image , Text} from '@chakra-ui/react'
 import React from 'react'
 import Navbar from '../../components/Navbar'
 
-const Allreview = () => {
+const Allreview = ({arrDataReview}) => {
   return (
     <Box>
         <Navbar />
@@ -13,9 +13,9 @@ const Allreview = () => {
         <Box className='SingleProductMain' height="150vh" width="90%" ml="auto" mr="auto" mt="10px"  shadow="lg"  background='#ffffff' display="flex" flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} >
          
          {/*  Image box ------------------- */}
-           <Box border="2px solid red" width={{base:"", sm: "", md: "38%", lg: "45%",xl: "35%",'2xl': "35%"}} height="auto" p="20px">
+           <Box border="2px solid red" width={{base:"", sm: "80%", md: "38%", lg: "45%",xl: "35%",'2xl': "35%"}} height="auto" p="20px">
 
-            <Image src="https://rukminim1.flixcart.com/image/400/400/xif0q/shoe/u/g/g/9-2008-black-green-9-sfr-black-original-imagh9kvzs47gur2.jpeg?q=70" alt="productImage" boxSize={{base:"", sm: "300px", md: "200px", lg: "400px",xl: "400px",'2xl': "400px"}}   />
+            <Image src="https://rukminim1.flixcart.com/image/400/400/xif0q/shoe/u/g/g/9-2008-black-green-9-sfr-black-original-imagh9kvzs47gur2.jpeg?q=70" alt="productImage" boxSize={{base:"250px", sm: "300px", md: "200px", lg: "400px",xl: "400px",'2xl': "400px"}}   />
               
              {/*  about category ------- */}
              <Heading fontSize="17px" fontWeight="600" mt="5px" color="#303030" textAlign="left">Carbonn Cloth</Heading> 
@@ -41,19 +41,19 @@ const Allreview = () => {
              </Box>
 
            {/* Rating Box----------------- */}
-           <Box border="2px solid black" width={{base:"", sm: "", md: "68%", lg: "60%",xl: "60%",'2xl': "60%"}} height="60vh" >
+           <Box border="2px solid black" mt={{base:"-30px", sm: "-30px", md: "0", lg: "0",xl: "0",'2xl': "0"}} width={{base:"", sm: "", md: "68%", lg: "60%",xl: "60%",'2xl': "60%"}} height="60vh" >
              <Heading fontWeight={500} fontSize="22px" p="20px" textAlign="left" borderBottom="1px solid #f0f0f0">Lorem ipsum dolor sit amet consectetur.</Heading>
 
              
-               <Box p="20px" border="2px solid red" display="flex">   
+               <Box p="20px" border="2px  red" display="flex" flexDirection={{base:"column", sm: "row", md: "row", lg: "row",xl: "row",'2xl': "row"}} >   
                {/*  Rating image */}
-               <Box border="1px solid #26a541" display="flex" flexDirection="column" >
+               <Box border="1px  #26a541" display="flex" flexDirection="column" >
              <Text color="#ffffff" display="flex" alignItems="center" justifyContent="center" fontSize="22px"  borderRadius="20px" width="70px"   background="#26a541">2.4 <StarIcon fontSize="15px" ml="4px" color="#ffffff" /></Text> 
 
-            <Box color="#8f8a8f" ml="-15px"  width="128px"  ><Text textAlign="center"  lineHeight="20px" fontWeight="500" fontSize="15px" ml="6px">4 ratings and 4 reviews</Text></Box>
+            <Box color="#8f8a8f" ml="-15px" mb="10px" width="128px"  ><Text textAlign="center"  lineHeight="20px" fontWeight="500" fontSize="15px" ml="6px">4 ratings and 4 reviews</Text></Box>
             </Box>
             {/*  rating box length --------- */}
-            <Box ml="30px">
+            <Box  ml={{base:"0px", sm: "30px", md: "30px", lg: "30px",xl: "30px",'2xl': "30px"}} >
              <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
              <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
              <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
@@ -63,8 +63,53 @@ const Allreview = () => {
              </Box>
             
            </Box>
+            {/* By our customer */}
 
+            {arrDataReview?.length > 0 && arrDataReview?.map((item , i)=>{
+          
+          if(item?.review >=1 && item?.title.length > 1 && i < 3){
+            
+          return (
+            <Box  ml="20px" mb="15px" key={i}>
 
+            <Box display="flex" alignItems="center" mb="13px">
+           {item?.review >= 1 && item.review >=3 && <Box border="1px solid #26a541" mt="6px" background="#26a541" borderRadius="20px" width="45px"  
+    style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>   
+    <Text color="#ffffff" fontSize="16px">{item.review}</Text> 
+    
+    <StarIcon fontSize="13px" color="#ffffff" />
+    </Box> }
+    {item.review  < 3 && item?.review >= 1 && <Box border="1px solid #ff6161" mt="6px" background="#ff6161" borderRadius="20px" width="45px"  
+    style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>   
+    <Text color="#ffffff" fontSize="16px">{item.review}</Text> 
+    
+    <StarIcon fontSize="13px" color="#ffffff" />
+    </Box> }
+
+           {item.title != "" && <Text textAlign="left" fontWeight={500} ml="10px" color="#2e3b4e">{item.title}</Text>}
+            </Box>
+    
+            {/* Images of review */}
+            {(item.image !== "") && 
+            <Image src={item.image} alt="" boxSize={{base:"50px", sm: "70px", md: "70px", lg: "70px",xl: "70px",'2xl': "70px"}}  shadow="2xl" cursor="pointer" />
+        }
+             <Text mt="8px" mb="3px" color="#8f8a95" textAlign="left" fontSize="14px" fontWeight={500}>Fashion Hunter Customer</Text>
+               
+               <Box display="flex" justifyContent="space-between" border="1px  red" width={{base:"100%", sm: "90%", md: "70%", lg: "60%",xl: "50%",'2xl': "50%"}}>
+              <Text mb="15px" textAlign="left" fontSize="16px"><CheckCircleIcon color="#878787" mr="5px" fontSize="14px" />Certified Buyer</Text>
+    
+             
+              </Box>
+             <hr />
+          </Box>
+
+          )
+              }
+            
+        })}
+       
+
+       {/*  End review */}
 
              </Box>
           

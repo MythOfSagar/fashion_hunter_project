@@ -15,7 +15,7 @@ const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , hand
 
 
     var dataImages = []
-    if(reviewData.length > 0){
+    if(reviewData?.length > 0){
     let sum = reviewData.map((item)=>{
       if(item?.image != "" && item.image != 0 && item.image !=  1 && item.image != Number ){
       return (
@@ -55,13 +55,13 @@ const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , hand
       } ,
   ]
   getData.reverse()
-  reviewData.reverse()
+  reviewData?.reverse()
  
 //  SHOW REVIEWS TO THE USER only three  ------------------------
    
 
 let arrDataReview = []
-  if(reviewData.length > 0){
+  if(reviewData?.length > 0){
     
    for(var i=0 ; i<reviewData.length ; i++){
      if(reviewData[i]?.review >=1 && reviewData[i]?.title.length > 1 && reviewData[i].title != "" ){
