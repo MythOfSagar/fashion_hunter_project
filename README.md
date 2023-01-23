@@ -17,7 +17,7 @@ Tech Stack
 6. MongoDB,
 7. ChakraUI
 8. Nodemailer,
-9. React responsice crousel,
+9. React responsive crousel,
 10. React Router dom 
 
 Functionality
