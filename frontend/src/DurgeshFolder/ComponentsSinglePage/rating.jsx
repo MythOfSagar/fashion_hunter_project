@@ -7,9 +7,10 @@ import { Modelrating } from './modelRating';
 import { AiFillDislike, AiFillLike } from 'react-icons/ai';
 import axios from 'axios';
 import { Modelreview } from './modelReview';
+import { Link } from 'react-router-dom';
 
 const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , handleStarRating ,ratingLength}) => {
-  
+ 
  
 
 
@@ -34,15 +35,6 @@ const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , hand
   }
   // console.log("dataImages" , dataImages)
      
- 
-
-  
-
-  
-  
-
-
-
   const getData = [
     {
       feeling:"Fabric Quality" } ,
@@ -64,6 +56,30 @@ const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , hand
   ]
   getData.reverse()
   reviewData.reverse()
+ 
+//  SHOW REVIEWS TO THE USER only three  ------------------------
+   
+
+let arrDataReview = []
+  if(reviewData.length > 0){
+    
+   for(var i=0 ; i<reviewData.length ; i++){
+     if(reviewData[i]?.review >=1 && reviewData[i]?.title.length > 1 && reviewData[i].title != "" ){
+      arrDataReview.push(reviewData[i])
+     }
+ 
+   }
+ 
+ }
+
+
+
+
+
+
+
+
+
  
   return (
     <Box>
@@ -141,8 +157,6 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
         )
       }
       // console.log(item?.length)
-     
-    
     })} 
 
    
@@ -156,22 +170,33 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
    
 
    </Box>
-
-
    {/*  CUSTOMER REVIEW STARTED FROM HERE --------------------------------------------------- */}
+     
+    
+
+
       
-        {reviewData.map((item , i)=>{
-          if(item?.review >=1 && item?.title.length > 1){
-          return (
+        {arrDataReview?.length > 0 && arrDataReview?.map((item , i)=>{
+          
+          if(item?.review >=1 && item?.title.length > 1 && i < 3){
             
+          return (
             <Box  ml="20px" mb="15px" key={i}>
 
             <Box display="flex" alignItems="center" mb="13px">
-           {item?.review >= 1 && <Box border="1px solid #26a541" mt="6px" background="#26a541" borderRadius="20px" width="45px"  
+           {item?.review >= 1 && item.review >=3 && <Box border="1px solid #26a541" mt="6px" background="#26a541" borderRadius="20px" width="45px"  
     style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>   
     <Text color="#ffffff" fontSize="16px">{item.review}</Text> 
+    
     <StarIcon fontSize="13px" color="#ffffff" />
     </Box> }
+    {item.review  < 3 && item?.review >= 1 && <Box border="1px solid #ff6161" mt="6px" background="#ff6161" borderRadius="20px" width="45px"  
+    style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>   
+    <Text color="#ffffff" fontSize="16px">{item.review}</Text> 
+    
+    <StarIcon fontSize="13px" color="#ffffff" />
+    </Box> }
+
            {item.title != "" && <Text textAlign="left" fontWeight={500} ml="10px" color="#2e3b4e">{item.title}</Text>}
             </Box>
     
@@ -184,17 +209,7 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
                <Box display="flex" justifyContent="space-between" border="1px  red" width={{base:"100%", sm: "90%", md: "70%", lg: "60%",xl: "50%",'2xl': "50%"}}>
               <Text mb="15px" textAlign="left" fontSize="16px"><CheckCircleIcon color="#878787" mr="5px" fontSize="14px" />Certified Buyer</Text>
     
-              {/*  LIKE BUTTONS AND DISLIKE BUTTONS -------------------- */}
-               {/* <Box display="flex" border="2px  red" justifyContent="space-evenly">
-                <Text mr="10px" color="#c2c2c2" >{likeColor ? (  <AiFillLike onClick={handleLike}  style={{display:"inline-block" , fontSize:"20px" ,color:"#2874f0" ,cursor:"pointer"}} />):( <AiFillLike onClick={handleLike} style={{display:"inline-block" , fontSize:"20px" ,color:"#c2c2c2" ,cursor:"pointer"}} /> )}
-                {item.like}
-                 
-                  </Text>
-                <Text mr="10px" color="#c2c2c2">{dislikeColor ? (  <AiFillDislike onClick={handleDislike} style={{display:"inline-block" ,fontSize:"20px" ,color:"#2874f0" , cursor:"pointer"}} />) :( <AiFillDislike onClick={handleDislike}  style={{display:"inline-block" ,fontSize:"20px" ,color:"#c2c2c2" , cursor:"pointer"}} />)}
-                  
-                 {dislikeCount}</Text>
-    
-               </Box> */}
+             
               </Box>
              <hr />
           </Box>
@@ -204,7 +219,7 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
             
         })}
        
-          
+     <Link to="reviews"> <Text color="#418ef3" cursor="pointer" textAlign="left" ml="22px" fontWeight="500" fontSize="18px" mb="10px" >See All 6 reviews </Text></Link>    
             
 
       

@@ -190,7 +190,7 @@ for(var i=0 ; i<sum.length ; i++){
         {/*  People also  bought end here -------------------------------------- */}
         
    {/*  Rating and reviews are started from here -------------------------------------------- */}
-        <Box background='#ffffff' ml="auto" mr="auto" mt="8px" pb="20px" style={{border:"1px   red" , height:"auto"  , width:"90%" }}>
+        <Box background='#ffffff' ml="auto" mr="auto" mt="8px" mb="40px" pb="20px" style={{border:"1px   red" , height:"auto"  , width:"90%" }}>
          <Rating num={num} handleStarRating={handleStarRating} answerRating={calculateRating} reviewData={reviewData} handleSubmit={handleSubmit} arrayReview={reviewTitleUser} ratingLength={arrayReview.length}/>
         </Box>
 {/* Rating ends here ----------------------------------------------------------- */}
