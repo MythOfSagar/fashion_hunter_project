@@ -10,6 +10,8 @@ import { RecentBought } from '../ComponentsSinglePage/recentBought'
 import { Rating } from '../ComponentsSinglePage/rating'
 import Navbar from '../../components/Navbar'
 import Footer from "../../components/Footer"
+import { useDispatch, useSelector } from 'react-redux'
+import { getReviewData } from '../../Redux/Review_reducer/action'
 
 
 
@@ -19,9 +21,17 @@ const SinglePageProduct = () => {
   const [singleData , updateSingleData] = useState([])
   const [value , setValue] = useState(false)
   // Code RATING 
-  const [reviewData , setReviewData] = useState([])
   // const [ratingData , setRatingData]=useState([])
+  const dispatch = useDispatch()
 
+  const {reviewData ,isLoading,productArrayLaptop} = useSelector((state) => {
+    return {
+      reviewData: state.ReviewReducer.reviewData ,
+      isLoading:state.ReviewReducer.isLoading ,
+      isError :state.ReviewReducer.isError ,
+    }
+})   
+// console.log(reviewData , "reviewData")
 
 
   
@@ -61,19 +71,14 @@ GetSinglePageData(num)
 
 
 // -------------------------------CODE FOR REVIEW--------------------------------
- //  Get req for all comments ----------------------
- const  getReviewData = ()=>{
-  axios.get(`https://graceful-lion-wig.cyclic.app/review/add${num}`)
-  .then((res)=>setReviewData(res.data))
-  .catch((err)=>alert(err))
-} 
+ //  Get req for all comments ---------------------- using reducer
 
 //  Post req for getting all the comments -------------------------------
 const handleSubmit = (payload)=>{
 
  // console.log(payload ,"payload")
  axios.post(`https://graceful-lion-wig.cyclic.app/review/add${num}`,payload)
- .then((res)=>  getReviewData())
+ .then((res)=>  dispatch(getReviewData(num)))
  .catch((err)=>console.log(`working on`))
 
 }
@@ -88,20 +93,20 @@ const handleStarRating = (data)=>{
     disLike: 0,
   }
   axios.post(`https://graceful-lion-wig.cyclic.app/review/add${num}`,payload)
-  .then((res)=>getReviewData())
+  .then((res)=>  dispatch(getReviewData(num)))
   .catch((err)=>console.log('err'))
 } 
-
+  
 useEffect(()=>{
-  getReviewData()
+   dispatch(getReviewData(num))
 },[num])
 
 // Review------------------------------
 var answer  = 0 
 const arrayReview = []
 const reviewTitleUser = []
-console.log('hello')
-if(reviewData.length > 0){
+
+if(reviewData != undefined  && reviewData.length > 0 ){
 let sum = reviewData.map((item)=>{
   return (
      item.review
