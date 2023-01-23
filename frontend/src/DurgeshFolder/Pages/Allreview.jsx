@@ -41,21 +41,33 @@ const Allreview = () => {
              </Box>
 
            {/* Rating Box----------------- */}
-           <Box border="2px solid black" width="60%" height="60vh">
+           <Box border="2px solid black" width="60%" height="60vh" >
              <Heading fontWeight={500} fontSize="22px" p="20px" textAlign="left" borderBottom="1px solid #f0f0f0">Lorem ipsum dolor sit amet consectetur.</Heading>
-             <Box p="20px"  >
-               {/*  Rating image */}
-               <Box border="1px solid #26a541">   
-             <Text color="#ffffff" display="flex" alignItems="center" justifyContent="center" fontSize="22px"  borderRadius="20px" width="70px"   background="#26a541">2.4 <StarIcon fontSize="15px" ml="4px" color="#ffffff" /></Text> 
-            
 
-            <Box color="#8f8a8f" ><Text lineHeight="20px" fontWeight="600" fontSize="17px" ml="6px">4 ratings and 4 reviews</Text></Box>
+             
+               <Box p="20px" border="2px solid red" display="flex">   
+               {/*  Rating image */}
+               <Box border="1px solid #26a541" display="flex" flexDirection="column" >
+             <Text color="#ffffff" display="flex" alignItems="center" justifyContent="center" fontSize="22px"  borderRadius="20px" width="70px"   background="#26a541">2.4 <StarIcon fontSize="15px" ml="4px" color="#ffffff" /></Text> 
+
+            <Box color="#8f8a8f" ml="-15px"  width="128px"  ><Text textAlign="center"  lineHeight="20px" fontWeight="500" fontSize="15px" ml="6px">4 ratings and 4 reviews</Text></Box>
+            </Box>
+            {/*  rating box length --------- */}
+            <Box ml="30px">
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
+
+             </Box>
+            
            </Box>
 
 
 
              </Box>
-           </Box>
+          
           
 
        </Box>
