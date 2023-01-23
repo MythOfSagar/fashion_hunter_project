@@ -1,4 +1,4 @@
-import { CheckCircleIcon } from '@chakra-ui/icons'
+import { CheckCircleIcon, StarIcon } from '@chakra-ui/icons'
 import { Box  , Heading, Image , Text} from '@chakra-ui/react'
 import React from 'react'
 import Navbar from '../../components/Navbar'
@@ -14,6 +14,7 @@ const Allreview = () => {
          
          {/*  Image box ------------------- */}
            <Box border="2px solid red" width="35%" height="80vh" p="20px">
+
             <Image src="https://rukminim1.flixcart.com/image/400/400/xif0q/shoe/u/g/g/9-2008-black-green-9-sfr-black-original-imagh9kvzs47gur2.jpeg?q=70" alt="productImage" boxSize="400px"   />
               
              {/*  about category ------- */}
@@ -40,7 +41,21 @@ const Allreview = () => {
              </Box>
 
            {/* Rating Box----------------- */}
-           <Box border="2px solid black" width="60%" height="60vh"></Box>
+           <Box border="2px solid black" width="60%" height="60vh">
+             <Heading fontWeight={500} fontSize="22px" p="20px" textAlign="left" borderBottom="1px solid #f0f0f0">Lorem ipsum dolor sit amet consectetur.</Heading>
+             <Box p="20px"  >
+               {/*  Rating image */}
+               <Box border="1px solid #26a541">   
+             <Text color="#ffffff" display="flex" alignItems="center" justifyContent="center" fontSize="22px"  borderRadius="20px" width="70px"   background="#26a541">2.4 <StarIcon fontSize="15px" ml="4px" color="#ffffff" /></Text> 
+            
+
+            <Box color="#8f8a8f" ><Text lineHeight="20px" fontWeight="600" fontSize="17px" ml="6px">4 ratings and 4 reviews</Text></Box>
+           </Box>
+
+
+
+             </Box>
+           </Box>
           
 
        </Box>
