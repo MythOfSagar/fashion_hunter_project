@@ -13,6 +13,7 @@ import { ProductPage } from "../../DurgeshFolder/Pages/ProductPage"
 import {SinglePageProduct} from "../../DurgeshFolder/Pages/SinglePageProduct"
 import { WishlistPage } from "../../DurgeshFolder/Pages/wishlistPage"
 import { CartPage } from "../../DurgeshFolder/Pages/CartPage"
+import { Allreview } from '../../DurgeshFolder/Pages/Allreview'
 
 const AllRoutes = () => {
   return (
@@ -25,11 +26,13 @@ const AllRoutes = () => {
         <Route  path='/payment' element={<PaymentPage/>}></Route>
         <Route  path='/paymentwaiting/:service/:img' element={<PaymentWaiting/>}></Route>
         <Route  path='/paymentsuccess' element={<PaymentSuccess/>}></Route>
-        {/* Durgesh Routes for product page ,singlepage , cartpage and wishlist */}
+        {/* Durgesh Routes for product page ,singlepage , cartpage and wishlist and review pages ----*/}
         <Route path="/mens" element={<ProductPage />}></Route>
         <Route path="/mens/:id" element={<SinglePageProduct />}></Route>
         <Route path="/wishlist" element={<WishlistPage />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
+        <Route path="/mens/:id/reviews" element={<Allreview />}></Route>
+        
         
     </Routes>
   )

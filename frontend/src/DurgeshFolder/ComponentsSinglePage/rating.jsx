@@ -7,6 +7,7 @@ import { Modelrating } from './modelRating';
 import { AiFillDislike, AiFillLike } from 'react-icons/ai';
 import axios from 'axios';
 import { Modelreview } from './modelReview';
+import { Link } from 'react-router-dom';
 
 const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , handleStarRating ,ratingLength}) => {
  
@@ -218,7 +219,7 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
             
         })}
        
-          
+     <Link to="reviews"> <Text color="#418ef3" cursor="pointer" textAlign="left" ml="22px" fontWeight="500" fontSize="18px" mb="10px" >See All 6 reviews </Text></Link>    
             
 
       
