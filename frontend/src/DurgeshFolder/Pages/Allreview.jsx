@@ -31,6 +31,7 @@ useEffect(()=>{
 var answer  = 0 
 const arrayReview = []
 const reviewTitleUser = []
+const totalCountArr = []
 // count of review --------------------------
 const total = 25
 var fiveLength = 0 
@@ -57,7 +58,13 @@ for(var i=0 ; i<sum.length ; i++){
    arrayReview.push(sum[i])
   }
  }
-
+ totalCountArr.push(fiveLength)
+ totalCountArr.push(fourLength)
+ totalCountArr.push(threeLength)
+ totalCountArr.push(twoLength)
+ totalCountArr.push(oneLength)
+  
+  
 
 
 let titleRating = reviewData.map((item)=>{
@@ -78,6 +85,13 @@ for(var i=0 ; i<titleRating.length ; i++){
     return (a+item)
   })
   }
+
+ 
+  if(totalCountArr?.length > 0 ){
+    totalCountArr.sort((a,b)=>b-a)
+
+  } 
+  console.log(totalCountArr , "hell")
   
   const calculate = ((answer)/(arrayReview.length)) || 0 
   const calculateRating = calculate.toFixed(1)
@@ -140,11 +154,11 @@ for(var i=0 ; i<titleRating.length ; i++){
             </Box>
             {/*  rating box length --------- */}
             <Box  ml={{base:"0px", sm: "30px", md: "30px", lg: "30px",xl: "30px",'2xl': "30px"}} >
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:'25vw',height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fiveLength}</Text>
-             <Text display="flex" alignItems="center">4 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:"25vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fourLength}</Text>
-             <Text display="flex" alignItems="center">3 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:"25vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{threeLength}</Text>
-             <Text display="flex" alignItems="center">2 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:"6vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{twoLength}</Text>
-             <Text display="flex" alignItems="center">1 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:"2vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{oneLength}</Text> 
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(totalCountArr[0] == fiveLength && 28) || (totalCountArr[1] == fiveLength && 24) || (totalCountArr[2] == fiveLength && 20) || (totalCountArr[3] == fiveLength && 15 || totalCountArr[4] == fiveLength) && 10  || 25}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fiveLength}</Text>
+             <Text display="flex" alignItems="center">4 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(totalCountArr[0] == fourLength && 28) || (totalCountArr[1] == fourLength && 24) || (totalCountArr[2]== fourLength && 20) || (totalCountArr[3] == fourLength && 15 || totalCountArr[4] == fourLength) && 10  || 25}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fourLength}</Text>
+             <Text display="flex" alignItems="center">3 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(totalCountArr[0] == threeLength && 28) || (totalCountArr[1] == threeLength && 24) || (totalCountArr[2]  == threeLength && 20) || (totalCountArr[3] == threeLength && 15 || totalCountArr[4] == threeLength) && 10  || 25}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{threeLength}</Text>
+             <Text display="flex" alignItems="center">2 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:`${(totalCountArr[0] == twoLength && 28) || (totalCountArr[1] == twoLength && 24) || (totalCountArr[2] == twoLength && 20) || (totalCountArr[3] == twoLength && 15 || totalCountArr[4] == twoLength) && 10  || 25}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{twoLength}</Text>
+             <Text display="flex" alignItems="center">1 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:`${(totalCountArr[0] == oneLength && 28) || (totalCountArr[1] == oneLength && 24) || (totalCountArr[2] == oneLength && 20) || (totalCountArr[3] == oneLength && 15 || totalCountArr[4] == oneLength) && 10  || 25}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{oneLength}</Text> 
           
 
              </Box>
