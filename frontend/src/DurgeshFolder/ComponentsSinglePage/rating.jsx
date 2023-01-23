@@ -167,11 +167,19 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
             <Box  ml="20px" mb="15px" key={i}>
 
             <Box display="flex" alignItems="center" mb="13px">
-           {item?.review >= 1 && <Box border="1px solid #26a541" mt="6px" background="#26a541" borderRadius="20px" width="45px"  
+           {item?.review >= 1 && item.review >=3 && <Box border="1px solid #26a541" mt="6px" background="#26a541" borderRadius="20px" width="45px"  
     style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>   
     <Text color="#ffffff" fontSize="16px">{item.review}</Text> 
+    
     <StarIcon fontSize="13px" color="#ffffff" />
     </Box> }
+    {item.review  < 3 && item?.review >= 1 && <Box border="1px solid #ff6161" mt="6px" background="#ff6161" borderRadius="20px" width="45px"  
+    style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>   
+    <Text color="#ffffff" fontSize="16px">{item.review}</Text> 
+    
+    <StarIcon fontSize="13px" color="#ffffff" />
+    </Box> }
+
            {item.title != "" && <Text textAlign="left" fontWeight={500} ml="10px" color="#2e3b4e">{item.title}</Text>}
             </Box>
     
