@@ -8,7 +8,7 @@ const PaymentFooter = () => {
         justifyContent={"space-between"}
         backgroundColor={"#a9aab1"}
         width={"100%"}
-        padding={7} 
+        padding={7}
 
         display={"flex"}>
             <Box>

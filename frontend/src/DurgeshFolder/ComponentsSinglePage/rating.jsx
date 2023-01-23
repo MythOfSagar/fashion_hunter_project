@@ -8,64 +8,15 @@ import { AiFillDislike, AiFillLike } from 'react-icons/ai';
 import axios from 'axios';
 import { Modelreview } from './modelReview';
 
-const Rating = ({num ,handleStarRating,ratingData,answerRating ,reviewData ,handleSubmit ,arrayReview}) => {
-  // const [likeColor , setLikeColor] = useState(false)
-  // const [dislikeColor , setDisLikeColor] = useState(false)
-  // const [likeCount , setLikeCount] = useState(10)
-  // const [dislikeCount , setDisLikeCount] = useState(2)
-  // const [reviewData , setReviewData] = useState([])
-  // const [userRating , setUserRating]= useState(0)
+const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , handleStarRating ,ratingLength}) => {
   
  
 
-    // //  Get req for all comments ----------------------
-    // const  getReviewData = ()=>{
-    //    axios.get(`https://graceful-lion-wig.cyclic.app/review/add1`)
-    //    .then((res)=>setReviewData(res.data))
-    //    .catch((err)=>alert(err))
-    // } 
-
-   
-
-    // //  Post req for getting all the comments -------------------------------
-    // const handleSubmit = (payload)=>{
-
-    //   // console.log(payload ,"payload")
-    //   axios.post(`https://graceful-lion-wig.cyclic.app/review/add1`,payload)
-    //   .then((res)=>  getReviewData())
-    //   .catch((err)=>console.log(`working on`))
-     
-    // }
-
-    //  get request for ratings -----------------------------------------
-
-    // const getRatingData = ()=>{
-    //   axios.get('http://localhost:8080/getReview')
-    //   .then((res)=> setRatingData(res.data))
-    //   .catch((err)=> console.log(err))
-    // }
-    // const handleStarRating = (data)=>{
-    //   const payload ={
-    //     review:data , 
-    //   }
-    //   axios.post('http://localhost:8080/getReview',payload)
-    //   .then((res)=>getRatingData())
-    //   .catch((err)=>console.log('err'))
-    // }
-  
-
-  
-    // useEffect(()=>{
-    //   // getRatingData()
-    //   getReviewData()
-    // },[num])
-     
-    // Code for calculating the average rating from reviews-----------------------
 
     var dataImages = []
     if(reviewData.length > 0){
     let sum = reviewData.map((item)=>{
-      if(item?.image != "" ){
+      if(item?.image != "" && item.image != 0 && item.image !=  1 && item.image != Number ){
       return (
          item?.image
       )
@@ -130,7 +81,7 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
 </Box>  
 
 {/*  rating and reviews text ------------------- */}
-<Box color="#8f8a8f" ><Text lineHeight="20px" fontWeight="600" fontSize="17px" ml="6px">{ratingData.length + arrayReview.length} ratings and {arrayReview.length} reviews</Text></Box>
+<Box color="#8f8a8f" ><Text lineHeight="20px" fontWeight="600" fontSize="17px" ml="6px">{ratingLength} ratings and {arrayReview.length} reviews</Text></Box>
 </Box>
 
 {/*  Rating is ended here -------------------------------------- */}
@@ -177,20 +128,14 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
     <Modaluser data={dataImages} />
       
       {dataImages?.length > 0 && dataImages?.map((item ,i)=>{
-      // var number = 0 
-      // var value = false 
-      // var ans = 0 
-      // if(item.image == ""){
-      //    value = value+1 
-      // }
-      // console.log(value , "number")
+     
       if(i < 4 ){
     
         return (
           <Box  key={i} textAlign="left" border="2px  red" ml="5px">
     
 
-          <Image src={item } alt={i} boxSize={{base:"50px", sm: "70px", md: "70px", lg: "70px",xl: "70px",'2xl': "70px"}}  shadow="2xl" cursor="pointer" />
+          <Image src={item } alt="Url break" boxSize={{base:"50px", sm: "70px", md: "70px", lg: "70px",xl: "70px",'2xl': "70px"}}  shadow="2xl" cursor="pointer" />
             
           </Box>
         )

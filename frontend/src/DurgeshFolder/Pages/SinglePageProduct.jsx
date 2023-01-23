@@ -20,7 +20,7 @@ const SinglePageProduct = () => {
   const [value , setValue] = useState(false)
   // Code RATING 
   const [reviewData , setReviewData] = useState([])
-  const [ratingData , setRatingData]=useState([])
+  // const [ratingData , setRatingData]=useState([])
 
 
 
@@ -67,6 +67,7 @@ GetSinglePageData(num)
   .then((res)=>setReviewData(res.data))
   .catch((err)=>alert(err))
 } 
+
 //  Post req for getting all the comments -------------------------------
 const handleSubmit = (payload)=>{
 
@@ -77,70 +78,70 @@ const handleSubmit = (payload)=>{
 
 }
 
-
-
-//  Code of rating-----------------------------------------------
-const getRatingData = ()=>{
-  axios.get('http://localhost:8080/getReview')
-  .then((res)=> setRatingData(res.data))
-  .catch((err)=> console.log(err))
-}
+//  Post req for ratings start -----------------------with same api 
 const handleStarRating = (data)=>{
   const payload ={
     review:data , 
+    title:0 ,
+    image:0 ,
+    like: 0 ,
+    disLike: 0,
   }
-  axios.post('http://localhost:8080/getReview',payload)
-  .then((res)=>getRatingData())
+  axios.post(`https://graceful-lion-wig.cyclic.app/review/add${num}`,payload)
+  .then((res)=>getReviewData())
   .catch((err)=>console.log('err'))
 } 
 
 useEffect(()=>{
-  getRatingData()
   getReviewData()
 },[num])
 
 // Review------------------------------
 var answer  = 0 
 const arrayReview = []
+const reviewTitleUser = []
+console.log('hello')
 if(reviewData.length > 0){
 let sum = reviewData.map((item)=>{
   return (
      item.review
   )
 })
+
+
+let titleRating = reviewData.map((item)=>{
+  return (
+     item.title
+  )
+})
+// console.log(titleRating , sum.length , "title") 
+
+for(var i=0 ; i<titleRating.length ; i++){
+  if(titleRating[i] != "" && titleRating[i] !== undefined && titleRating[i] != null && titleRating[i] != false && titleRating[i] != 0){
+    reviewTitleUser.push(titleRating[i])
+  }
+}
+
+
+
+// console.log(sum.length , sum , "sum")
 for(var i=0 ; i<sum.length ; i++){
-   if(sum[i] != "" && sum[i] !== undefined && sum[i] != null && sum[i] != false){
+   if(sum[i] != "" && sum[i] !== undefined && sum[i] != null && sum[i] != false && sum[i] != 0 ){
     arrayReview.push(sum[i])
    }
   }
-  // console.log(arrayReview ,"arr")
+  
   answer = arrayReview.reduce((a , item)=>{
     return (a+item)
   })
   }
+  
 
-
-// console.log(arrayReview.length)
-// RATING --------------------------------------------------
-var answerRating = 0 
-  if(ratingData.length > 0){
-    let sum = ratingData.map((item)=>{
-      return (
-         item.review
-      )
-    }).reduce((a , item)=>{
-      return (a+item)
-    })
-    // answerRating = sum 
-    // console.log(answerRating ,"answerRating")
-    // answerRating = Math.round(sum/ratingData.length)
-    
-  }
-     // // Code for calculating the average rating from RATING --------------------------END --
-     const calculate = ((answerRating+answer)/(ratingData.length + arrayReview.length)) || 0 
+ 
+     const calculate = ((answer)/(arrayReview.length)) || 0 
      const calculateRating = calculate.toFixed(1)
    
-    //  console.log((ratingData.length + arrayReview.length) , "calculateRating")
+    
   
   
 
@@ -148,11 +149,12 @@ var answerRating = 0
   
 
 
-        // console.log(singleData)
+      
      
 
   return (
     <Box className="SingleProductMainDiv"  background="#f1f3f6"  style={{border:"1px   green" , height:"auto" , }}>
+      
        <Navbar/>
       {/* Button -----left----------------------- */}
         <ChevronLeftIcon onClick={handleChangeRemove} position="absolute" left="-4px" cursor="pointer" top="250px" w={{base:'32px',sm: "45px", md: "50px", lg: "50px" ,xl: "66px",'2xl': "66px",}} h={{base:'32px',sm: "45px", md: "50px", lg: "50px" ,xl: "66px",'2xl': "66px",}}/> 
@@ -171,7 +173,7 @@ var answerRating = 0
 
         {/* Single Page Info Main Div ----------------------------------------------------- */}
         <Box className='SingleProductMainData' mt={5}  width={{base:"none", sm: "100%", md: "50vw", lg: "53vw",xl: "55vw",'2xl': "55vw"}} style={{border:"1px   grey" ,height:"auto"}}>
-         <ProductLaptop item={singleData} answerRating={calculateRating} totalRatingLength={arrayReview.length + ratingData.length} reviewLength={arrayReview.length}/>
+         <ProductLaptop item={singleData} answerRating={calculateRating} totalRatingLength={arrayReview.length } reviewLength={reviewTitleUser.length}/>
         </Box>
        
         </Box>
@@ -189,7 +191,7 @@ var answerRating = 0
         
    {/*  Rating and reviews are started from here -------------------------------------------- */}
         <Box background='#ffffff' ml="auto" mr="auto" mt="8px" pb="20px" style={{border:"1px   red" , height:"auto"  , width:"90%" }}>
-         <Rating num={num} handleStarRating={handleStarRating} ratingData={ratingData} answerRating={calculateRating} reviewData={reviewData} handleSubmit={handleSubmit} arrayReview={arrayReview}/>
+         <Rating num={num} handleStarRating={handleStarRating} answerRating={calculateRating} reviewData={reviewData} handleSubmit={handleSubmit} arrayReview={reviewTitleUser} ratingLength={arrayReview.length}/>
         </Box>
 {/* Rating ends here ----------------------------------------------------------- */}
 
