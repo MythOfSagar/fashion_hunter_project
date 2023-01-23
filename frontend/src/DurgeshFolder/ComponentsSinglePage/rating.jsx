@@ -141,8 +141,6 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
         )
       }
       // console.log(item?.length)
-     
-    
     })} 
 
    
@@ -156,9 +154,11 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
    
 
    </Box>
-
-
    {/*  CUSTOMER REVIEW STARTED FROM HERE --------------------------------------------------- */}
+     
+    
+
+
       
         {reviewData.map((item , i)=>{
           if(item?.review >=1 && item?.title.length > 1){
@@ -184,17 +184,7 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
                <Box display="flex" justifyContent="space-between" border="1px  red" width={{base:"100%", sm: "90%", md: "70%", lg: "60%",xl: "50%",'2xl': "50%"}}>
               <Text mb="15px" textAlign="left" fontSize="16px"><CheckCircleIcon color="#878787" mr="5px" fontSize="14px" />Certified Buyer</Text>
     
-              {/*  LIKE BUTTONS AND DISLIKE BUTTONS -------------------- */}
-               {/* <Box display="flex" border="2px  red" justifyContent="space-evenly">
-                <Text mr="10px" color="#c2c2c2" >{likeColor ? (  <AiFillLike onClick={handleLike}  style={{display:"inline-block" , fontSize:"20px" ,color:"#2874f0" ,cursor:"pointer"}} />):( <AiFillLike onClick={handleLike} style={{display:"inline-block" , fontSize:"20px" ,color:"#c2c2c2" ,cursor:"pointer"}} /> )}
-                {item.like}
-                 
-                  </Text>
-                <Text mr="10px" color="#c2c2c2">{dislikeColor ? (  <AiFillDislike onClick={handleDislike} style={{display:"inline-block" ,fontSize:"20px" ,color:"#2874f0" , cursor:"pointer"}} />) :( <AiFillDislike onClick={handleDislike}  style={{display:"inline-block" ,fontSize:"20px" ,color:"#c2c2c2" , cursor:"pointer"}} />)}
-                  
-                 {dislikeCount}</Text>
-    
-               </Box> */}
+             
               </Box>
              <hr />
           </Box>
