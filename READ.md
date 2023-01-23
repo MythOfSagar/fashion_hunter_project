@@ -55,10 +55,14 @@ Fashion Hunter is India’s leading fashion destination for the latest trends. P
   ---
 <img src="https://i.ibb.co/VSQLZXk/Home.png"></img>
 
+ **4) WishList Page**
+  ---
+<img src="https://i.ibb.co/k3n71WX/Home.png"></img>
+
   **5) Cart Page**
   ---
-<img src="https://miro.medium.com/max/1400/1*eK3d0XnlyRm1RIZFvCjN7w.png"></img>
+<img src="https://i.ibb.co/JnYQbv5/Home.png"></img>
 
   **6) Payment Page**
   ---
-<img src="https://miro.medium.com/max/1400/1*8lOoLP2q-pJVEUW7Z1vdwQ.png"></img>
+<img src="https://i.ibb.co/8sWSKBL/Home.png"></img>
