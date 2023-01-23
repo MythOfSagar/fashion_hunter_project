@@ -110,7 +110,7 @@ for(var i=0 ; i<titleRating.length ; i++){
         {/*  Whole code after navbar ------------------------------ */}
         <Box className="SingleProductMainspan"   background="#f1f3f6"  style={{border:"1px   green" , height:"auto" , }} width={{base:"", sm: "", md: "", lg: "",xl: "",'2xl': ""}}>
 
-        <Box className='SingleProductMain' height="auto" mb="20px" width="90%" ml="auto" mr="auto" mt="10px"  shadow="lg"  background='#ffffff' display="flex" flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} >
+        <Box className='SingleProductMain' height="auto" mb="20px" width={{base:"100%", sm: "90%", md: "90%", lg: "90%",xl: "90%",'2xl': "90%"}} ml="auto" mr="auto" mt="10px"  shadow="lg"  background='#ffffff' display="flex" flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} >
          
          {/*  Image box ------------------- */}
            <Box border="2px  red" width={{base:"", sm: "80%", md: "38%", lg: "45%",xl: "35%",'2xl': "35%"}} height="auto" p="20px">
