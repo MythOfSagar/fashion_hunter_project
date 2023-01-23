@@ -1,8 +1,11 @@
 import { CheckCircleIcon, StarIcon } from '@chakra-ui/icons'
 import { Box  , Heading, Image , Text} from '@chakra-ui/react'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
+import { getReviewData } from '../../Redux/Review_reducer/action'
 
 const Allreview = () => {
     
@@ -14,18 +17,22 @@ const Allreview = () => {
       isError :state.ReviewReducer.isError ,
     }
 })   
-// console.log(reviewData)
+ const dispatch = useDispatch()
+useEffect(()=>{
+    dispatch(getReviewData(1))
+},[])
+console.log(reviewData)
 
   return (
     <Box>
         <Navbar />
         {/*  Whole code after navbar ------------------------------ */}
-        <Box className="SingleProductMainspan"  background="#f1f3f6"  style={{border:"1px   green" , height:"auto" , }} width={{base:"", sm: "", md: "", lg: "",xl: "",'2xl': ""}}>
+        <Box className="SingleProductMainspan"   background="#f1f3f6"  style={{border:"1px   green" , height:"auto" , }} width={{base:"", sm: "", md: "", lg: "",xl: "",'2xl': ""}}>
 
-        <Box className='SingleProductMain' height="auto" width="90%" ml="auto" mr="auto" mt="10px"  shadow="lg"  background='#ffffff' display="flex" flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} >
+        <Box className='SingleProductMain' height="auto" mb="20px" width="90%" ml="auto" mr="auto" mt="10px"  shadow="lg"  background='#ffffff' display="flex" flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} >
          
          {/*  Image box ------------------- */}
-           <Box border="2px solid red" width={{base:"", sm: "80%", md: "38%", lg: "45%",xl: "35%",'2xl': "35%"}} height="auto" p="20px">
+           <Box border="2px  red" width={{base:"", sm: "80%", md: "38%", lg: "45%",xl: "35%",'2xl': "35%"}} height="auto" p="20px">
 
             <Image src="https://rukminim1.flixcart.com/image/400/400/xif0q/shoe/u/g/g/9-2008-black-green-9-sfr-black-original-imagh9kvzs47gur2.jpeg?q=70" alt="productImage" boxSize={{base:"250px", sm: "300px", md: "200px", lg: "400px",xl: "400px",'2xl': "400px"}}   />
               
@@ -53,7 +60,7 @@ const Allreview = () => {
              </Box>
 
            {/* Rating Box----------------- */}
-           <Box border="2px solid black" mt={{base:"-30px", sm: "-30px", md: "0", lg: "0",xl: "0",'2xl': "0"}} width={{base:"", sm: "", md: "68%", lg: "60%",xl: "60%",'2xl': "60%"}} height="auto" >
+           <Box border="2px solid #f0f0f0" mt={{base:"-30px", sm: "-30px", md: "0", lg: "0",xl: "0",'2xl': "0"}} width={{base:"", sm: "", md: "68%", lg: "60%",xl: "60%",'2xl': "60%"}} height="auto" mb="30px" >
              <Heading fontWeight={500} fontSize="22px" p="20px" textAlign="left" borderBottom="1px solid #f0f0f0">Lorem ipsum dolor sit amet consectetur.</Heading>
 
              
@@ -130,6 +137,8 @@ const Allreview = () => {
 
        </Box>
          </Box>
+
+         <Footer />
     </Box>
   )
 }
