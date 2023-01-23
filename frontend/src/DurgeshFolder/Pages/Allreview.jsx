@@ -73,11 +73,11 @@ console.log(reviewData)
             </Box>
             {/*  rating box length --------- */}
             <Box  ml={{base:"0px", sm: "30px", md: "30px", lg: "30px",xl: "30px",'2xl': "30px"}} >
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:'30vw',height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
+             <Text display="flex" alignItems="center">4 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:"30vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
+             <Text display="flex" alignItems="center">3 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:"25vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
+             <Text display="flex" alignItems="center">2 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:"6vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
+             <Text display="flex" alignItems="center">1 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:"2vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
 
              </Box>
             
