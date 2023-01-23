@@ -17,6 +17,10 @@ const Allreview = () => {
       isError :state.ReviewReducer.isError ,
     }
 })   
+  if(reviewData?.length > 0 ){
+    reviewData.reverse()
+  }
+
  const dispatch = useDispatch()
 useEffect(()=>{
     dispatch(getReviewData(1))
@@ -27,13 +31,33 @@ useEffect(()=>{
 var answer  = 0 
 const arrayReview = []
 const reviewTitleUser = []
+// count of review --------------------------
+const total = 25
+var fiveLength = 0 
+var fourLength = 0 
+var threeLength = 0 
+var twoLength = 0 
+var oneLength = 0
 
 if(reviewData != undefined  && reviewData.length > 0 ){
 let sum = reviewData.map((item)=>{
   return (
      item.review
   )
-})
+}) 
+// console.log(sum , "sum") 
+
+for(var i=0 ; i<sum.length ; i++){
+  if(sum[i] != "" && sum[i] !== undefined && sum[i] != null && sum[i] != false && sum[i] != 0 ){
+   if(sum[i] == 5){fiveLength++}
+   else if(sum[i] == 4){fourLength++}
+   else if(sum[i] == 3){threeLength++}
+   else if(sum[i] == 2){twoLength++}
+   else if(sum[i] == 1){oneLength++}
+   arrayReview.push(sum[i])
+  }
+ }
+
 
 
 let titleRating = reviewData.map((item)=>{
@@ -49,14 +73,6 @@ for(var i=0 ; i<titleRating.length ; i++){
   }
 }
 
-
-
-// console.log(sum.length , sum , "sum")
-for(var i=0 ; i<sum.length ; i++){
-   if(sum[i] != "" && sum[i] !== undefined && sum[i] != null && sum[i] != false && sum[i] != 0 ){
-    arrayReview.push(sum[i])
-   }
-  }
   
   answer = arrayReview.reduce((a , item)=>{
     return (a+item)
@@ -124,18 +140,19 @@ for(var i=0 ; i<sum.length ; i++){
             </Box>
             {/*  rating box length --------- */}
             <Box  ml={{base:"0px", sm: "30px", md: "30px", lg: "30px",xl: "30px",'2xl': "30px"}} >
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:'30vw',height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
-             <Text display="flex" alignItems="center">4 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:"30vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
-             <Text display="flex" alignItems="center">3 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:"25vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
-             <Text display="flex" alignItems="center">2 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:"6vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
-             <Text display="flex" alignItems="center">1 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:"2vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:'25vw',height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fiveLength}</Text>
+             <Text display="flex" alignItems="center">4 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:"25vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fourLength}</Text>
+             <Text display="flex" alignItems="center">3 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:"25vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{threeLength}</Text>
+             <Text display="flex" alignItems="center">2 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:"6vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{twoLength}</Text>
+             <Text display="flex" alignItems="center">1 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:"2vw",height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{oneLength}</Text> 
+          
 
              </Box>
             
            </Box>
             {/* By our customer */}
 
-            {reviewData?.length > 0 && reviewData?.reverse().map((item , i)=>{
+            {reviewData?.length > 0 && reviewData?.map((item , i)=>{
           
           if(item?.review >=1 && item?.title.length > 1 ){
           return (
