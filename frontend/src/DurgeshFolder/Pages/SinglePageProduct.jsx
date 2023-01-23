@@ -31,7 +31,7 @@ const SinglePageProduct = () => {
       isError :state.ReviewReducer.isError ,
     }
 })   
-console.log(reviewData , "reviewData")
+// console.log(reviewData , "reviewData")
 
 
   

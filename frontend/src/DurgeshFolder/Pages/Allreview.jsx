@@ -1,16 +1,28 @@
 import { CheckCircleIcon, StarIcon } from '@chakra-ui/icons'
 import { Box  , Heading, Image , Text} from '@chakra-ui/react'
 import React from 'react'
+import { useSelector } from 'react-redux'
 import Navbar from '../../components/Navbar'
 
-const Allreview = ({arrDataReview}) => {
+const Allreview = () => {
+    
+  
+  const {reviewData ,isLoading,productArrayLaptop} = useSelector((state) => {
+    return {
+      reviewData: state.ReviewReducer.reviewData ,
+      isLoading:state.ReviewReducer.isLoading ,
+      isError :state.ReviewReducer.isError ,
+    }
+})   
+// console.log(reviewData)
+
   return (
     <Box>
         <Navbar />
         {/*  Whole code after navbar ------------------------------ */}
-        <Box className="SingleProductMainDiv"  background="#f1f3f6"  style={{border:"1px   green" , height:"150vh" , }} width={{base:"", sm: "", md: "", lg: "",xl: "",'2xl': ""}}>
+        <Box className="SingleProductMainspan"  background="#f1f3f6"  style={{border:"1px   green" , height:"auto" , }} width={{base:"", sm: "", md: "", lg: "",xl: "",'2xl': ""}}>
 
-        <Box className='SingleProductMain' height="150vh" width="90%" ml="auto" mr="auto" mt="10px"  shadow="lg"  background='#ffffff' display="flex" flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} >
+        <Box className='SingleProductMain' height="auto" width="90%" ml="auto" mr="auto" mt="10px"  shadow="lg"  background='#ffffff' display="flex" flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} >
          
          {/*  Image box ------------------- */}
            <Box border="2px solid red" width={{base:"", sm: "80%", md: "38%", lg: "45%",xl: "35%",'2xl': "35%"}} height="auto" p="20px">
@@ -41,7 +53,7 @@ const Allreview = ({arrDataReview}) => {
              </Box>
 
            {/* Rating Box----------------- */}
-           <Box border="2px solid black" mt={{base:"-30px", sm: "-30px", md: "0", lg: "0",xl: "0",'2xl': "0"}} width={{base:"", sm: "", md: "68%", lg: "60%",xl: "60%",'2xl': "60%"}} height="60vh" >
+           <Box border="2px solid black" mt={{base:"-30px", sm: "-30px", md: "0", lg: "0",xl: "0",'2xl': "0"}} width={{base:"", sm: "", md: "68%", lg: "60%",xl: "60%",'2xl': "60%"}} height="auto" >
              <Heading fontWeight={500} fontSize="22px" p="20px" textAlign="left" borderBottom="1px solid #f0f0f0">Lorem ipsum dolor sit amet consectetur.</Heading>
 
              
@@ -54,21 +66,20 @@ const Allreview = ({arrDataReview}) => {
             </Box>
             {/*  rating box length --------- */}
             <Box  ml={{base:"0px", sm: "30px", md: "30px", lg: "30px",xl: "30px",'2xl': "30px"}} >
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <div style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></div>34</Text>
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#f0f0f0" ,width:"170px",height:"5px",borderRadius:"20px" , marginRight:"15px"}}></span>34</Text>
 
              </Box>
             
            </Box>
             {/* By our customer */}
 
-            {arrDataReview?.length > 0 && arrDataReview?.map((item , i)=>{
+            {reviewData?.length > 0 && reviewData?.reverse().map((item , i)=>{
           
-          if(item?.review >=1 && item?.title.length > 1 && i < 3){
-            
+          if(item?.review >=1 && item?.title.length > 1 ){
           return (
             <Box  ml="20px" mb="15px" key={i}>
 
@@ -105,6 +116,8 @@ const Allreview = ({arrDataReview}) => {
 
           )
               }
+
+            
             
         })}
        
