@@ -10,11 +10,20 @@ import Navbar from '../../components/Navbar'
 import { getDataProduct } from '../../Redux/Laptop_reducer/action'
 import { getReviewData } from '../../Redux/Review_reducer/action'
 
+
+
+
+
 const Allreview = () => {
   const [singleData , updateSingleData] = useState([])
+  const [filterReview , setFilterReview]= useState("recent")
 
   const location = useLocation()
   const dispatch = useDispatch()
+
+  // console.log(filterReview , "filterReview")
+
+
 
   //  use location for accessing the value from url ----------------------------------
  let  count = 0 
@@ -144,6 +153,20 @@ for(var i=0 ; i<titleRating.length ; i++){
   const amount =  Math.floor((spend/total)*100)
   const ans = 100 - amount 
   //  End here -------**************------------------------- 
+     
+  //  Filtering starts***********---------------------
+  if(reviewData?.length > 0){
+  const sum = reviewData.map((item,i)=>{
+       return (
+       [ item.review ,item.tilte , item.image]
+       )
+  })
+  
+
+
+
+  console.log(sum ,"data" , sum.length)
+  }
 
 
   return (
@@ -191,10 +214,10 @@ for(var i=0 ; i<titleRating.length ; i++){
              <Box >
             
   
-                <select cursor="pointer"  style={{fontWeight:"500" ,border:"2px solid #f0f0f0" ,padding:"5px" , outline:"none" , cursor:"pointer"}}  onChange={(e)=> console.log(e.target.value)}>
-                  <option value="1" style={{fontWeight:"500"}} >Most Recent</option>
-                  <option value="2" >Positive First</option>
-                  <option value="3">Negative First</option>
+                <select cursor="pointer"  style={{fontWeight:"500" ,border:"2px solid #f0f0f0" ,padding:"5px" , outline:"none" , cursor:"pointer"}}  onChange={(e)=> setFilterReview(e.target.value)}>
+                  <option value="recent"  style={{fontWeight:"500"}} >Most Recent</option>
+                  <option value="positive" >Positive First</option>
+                  <option value="negative">Negative First</option>
                 </select>
 
 
@@ -222,7 +245,7 @@ for(var i=0 ; i<titleRating.length ; i++){
            </Box>
             {/* By our customer */}
 
-            {reviewData?.length > 0 && reviewData?.map((item , i)=>{
+            {reviewData?.length > 0 && (filterReview == "recent" &&  reviewData)?.map((item , i)=>{
           
           if(item?.review >=1 && item?.title.length > 1 ){
           return (
