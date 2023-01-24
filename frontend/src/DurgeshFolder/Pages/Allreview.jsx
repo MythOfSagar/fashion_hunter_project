@@ -182,7 +182,8 @@ for(var i=0 ; i<titleRating.length ; i++){
             
              </Box>
 
-           {/* Rating Box----------------- */}
+           {/* Rating Box----------***********************------- */}
+           
            <Box border="2px solid #f0f0f0" mt={{base:"-30px", sm: "-30px", md: "0", lg: "0",xl: "0",'2xl': "0"}} width={{base:"", sm: "", md: "68%", lg: "60%",xl: "60%",'2xl': "60%"}} height="auto" mb="30px" >
              <Heading fontWeight={500} fontSize="20px" p="20px" textAlign="left" borderBottom="1px solid #f0f0f0">{singleData?.title}</Heading>
 
