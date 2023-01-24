@@ -156,16 +156,24 @@ for(var i=0 ; i<titleRating.length ; i++){
      
   //  Filtering starts***********---------------------
   if(reviewData?.length > 0){
-  const sum = reviewData.map((item,i)=>{
+  const reviewFilterRecent = reviewData.map((item,i)=>{
        return (
-       [ item.review ,item.tilte , item.image]
+       [ item.review ,item.title , item.image]
        )
   })
-  
+  console.log(reviewFilterRecent , "fil")
+let answerArr = []
+  for(var i=0 ; i<reviewFilterRecent.length ; i++){
+    console.log("dnd")
+    if(reviewFilterRecent[i][0] != "" && reviewFilterRecent[i][0] != undefined && reviewFilterRecent[i][0] != null && reviewFilterRecent[i][0] != false && reviewFilterRecent[i][0] != 0 && reviewFilterRecent[i][1] != "" && reviewFilterRecent[i][1] != undefined && reviewFilterRecent[i][1] != null && reviewFilterRecent[i][1] != false && reviewFilterRecent[i][1] != 0){
+      answerArr.push(reviewFilterRecent[i])
+    }
+  }
+  console.log(answerArr ,"dhvbhdbd")
 
 
 
-  console.log(sum ,"data" , sum.length)
+
   }
 
 
