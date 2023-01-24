@@ -1,30 +1,69 @@
 import { CheckCircleIcon, StarIcon } from '@chakra-ui/icons'
 import { Box  , Heading, Image , Text} from '@chakra-ui/react'
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
+import { getDataProduct } from '../../Redux/Laptop_reducer/action'
 import { getReviewData } from '../../Redux/Review_reducer/action'
 
 const Allreview = () => {
-    
+  const [singleData , updateSingleData] = useState([])
+
+  const location = useLocation()
+  const dispatch = useDispatch()
+
+  //  use location for accessing the value from url ----------------------------------
+ let  count = 0 
+  for(var i=0 ; i<location.pathname.length ;i++){
+     if(location.pathname[i] == "/"){
+       count++
+     }
+     if(count == 2){
+      break 
+     }
+    }
+    const path = (location.pathname[i+1])
   
-  const {reviewData ,isLoading,productArrayLaptop} = useSelector((state) => {
+  const {reviewData ,isLoading,isError ,isNum} = useSelector((state) => {
     return {
       reviewData: state.ReviewReducer.reviewData ,
       isLoading:state.ReviewReducer.isLoading ,
       isError :state.ReviewReducer.isError ,
+      isNum :state.ReviewReducer.isNum ,
     }
-})   
+},shallowEqual)   
+
+ 
+//  For accessing products details ---------------------------------------------------
+    
+  const GetSinglePageData = (num) =>{
+    axios.get(`https://long-pear-giraffe-gown.cyclic.app/api/mens/${num}`)
+    .then((res)=> updateSingleData(res.data))
+    
+}
+// console.log(singleData ,"singleData")
+
+useEffect(()=>{
+  GetSinglePageData(path)
+},[])
+
+
+
   if(reviewData?.length > 0 ){
     reviewData.reverse()
   }
 
- const dispatch = useDispatch()
-useEffect(()=>{
-    dispatch(getReviewData(1))
-},[])
+ 
+ 
+ useEffect(()=>{
+   if(reviewData.length == 0){
+     dispatch(getReviewData(path))
+   }
+ },[])
 
 
 //  Calculating everything 
@@ -33,7 +72,6 @@ const arrayReview = []
 const reviewTitleUser = []
 const totalCountArr = []
 // count of review --------------------------
-const total = 25
 var fiveLength = 0 
 var fourLength = 0 
 var threeLength = 0 
@@ -91,7 +129,7 @@ for(var i=0 ; i<titleRating.length ; i++){
     totalCountArr.sort((a,b)=>b-a)
 
   } 
-  console.log(totalCountArr , "hell")
+  
   
   const calculate = ((answer)/(arrayReview.length)) || 0 
   const calculateRating = calculate.toFixed(1)
@@ -100,8 +138,12 @@ for(var i=0 ; i<titleRating.length ; i++){
  
 
 
-
-
+  // for  price calculation logic is here ----------------------------
+  const total = Math.floor(+(singleData?.realPrice) * 100 )
+  const spend = Math.floor(+(singleData?.price) * 100 )
+  const amount =  Math.floor((spend/total)*100)
+  const ans = 100 - amount 
+  //  End here -------**************------------------------- 
 
 
   return (
@@ -115,18 +157,18 @@ for(var i=0 ; i<titleRating.length ; i++){
          {/*  Image box ------------------- */}
            <Box border="2px  red" width={{base:"", sm: "80%", md: "38%", lg: "45%",xl: "35%",'2xl': "35%"}} height="auto" p="20px">
 
-            <Image src="https://rukminim1.flixcart.com/image/400/400/xif0q/shoe/u/g/g/9-2008-black-green-9-sfr-black-original-imagh9kvzs47gur2.jpeg?q=70" alt="productImage" boxSize={{base:"250px", sm: "300px", md: "200px", lg: "400px",xl: "400px",'2xl': "400px"}}   />
+            <Image src={singleData?.mainImage} alt="productImage" boxSize={{base:"250px", sm: "300px", md: "200px", lg: "400px",xl: "400px",'2xl': "400px"}}   />
               
              {/*  about category ------- */}
-             <Heading fontSize="17px" fontWeight="600" mt="5px" color="#303030" textAlign="left">Carbonn Cloth</Heading> 
-      <Text fontSize='14px' className='control' fontWeight="500" color="#727272" textAlign="left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus debitis, laborum quaerat facilis illum praesentium aut obcaecati. Ad, recusandae autem.</Text> 
+             <Heading fontSize="17px" fontWeight="600" mt="5px" color="#303030" textAlign="left">{singleData?.brand}</Heading> 
+      <Text fontSize='14px' className='control' fontWeight="500" color="#727272" textAlign="left">{singleData?.title}</Text> 
             {/* category end------------------- */}
 
            {/*  Price is here ----------- */}
             <Box style={{display:'flex' , alignItems:"center"}}>
-          <Heading fontSize='18px' fontWeight="600" color="#303030" mt={1.5}  textAlign="left">$200</Heading>
-          <Text as='del' fontSize='18px' className='control' mt={1.5} ml={3} fontWeight="600" color="#727272" textAlign="left">$300</Text>
-          <Text  fontSize='14px' className='control' mt={1.5} ml={2} fontWeight="600" color="#e1a26f" textAlign="left">({100}% off)</Text>
+          <Heading fontSize='18px' fontWeight="600" color="#303030" mt={1.5}  textAlign="left">${singleData?.price}</Heading>
+          <Text as='del' fontSize='18px' className='control' mt={1.5} ml={3} fontWeight="600" color="#727272" textAlign="left">${singleData?.realPrice}</Text>
+          <Text  fontSize='14px' className='control' mt={1.5} ml={2} fontWeight="600" color="#e1a26f" textAlign="left">({ans}% off)</Text>
           </Box>
           {/* Price end ----------------- */}
             
@@ -142,7 +184,7 @@ for(var i=0 ; i<titleRating.length ; i++){
 
            {/* Rating Box----------------- */}
            <Box border="2px solid #f0f0f0" mt={{base:"-30px", sm: "-30px", md: "0", lg: "0",xl: "0",'2xl': "0"}} width={{base:"", sm: "", md: "68%", lg: "60%",xl: "60%",'2xl': "60%"}} height="auto" mb="30px" >
-             <Heading fontWeight={500} fontSize="22px" p="20px" textAlign="left" borderBottom="1px solid #f0f0f0">Lorem ipsum dolor sit amet consectetur.</Heading>
+             <Heading fontWeight={500} fontSize="20px" p="20px" textAlign="left" borderBottom="1px solid #f0f0f0">{singleData?.title}</Heading>
 
              
                <Box p="20px" border="2px  red" display="flex" flexDirection={{base:"column", sm: "row", md: "row", lg: "row",xl: "row",'2xl': "row"}} >   
@@ -154,11 +196,11 @@ for(var i=0 ; i<titleRating.length ; i++){
             </Box>
             {/*  rating box length --------- */}
             <Box  ml={{base:"0px", sm: "30px", md: "30px", lg: "30px",xl: "30px",'2xl': "30px"}} >
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(totalCountArr[0] == fiveLength && 28) || (totalCountArr[1] == fiveLength && 24) || (totalCountArr[2] == fiveLength && 20) || (totalCountArr[3] == fiveLength && 15 || totalCountArr[4] == fiveLength) && 10  || 25}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fiveLength}</Text>
-             <Text display="flex" alignItems="center">4 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(totalCountArr[0] == fourLength && 28) || (totalCountArr[1] == fourLength && 24) || (totalCountArr[2]== fourLength && 20) || (totalCountArr[3] == fourLength && 15 || totalCountArr[4] == fourLength) && 10  || 25}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fourLength}</Text>
-             <Text display="flex" alignItems="center">3 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(totalCountArr[0] == threeLength && 28) || (totalCountArr[1] == threeLength && 24) || (totalCountArr[2]  == threeLength && 20) || (totalCountArr[3] == threeLength && 15 || totalCountArr[4] == threeLength) && 10  || 25}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{threeLength}</Text>
-             <Text display="flex" alignItems="center">2 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:`${(totalCountArr[0] == twoLength && 28) || (totalCountArr[1] == twoLength && 24) || (totalCountArr[2] == twoLength && 20) || (totalCountArr[3] == twoLength && 15 || totalCountArr[4] == twoLength) && 10  || 25}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{twoLength}</Text>
-             <Text display="flex" alignItems="center">1 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:`${(totalCountArr[0] == oneLength && 28) || (totalCountArr[1] == oneLength && 24) || (totalCountArr[2] == oneLength && 20) || (totalCountArr[3] == oneLength && 15 || totalCountArr[4] == oneLength) && 10  || 25}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{oneLength}</Text> 
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(totalCountArr[0] == fiveLength && 28) || (totalCountArr[1] == fiveLength && 24) || (totalCountArr[2] == fiveLength && 18) || (totalCountArr[3] == fiveLength && 12) ||( totalCountArr[4] == fiveLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fiveLength}</Text>
+             <Text display="flex" alignItems="center">4 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(totalCountArr[0] == fourLength && 28) || (totalCountArr[1] == fourLength && 24) || (totalCountArr[2]== fourLength && 18) || (totalCountArr[3] == fourLength && 12 ) || ( totalCountArr[4] == fourLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fourLength}</Text>
+             <Text display="flex" alignItems="center">3 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(totalCountArr[0] == threeLength && 28) || (totalCountArr[1] == threeLength && 24) || (totalCountArr[2]  == threeLength && 18) || (totalCountArr[3] == threeLength && 12) || (totalCountArr[4] == threeLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{threeLength}</Text>
+             <Text display="flex" alignItems="center">2 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:`${(totalCountArr[0] == twoLength && 28) || (totalCountArr[1] == twoLength && 24) || (totalCountArr[2] == twoLength && 18) || (totalCountArr[3] == twoLength && 12) || (totalCountArr[4] == twoLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{twoLength}</Text>
+             <Text display="flex" alignItems="center">1 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:`${(totalCountArr[0] == oneLength && 28) || (totalCountArr[1] == oneLength && 24) || (totalCountArr[2] == oneLength && 18) || (totalCountArr[3] == oneLength && 12) || (totalCountArr[4] == oneLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{oneLength}</Text> 
           
 
              </Box>

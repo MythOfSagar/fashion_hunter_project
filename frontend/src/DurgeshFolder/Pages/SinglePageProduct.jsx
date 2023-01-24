@@ -31,7 +31,6 @@ const SinglePageProduct = () => {
       isError :state.ReviewReducer.isError ,
     }
 })   
-// console.log(reviewData , "reviewData")
 
 
   
@@ -98,7 +97,9 @@ const handleStarRating = (data)=>{
 } 
   
 useEffect(()=>{
-   dispatch(getReviewData(num))
+  
+    dispatch(getReviewData(num))
+  
 },[num])
 
 // Review------------------------------
