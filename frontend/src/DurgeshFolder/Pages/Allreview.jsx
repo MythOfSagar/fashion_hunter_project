@@ -142,7 +142,8 @@ for(var i=0 ; i<titleRating.length ; i++){
   const total = Math.floor(+(singleData?.realPrice) * 100 )
   const spend = Math.floor(+(singleData?.price) * 100 )
   const amount =  Math.floor((spend/total)*100)
-  const ans = 100 - amount  
+  const ans = 100 - amount 
+  //  End here -------**************------------------------- 
 
 
   return (
