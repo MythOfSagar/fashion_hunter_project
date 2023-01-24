@@ -31,7 +31,7 @@ const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice 
     timer.current = setTimeout(()=>{
       dispatch(changeCartData(id,payload))
             .then(()=>dispatch(getCartData))
-    },1000)
+    },700)
   }
    
 }
