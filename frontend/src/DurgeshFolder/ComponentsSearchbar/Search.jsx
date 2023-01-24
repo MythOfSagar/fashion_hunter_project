@@ -5,7 +5,6 @@ import { Box, Input, SimpleGrid } from '@chakra-ui/react';
 import { DisplayProductMainData } from '../../DurgeshFolder/Components/DisplayProductMainData';
 import { SearchIcon } from '@chakra-ui/icons';
 import { LoadingIndicator } from './LoadingIndicator';
-import { Provider } from 'react-redux';
 
 
 const Search = () => {
@@ -30,7 +29,7 @@ const Search = () => {
 			<Box className="input">
 				<SearchIcon fontSize="20px" position="relative" left="30px" />
 				<Input
-					shadow="md"
+					shadow="sm"
 					pl={9}
 					fontSize="20px"
 					type="search"
