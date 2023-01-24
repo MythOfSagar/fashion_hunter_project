@@ -14,6 +14,7 @@ const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice 
   const amount =  Math.floor((spend/total)*100)
   const ans = 100 - amount 
   
+  // FOR INCREASE --------------------------------
   const dispatch = useDispatch()
   const cartQuantityIncrease = (id)=>{
   
@@ -22,9 +23,11 @@ const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice 
       }
      dispatch(changeCartData(id , payload))
      .then(() => dispatch(getCartData))
-     console.log(item , "item")
+    //  console.log(item , "item")
       
     }
+
+    //  FOR SUBTRACT -----------------------------
   const cartQuantityDecrease = (id)=>{
     if(quantityOfCart > 1){
       
@@ -34,7 +37,7 @@ const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice 
       dispatch(changeCartData(id , payload))
       .then(() => dispatch(getCartData))
      
-      console.log(item , "item")
+      // console.log(item , "item")
    
       }
       
