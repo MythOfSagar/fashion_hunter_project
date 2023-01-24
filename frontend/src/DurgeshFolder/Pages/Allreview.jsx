@@ -1,5 +1,5 @@
 import { CheckCircleIcon, StarIcon } from '@chakra-ui/icons'
-import { Box  , Heading, Image , Text} from '@chakra-ui/react'
+import { Box  , Heading, Image , Select, Stack, Text} from '@chakra-ui/react'
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
@@ -182,10 +182,24 @@ for(var i=0 ; i<titleRating.length ; i++){
             
              </Box>
 
-           {/* Rating Box----------------- */}
-           <Box border="2px solid #f0f0f0" mt={{base:"-30px", sm: "-30px", md: "0", lg: "0",xl: "0",'2xl': "0"}} width={{base:"", sm: "", md: "68%", lg: "60%",xl: "60%",'2xl': "60%"}} height="auto" mb="30px" >
-             <Heading fontWeight={500} fontSize="20px" p="20px" textAlign="left" borderBottom="1px solid #f0f0f0">{singleData?.title}</Heading>
+           {/* Rating Box----------***********************------- */}
 
+           <Box border="2px solid #f0f0f0" mt={{base:"-20px", sm: "-20px", md: "0", lg: "0",xl: "0",'2xl': "0"}} width={{base:"", sm: "", md: "68%", lg: "60%",xl: "60%",'2xl': "60%"}} height="auto" mb="30px" >
+            <Box p="20px" borderBottom="1px solid #f0f0f0" display="flex" justifyContent="space-between">
+             <Heading fontWeight={500} fontSize="20px" textAlign="left">{singleData?.title}</Heading>
+            {/* Selects tags -------------------------- */}
+             <Box >
+            
+  
+                {/* <select cursor="pointer" placeholder='Most helpful' value="4" fontWeight={500} border="2px solid #f0f0f0" focusBorderColor="#f0f0f0" size='sm' onChange={(e)=> console.log(e.target.value)}>
+                  <option value="1" style={{fontWeight:"500"}}>Most Recent</option>
+                  <option value="2">Positive First</option>
+                  <option value="3">Negative First</option>
+                </select> */}
+
+
+             </Box>
+             </Box>
              
                <Box p="20px" border="2px  red" display="flex" flexDirection={{base:"column", sm: "row", md: "row", lg: "row",xl: "row",'2xl': "row"}} >   
                {/*  Rating image */}
