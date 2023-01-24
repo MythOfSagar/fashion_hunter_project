@@ -112,21 +112,6 @@ for(var i=0 ; i<sum.length ; i++){
  totalCountArr.push(oneLength)
   
   
-
-
-let titleRating = reviewData.map((item)=>{
-  return (
-     item.title
-  )
-})
-// console.log(titleRating , sum.length , "title") 
-
-for(var i=0 ; i<titleRating.length ; i++){
-  if(titleRating[i] != "" && titleRating[i] !== undefined && titleRating[i] != null && titleRating[i] != false && titleRating[i] != 0){
-    reviewTitleUser.push(titleRating[i])
-  }
-}
-
   
   answer = arrayReview.reduce((a , item)=>{
     return (a+item)
@@ -161,15 +146,15 @@ for(var i=0 ; i<titleRating.length ; i++){
        [ item.review ,item.title , item.image]
        )
   })
-  console.log(reviewFilterRecent , "fil")
-let answerArr = []
+
+
   for(var i=0 ; i<reviewFilterRecent.length ; i++){
     console.log("dnd")
     if(reviewFilterRecent[i][0] != "" && reviewFilterRecent[i][0] != undefined && reviewFilterRecent[i][0] != null && reviewFilterRecent[i][0] != false && reviewFilterRecent[i][0] != 0 && reviewFilterRecent[i][1] != "" && reviewFilterRecent[i][1] != undefined && reviewFilterRecent[i][1] != null && reviewFilterRecent[i][1] != false && reviewFilterRecent[i][1] != 0){
-      answerArr.push(reviewFilterRecent[i])
+      reviewTitleUser.push(reviewFilterRecent[i])
     }
   }
-  console.log(answerArr ,"dhvbhdbd")
+  // console.log(answerArr ,"dhvbhdbd")
 
 
 
