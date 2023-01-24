@@ -19,30 +19,7 @@ const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice 
   
   // FOR INCREASE --------------------------------
   const dispatch = useDispatch()
-  // const cartQuantityIncrease = (id)=>{
-  //     const payload ={
-  //       quantity:quantity+1
-  //     }
-  //    dispatch(changeCartData(id , payload))
-  //    .then(() => dispatch(getCartData))
-      
-  //   }
 
-    //  FOR SUBTRACT -----------------------------
-  // const cartQuantityDecrease = (id)=>{
-  //   if(quantity > 1){
-  //     const payload ={
-  //       quantity:quantity-1
-  //     }
-  //     dispatch(changeCartData(id , payload))
-  //     .then(() => dispatch(getCartData))
-   
-  //     }
-      
-  //   }
-
-
- 
   //  Optimised approch for cart ----------------------USING DEBOUNCING ********** -------
    
 
@@ -59,8 +36,6 @@ const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice 
    
 }
 
-   
-  
 
   const cartQuantityIncrease = (id)=>{
      setQuantityOfCart((prev)=>prev+1) 
@@ -80,8 +55,7 @@ const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice 
      }
      getDebouncing(id , payload)()
     
-    //  dispatch(changeCartData(id , payload))
-    //     .then(() => dispatch(getCartData))
+   
   }
 }
 
