@@ -149,7 +149,6 @@ for(var i=0 ; i<sum.length ; i++){
 
 
   for(var i=0 ; i<reviewFilterRecent.length ; i++){
-    console.log("dnd")
     if(reviewFilterRecent[i][0] != "" && reviewFilterRecent[i][0] != undefined && reviewFilterRecent[i][0] != null && reviewFilterRecent[i][0] != false && reviewFilterRecent[i][0] != 0 && reviewFilterRecent[i][1] != "" && reviewFilterRecent[i][1] != undefined && reviewFilterRecent[i][1] != null && reviewFilterRecent[i][1] != false && reviewFilterRecent[i][1] != 0){
       reviewTitleUser.push(reviewFilterRecent[i])
     }
