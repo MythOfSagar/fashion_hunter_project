@@ -16,40 +16,47 @@ const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice 
   
   // FOR INCREASE --------------------------------
   const dispatch = useDispatch()
-  const cartQuantityIncrease = (id)=>{
-  
-      const payload ={
-        quantity:quantity+1
-      }
-     dispatch(changeCartData(id , payload))
-     .then(() => dispatch(getCartData))
-    //  console.log(item , "item")
+  // const cartQuantityIncrease = (id)=>{
+  //     const payload ={
+  //       quantity:quantity+1
+  //     }
+  //    dispatch(changeCartData(id , payload))
+  //    .then(() => dispatch(getCartData))
       
-    }
+  //   }
 
     //  FOR SUBTRACT -----------------------------
-  const cartQuantityDecrease = (id)=>{
-    if(quantityOfCart > 1){
-      
-      const payload ={
-        quantity:quantity-1
-      }
-      dispatch(changeCartData(id , payload))
-      .then(() => dispatch(getCartData))
-     
-      // console.log(item , "item")
+  // const cartQuantityDecrease = (id)=>{
+  //   if(quantity > 1){
+  //     const payload ={
+  //       quantity:quantity-1
+  //     }
+  //     dispatch(changeCartData(id , payload))
+  //     .then(() => dispatch(getCartData))
    
-      }
+  //     }
       
-    }
+  //   }
+
+  const cartQuantityIncrease = ()=>{
+     setQuantityOfCart(quantityOfCart + 1)
+  }
+
+
+  const cartQuantityDecrease = ()=>{
+    setQuantityOfCart(quantityOfCart-1)
+  }
+
+
+
   return (
     <Box  width={{base:"100%", sm: "100%", md: "90%", lg: "80%" ,xl: "60%",'2xl': "60%",}} p="20px" height="auto" display="flex" >
         <Box >
       <Image src={mainImage} width="90px" />
      {/*   For INCRESING THE COUNT OF PRODUCTS-------------------- */}
       <Box display="flex" border="1px  blue" mt="10px" justifyContent="space-between" >
-       <Text cursor="pointer"><MinusIcon onClick={()=>cartQuantityDecrease( id)}  borderRadius="50%" fontSize="22px" p="4px" style={{color:"#c2c2c2" , border:"1px solid #c2c2c2" }} /></Text>
-       <Text border="1px solid #c2c2c2" pl="13px" pr="13px">{quantity}</Text>
+       <Text cursor="pointer"><MinusIcon onClick={()=>cartQuantityDecrease(id)}  borderRadius="50%" fontSize="22px" p="4px" style={{color:"#c2c2c2" , border:"1px solid #c2c2c2" }} /></Text>
+       <Text border="1px solid #c2c2c2" pl="13px" pr="13px">{quantityOfCart}</Text>
        <Text cursor="pointer"><AddIcon onClick={()=>cartQuantityIncrease( id)} borderRadius="50%" fontSize="22px" p="4px" style={{color:"#c2c2c2" ,border:"1px solid #c2c2c2"}} /></Text>
     </Box>
       </Box>
