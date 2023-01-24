@@ -45,7 +45,7 @@ const Allreview = () => {
     .then((res)=> updateSingleData(res.data))
     
 }
-console.log(singleData ,"singleData")
+// console.log(singleData ,"singleData")
 
 useEffect(()=>{
   GetSinglePageData(path)
@@ -72,7 +72,6 @@ const arrayReview = []
 const reviewTitleUser = []
 const totalCountArr = []
 // count of review --------------------------
-const total = 25
 var fiveLength = 0 
 var fourLength = 0 
 var threeLength = 0 
@@ -139,8 +138,11 @@ for(var i=0 ; i<titleRating.length ; i++){
  
 
 
-
-
+  // for  price calculation logic is here ----------------------------
+  const total = Math.floor(+(singleData?.realPrice) * 100 )
+  const spend = Math.floor(+(singleData?.price) * 100 )
+  const amount =  Math.floor((spend/total)*100)
+  const ans = 100 - amount  
 
 
   return (
@@ -165,7 +167,7 @@ for(var i=0 ; i<titleRating.length ; i++){
             <Box style={{display:'flex' , alignItems:"center"}}>
           <Heading fontSize='18px' fontWeight="600" color="#303030" mt={1.5}  textAlign="left">${singleData?.price}</Heading>
           <Text as='del' fontSize='18px' className='control' mt={1.5} ml={3} fontWeight="600" color="#727272" textAlign="left">${singleData?.realPrice}</Text>
-          <Text  fontSize='14px' className='control' mt={1.5} ml={2} fontWeight="600" color="#e1a26f" textAlign="left">({100}% off)</Text>
+          <Text  fontSize='14px' className='control' mt={1.5} ml={2} fontWeight="600" color="#e1a26f" textAlign="left">({ans}% off)</Text>
           </Box>
           {/* Price end ----------------- */}
             
