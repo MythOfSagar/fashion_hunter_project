@@ -191,11 +191,11 @@ for(var i=0 ; i<titleRating.length ; i++){
              <Box >
             
   
-                {/* <select cursor="pointer" placeholder='Most helpful' value="4" fontWeight={500} border="2px solid #f0f0f0" focusBorderColor="#f0f0f0" size='sm' onChange={(e)=> console.log(e.target.value)}>
-                  <option value="1" style={{fontWeight:"500"}}>Most Recent</option>
-                  <option value="2">Positive First</option>
+                <select cursor="pointer"  style={{fontWeight:"500" ,border:"2px solid #f0f0f0" ,padding:"5px" , outline:"none" , cursor:"pointer"}}  onChange={(e)=> console.log(e.target.value)}>
+                  <option value="1" style={{fontWeight:"500"}} >Most Recent</option>
+                  <option value="2" >Positive First</option>
                   <option value="3">Negative First</option>
-                </select> */}
+                </select>
 
 
              </Box>
