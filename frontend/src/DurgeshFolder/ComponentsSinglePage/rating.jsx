@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react' 
 import { Box, Heading , Text,Image, Button, SimpleGrid } from '@chakra-ui/react'
-import { CheckCircleIcon, StarIcon } from '@chakra-ui/icons';
+import { CheckCircleIcon, ChevronRightIcon, StarIcon } from '@chakra-ui/icons';
 import "./recent.css"
 import { Modaluser } from './modalUser';
 import { Modelrating } from './modelRating';
@@ -219,7 +219,7 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
             
         })}
        
-     <Link to="reviews"> <Text color="#418ef3" cursor="pointer" textAlign="left" ml="22px" fontWeight="500" fontSize="18px" mb="10px" >See All 6 reviews </Text></Link>    
+     <Link to="reviews"> <Text color="#418ef3" cursor="pointer" textAlign="left" ml="22px" fontWeight="500" fontSize="18px" mb="10px" >See All {arrayReview.length} reviews <ChevronRightIcon fontSize="24px" /> </Text></Link>    
             
 
       

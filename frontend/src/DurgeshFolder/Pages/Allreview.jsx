@@ -17,6 +17,7 @@ import { getReviewData } from '../../Redux/Review_reducer/action'
 const Allreview = () => {
   const [singleData , updateSingleData] = useState([])
   const [filterReview , setFilterReview]= useState("recent")
+  
 
   const location = useLocation()
   const dispatch = useDispatch()
@@ -50,6 +51,7 @@ const Allreview = () => {
 //  For accessing products details ---------------------------------------------------
     
   const GetSinglePageData = (num) =>{
+    
     axios.get(`https://long-pear-giraffe-gown.cyclic.app/api/mens/${num}`)
     .then((res)=> updateSingleData(res.data))
     
