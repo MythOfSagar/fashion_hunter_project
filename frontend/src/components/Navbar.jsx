@@ -62,10 +62,10 @@ const Navbar = () => {
 
           {/*  Search bar ------------------------------------ */}
           {/* <input id="navbar-input" type="search"  placeholder="Search Products" style={{outline:"none", borderRadius:"4px"}} /> */}
-          <InputGroup>
-    <InputLeftElement pointerEvents='none' children={<AiOutlineSearch color='gray.300' />} t/>
+         <Link to="/mens"> <InputGroup>
+    <InputLeftElement cursor="pointer" pointerEvents='none' children={<AiOutlineSearch color='gray.300' />} t/>
     <Input type='tel' placeholder='Search Products'  variant="" border="1px solid #2f4254" width="200px"/>
-  </InputGroup>
+  </InputGroup> </Link>
   {/*  Search bar end ----------------------- */}
 
           <div className="icon" onClick={handleLogin}>
