@@ -14,6 +14,7 @@ import {SinglePageProduct} from "../../DurgeshFolder/Pages/SinglePageProduct"
 import { WishlistPage } from "../../DurgeshFolder/Pages/wishlistPage"
 import { CartPage } from "../../DurgeshFolder/Pages/CartPage"
 import { Allreview } from '../../DurgeshFolder/Pages/Allreview'
+import { Searchbar } from '../../DurgeshFolder/Pages/Searchbar'
 
 const AllRoutes = () => {
   return (
@@ -32,6 +33,7 @@ const AllRoutes = () => {
         <Route path="/wishlist" element={<WishlistPage />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/mens/:id/reviews" element={<Allreview />}></Route>
+        <Route path="/search" element={<Searchbar />} />
         
         
     </Routes>
