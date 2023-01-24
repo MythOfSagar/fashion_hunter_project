@@ -4,11 +4,13 @@ import {AddIcon, MinusIcon} from "@chakra-ui/icons"
 import { CartDelete } from './CartDelete'
 import { useDispatch } from 'react-redux'
 import { changeCartData, getCartData } from '../../Redux/Cart_reducer/action'
+import { useEffect } from 'react'
+import { useRef } from 'react'
 
 const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice ,isLoadingCart , id ,handleDeleteProduct}) => {
-  console.log(quantity ,"quantity")
+  
   const [quantityOfCart , setQuantityOfCart] = useState(quantity)
-  console.log(quantityOfCart ,"quantityOfCart1111111")
+
 
   const total = Math.floor(+(realPrice) * 100 )
   const spend = Math.floor(+(price) * 100 )
@@ -38,26 +40,48 @@ const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice 
   //     }
       
   //   }
+
+
  
   //  Optimised approch for cart ----------------------USING DEBOUNCING ********** -------
+   
+
+  const timer = useRef()
+  
+  const getDebouncing = ( id , payload)=>{
+    return ()=>{
+      clearTimeout(timer.current)
+    timer.current = setTimeout(()=>{
+      dispatch(changeCartData(id,payload))
+            .then(()=>dispatch(getCartData))
+    },6000)
+  }
+   
+}
+
+   
+  
+
   const cartQuantityIncrease = (id)=>{
      setQuantityOfCart((prev)=>prev+1) 
      const payload={
       quantity:quantityOfCart+1
      }
-     dispatch(changeCartData(id , payload))
-        .then(() => dispatch(getCartData))
+      getDebouncing(id ,payload)()
+    
   }
 
 
   const cartQuantityDecrease = (id)=>{
-    if(quantity > 1){
+    if(quantity > 1  && quantityOfCart > 1){
     setQuantityOfCart(quantityOfCart-1)
     const payload={
       quantity:quantityOfCart-1
      }
-     dispatch(changeCartData(id , payload))
-        .then(() => dispatch(getCartData))
+     getDebouncing(id , payload)()
+    
+    //  dispatch(changeCartData(id , payload))
+    //     .then(() => dispatch(getCartData))
   }
 }
 
