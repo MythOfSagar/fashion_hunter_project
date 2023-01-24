@@ -152,10 +152,7 @@ for(var i=0 ; i<sum.length ; i++){
   
 
 
-  
 
-
-      
      
 
   return (
