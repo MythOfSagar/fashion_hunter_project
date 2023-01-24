@@ -117,13 +117,13 @@ let sum = reviewData.map((item)=>{
 
 let titleRating = reviewData.map((item)=>{
   return (
-     item.title
+    [ item.review , item.title]
   )
 })
 // console.log(titleRating , sum.length , "title") 
 
 for(var i=0 ; i<titleRating.length ; i++){
-  if(titleRating[i] != "" && titleRating[i] !== undefined && titleRating[i] != null && titleRating[i] != false && titleRating[i] != 0){
+  if(titleRating[i][1] != "" && titleRating[i][1] !== undefined && titleRating[i][1] != null && titleRating[i][1] != false && titleRating[i][1] != 0 && titleRating[i][0] != "" && titleRating[i][0] !== undefined && titleRating[i][0] != null && titleRating[i][0] != false && titleRating[i][0] != 0){
     reviewTitleUser.push(titleRating[i])
   }
 }

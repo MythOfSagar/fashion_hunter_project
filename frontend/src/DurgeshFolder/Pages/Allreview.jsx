@@ -10,11 +10,20 @@ import Navbar from '../../components/Navbar'
 import { getDataProduct } from '../../Redux/Laptop_reducer/action'
 import { getReviewData } from '../../Redux/Review_reducer/action'
 
+
+
+
+
 const Allreview = () => {
   const [singleData , updateSingleData] = useState([])
+  const [filterReview , setFilterReview]= useState("recent")
 
   const location = useLocation()
   const dispatch = useDispatch()
+
+  // console.log(filterReview , "filterReview")
+
+
 
   //  use location for accessing the value from url ----------------------------------
  let  count = 0 
@@ -103,21 +112,6 @@ for(var i=0 ; i<sum.length ; i++){
  totalCountArr.push(oneLength)
   
   
-
-
-let titleRating = reviewData.map((item)=>{
-  return (
-     item.title
-  )
-})
-// console.log(titleRating , sum.length , "title") 
-
-for(var i=0 ; i<titleRating.length ; i++){
-  if(titleRating[i] != "" && titleRating[i] !== undefined && titleRating[i] != null && titleRating[i] != false && titleRating[i] != 0){
-    reviewTitleUser.push(titleRating[i])
-  }
-}
-
   
   answer = arrayReview.reduce((a , item)=>{
     return (a+item)
@@ -144,6 +138,27 @@ for(var i=0 ; i<titleRating.length ; i++){
   const amount =  Math.floor((spend/total)*100)
   const ans = 100 - amount 
   //  End here -------**************------------------------- 
+     
+  //  Filtering starts***********---------------------
+  if(reviewData?.length > 0){
+  const reviewFilterRecent = reviewData.map((item,i)=>{
+       return (
+       [ item.review ,item.title , item.image]
+       )
+  })
+
+
+  for(var i=0 ; i<reviewFilterRecent.length ; i++){
+    if(reviewFilterRecent[i][0] != "" && reviewFilterRecent[i][0] != undefined && reviewFilterRecent[i][0] != null && reviewFilterRecent[i][0] != false && reviewFilterRecent[i][0] != 0 && reviewFilterRecent[i][1] != "" && reviewFilterRecent[i][1] != undefined && reviewFilterRecent[i][1] != null && reviewFilterRecent[i][1] != false && reviewFilterRecent[i][1] != 0){
+      reviewTitleUser.push(reviewFilterRecent[i])
+    }
+  }
+  // console.log(reviewTitleUser ,"dhvbhdbd")
+
+
+
+
+  }
 
 
   return (
@@ -191,11 +206,11 @@ for(var i=0 ; i<titleRating.length ; i++){
              <Box >
             
   
-                {/* <select cursor="pointer" placeholder='Most helpful' value="4" fontWeight={500} border="2px solid #f0f0f0" focusBorderColor="#f0f0f0" size='sm' onChange={(e)=> console.log(e.target.value)}>
-                  <option value="1" style={{fontWeight:"500"}}>Most Recent</option>
-                  <option value="2">Positive First</option>
-                  <option value="3">Negative First</option>
-                </select> */}
+                <select cursor="pointer"  style={{fontWeight:"500" ,border:"2px solid #f0f0f0" ,padding:"5px" , outline:"none" , cursor:"pointer"}}  onChange={(e)=> setFilterReview(e.target.value)}>
+                  <option value="recent"  style={{fontWeight:"500"}} >Most Recent</option>
+                  <option value="positive" >Positive First</option>
+                  <option value="negative">Negative First</option>
+                </select>
 
 
              </Box>
@@ -221,8 +236,9 @@ for(var i=0 ; i<titleRating.length ; i++){
             
            </Box>
             {/* By our customer */}
-
-            {reviewData?.length > 0 && reviewData?.map((item , i)=>{
+          
+         {/* FOR RECENT -----***** */}
+            {reviewData?.length > 0 && filterReview == "recent" && reviewData?.map((item , i)=>{
           
           if(item?.review >=1 && item?.title.length > 1 ){
           return (
@@ -245,9 +261,102 @@ for(var i=0 ; i<titleRating.length ; i++){
            {item.title != "" && <Text textAlign="left" fontWeight={500} ml="10px" color="#2e3b4e">{item.title}</Text>}
             </Box>
     
-            {/* Images of review */}
+            
             {(item.image !== "") && 
             <Image src={item.image} alt="" boxSize={{base:"50px", sm: "70px", md: "70px", lg: "70px",xl: "70px",'2xl': "70px"}}  shadow="2xl" cursor="pointer" />
+        }
+             <Text mt="8px" mb="3px" color="#8f8a95" textAlign="left" fontSize="14px" fontWeight={500}>Fashion Hunter Customer</Text>
+               
+               <Box display="flex" justifyContent="space-between" border="1px  red" width={{base:"100%", sm: "90%", md: "70%", lg: "60%",xl: "50%",'2xl': "50%"}}>
+              <Text mb="15px" textAlign="left" fontSize="16px"><CheckCircleIcon color="#878787" mr="5px" fontSize="14px" />Certified Buyer</Text>
+    
+             
+              </Box>
+             <hr />
+          </Box>
+
+          )
+              }
+
+            
+            
+        })}
+
+  {/* For positive ---------- */}
+{reviewTitleUser?.length > 0 && filterReview == "positive" &&  reviewTitleUser?.sort((a,b)=>b[0]-a[0]).map((item , i)=>{
+              //  console.log(item[1]?.length)
+  
+          if(item[0] >=1 && item[1]?.length > 1 ){
+           
+          return (
+            <Box  ml="20px" mb="15px" key={i}>
+
+            <Box display="flex" alignItems="center" mb="13px">
+           {item[0] >= 1 && item[0] >=3 && <Box border="1px solid #26a541" mt="6px" background="#26a541" borderRadius="20px" width="45px"  
+    style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>   
+    <Text color="#ffffff" fontSize="16px">{item[0]}</Text> 
+    
+    <StarIcon fontSize="13px" color="#ffffff" />
+    </Box> }
+    {item[0]  < 3 && item[0] >= 1 && <Box border="1px solid #ff6161" mt="6px" background="#ff6161" borderRadius="20px" width="45px"  
+    style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>   
+    <Text color="#ffffff" fontSize="16px">{item[0]}</Text> 
+    
+    <StarIcon fontSize="13px" color="#ffffff" />
+    </Box> }
+
+           {item[1] != "" && <Text textAlign="left" fontWeight={500} ml="10px" color="#2e3b4e">{item[1]}</Text>}
+            </Box>
+    
+            
+            {(item[2] !== "") && 
+            <Image src={item[2]} alt="" boxSize={{base:"50px", sm: "70px", md: "70px", lg: "70px",xl: "70px",'2xl': "70px"}}  shadow="2xl" cursor="pointer" />
+        }
+             <Text mt="8px" mb="3px" color="#8f8a95" textAlign="left" fontSize="14px" fontWeight={500}>Fashion Hunter Customer</Text>
+               
+               <Box display="flex" justifyContent="space-between" border="1px  red" width={{base:"100%", sm: "90%", md: "70%", lg: "60%",xl: "50%",'2xl': "50%"}}>
+              <Text mb="15px" textAlign="left" fontSize="16px"><CheckCircleIcon color="#878787" mr="5px" fontSize="14px" />Certified Buyer</Text>
+    
+             
+              </Box>
+             <hr />
+          </Box>
+
+          )
+              }
+
+            
+            
+        })}
+{/*  For negatives-------- */}
+{reviewTitleUser?.length > 0 && filterReview == "negative" &&  reviewTitleUser?.sort((a,b)=>a[0]-b[0]).map((item , i)=>{
+              //  console.log(item[1]?.length)
+  
+          if(item[0] >=1 && item[1]?.length > 1 ){
+           
+          return (
+            <Box  ml="20px" mb="15px" key={i}>
+
+            <Box display="flex" alignItems="center" mb="13px">
+           {item[0] >= 1 && item[0] >=3 && <Box border="1px solid #26a541" mt="6px" background="#26a541" borderRadius="20px" width="45px"  
+    style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>   
+    <Text color="#ffffff" fontSize="16px">{item[0]}</Text> 
+    
+    <StarIcon fontSize="13px" color="#ffffff" />
+    </Box> }
+    {item[0]  < 3 && item[0] >= 1 && <Box border="1px solid #ff6161" mt="6px" background="#ff6161" borderRadius="20px" width="45px"  
+    style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>   
+    <Text color="#ffffff" fontSize="16px">{item[0]}</Text> 
+    
+    <StarIcon fontSize="13px" color="#ffffff" />
+    </Box> }
+
+           {item[1] != "" && <Text textAlign="left" fontWeight={500} ml="10px" color="#2e3b4e">{item[1]}</Text>}
+            </Box>
+    
+            
+            {(item[2] !== "") && 
+            <Image src={item[2]} alt="" boxSize={{base:"50px", sm: "70px", md: "70px", lg: "70px",xl: "70px",'2xl': "70px"}}  shadow="2xl" cursor="pointer" />
         }
              <Text mt="8px" mb="3px" color="#8f8a95" textAlign="left" fontSize="14px" fontWeight={500}>Fashion Hunter Customer</Text>
                
