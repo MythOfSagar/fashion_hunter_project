@@ -98,7 +98,9 @@ const handleStarRating = (data)=>{
 } 
   
 useEffect(()=>{
-   dispatch(getReviewData(num))
+  
+    dispatch(getReviewData(num))
+  
 },[num])
 
 // Review------------------------------

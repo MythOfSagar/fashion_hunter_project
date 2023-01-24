@@ -3,27 +3,46 @@ import { Box  , Heading, Image , Text} from '@chakra-ui/react'
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import { getReviewData } from '../../Redux/Review_reducer/action'
 
 const Allreview = () => {
-    
+  const location = useLocation()
+
+  //  use location for accessing the value from url ----------------------------------
+ let  count = 0 
+  for(var i=0 ; i<location.pathname.length ;i++){
+     if(location.pathname[i] == "/"){
+       count++
+     }
+     if(count == 2){
+      break 
+     }
+    }
+    const path = (location.pathname[i+1])
   
-  const {reviewData ,isLoading,productArrayLaptop} = useSelector((state) => {
+  const {reviewData ,isLoading,isError ,isNum} = useSelector((state) => {
     return {
       reviewData: state.ReviewReducer.reviewData ,
       isLoading:state.ReviewReducer.isLoading ,
       isError :state.ReviewReducer.isError ,
+      isNum :state.ReviewReducer.isNum ,
     }
 })   
+
+
+
   if(reviewData?.length > 0 ){
     reviewData.reverse()
   }
 
  const dispatch = useDispatch()
 useEffect(()=>{
-    dispatch(getReviewData(1))
+  
+
+    dispatch(getReviewData(path))
 },[])
 
 
@@ -91,7 +110,7 @@ for(var i=0 ; i<titleRating.length ; i++){
     totalCountArr.sort((a,b)=>b-a)
 
   } 
-  console.log(totalCountArr , "hell")
+  
   
   const calculate = ((answer)/(arrayReview.length)) || 0 
   const calculateRating = calculate.toFixed(1)
