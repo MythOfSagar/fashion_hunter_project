@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react' 
+import React,{useEffect, useRef} from 'react' 
 import "./ProductPage.css"
 import {Box , Button, Img, SimpleGrid, Skeleton, Text} from "@chakra-ui/react" 
 import { ProductHeadings } from '../Components/ProductHeadings' 
@@ -26,6 +26,10 @@ const [paginationData , setPaginationData] = useState([])
 // pagination ----
 const [changeNum , setChangeNum] = useState(1)
 const [changePage  ,setChangePage] = useState(1)
+const [disableNext , setDisableNext] = useState(false)
+const [disablePre , setDisablePre] = useState(false)
+
+const pageLoad = useRef()
 
 
 // sorting and filtering part ------------------------------------------
@@ -88,15 +92,28 @@ const PaginationFunction = (queryParams)=>{
     if(5 < Math.ceil(reviewTitleUser.length/9) && changePage == 5 ){
       setChangeNum(5)
     }
+    setDisableNext(true)
+      clearTimeout(pageLoad.current)
+      pageLoad.current = setTimeout(()=>{
+        setDisableNext(false)
+      },300)
+  
+   
     
   }
     
   const handlePagePrevious = ()=>{
     setChangePage(changePage-1)
     if(5 < Math.ceil(reviewTitleUser.length/9) && changePage == 5 ){
-      // console.log(changePage ,"changePage   ---------------------------")
       setChangeNum(1)
     }
+
+    setDisablePre(true)
+    clearTimeout(pageLoad.current)
+    pageLoad.current = setTimeout(()=>{
+      setDisablePre(false)
+    },300)
+
   }
    
 
@@ -178,7 +195,7 @@ const PaginationFunction = (queryParams)=>{
 
          
           <Box pt="50px" pb="50px">
-          <Pagination changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={9} />
+          <Pagination disableNext={disableNext} disablePre={disablePre} changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={9}  />
           </Box>
        </Box>
     {/* Display product data ends here ---------------------------------- */}

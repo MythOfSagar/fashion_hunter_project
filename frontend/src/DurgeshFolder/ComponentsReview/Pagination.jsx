@@ -2,14 +2,14 @@ import { Box  , Text , Button} from "@chakra-ui/react"
 import "../Pages/Allreview.css"
 
 
-function Pagination ({changePage,changeNum ,handlePagePrevious ,handlePageChange, setChangePage , reviewTitleUser ,divideValue }){
+function Pagination ({disableNext , disablePre , changePage,changeNum ,handlePagePrevious ,handlePageChange, setChangePage , reviewTitleUser ,divideValue }){
     return (
         <Box display="flex" alignItems="center"  mb="20px" border="2px  red" flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} > 
         <Text pl="20px" fontWeight="500" textAlign="left">Page {changePage} of {Math.ceil(reviewTitleUser.length/divideValue)}</Text>
         {/* Numbers ***********  */}
          <Box display="flex" alignItems="center" m="auto" fontWeight="400" fontSize="18px" border="2px  red"  >
           
-          <Button color="#2874f0" mr="13px" isDisabled={changePage == 1} cursor="pointer" variant="unstyled" onClick={handlePagePrevious} fontWeight={500} >Prev</Button>
+          <Button isLoading={disablePre} color="#2874f0" mr="13px" isDisabled={changePage == 1} cursor="pointer" variant="unstyled" onClick={handlePagePrevious} fontWeight={500} >Prev</Button>
           {Array(5 > Math.ceil(reviewTitleUser.length/divideValue) ?Math.ceil(reviewTitleUser.length/divideValue): 5 ).fill('').map((_,i)=>{
             if(i+changeNum <= Math.ceil(reviewTitleUser.length/divideValue) ){
             return (
@@ -20,7 +20,7 @@ function Pagination ({changePage,changeNum ,handlePagePrevious ,handlePageChange
           })} 
           
          
-          <Button   ml="25px" color="#2874f0" variant="unstyled"  isDisabled={changePage == Math.ceil(reviewTitleUser.length/divideValue)}  cursor="pointer" onClick={handlePageChange} fontWeight={500}>Next</Button>
+          <Button isLoading={disableNext}  ml="25px" color="#2874f0" variant="unstyled"  isDisabled={changePage == Math.ceil(reviewTitleUser.length/divideValue)}  cursor="pointer" onClick={handlePageChange} fontWeight={500}>Next</Button>
           
 
          </Box>

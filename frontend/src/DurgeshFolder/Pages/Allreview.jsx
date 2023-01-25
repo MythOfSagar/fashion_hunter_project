@@ -17,9 +17,14 @@ import "./Allreview.css"
 const Allreview = () => {
   const [singleData , updateSingleData] = useState([])
   const [filterReview , setFilterReview]= useState("recent")
+  // Pagination*****-----------------------------------------------
   const [changePage  ,setChangePage] = useState(1)
   const [changeNum , setChangeNum] = useState(1)
-  // const [valuePagination , setValuePagination] = useState(false)
+  const [disableNext , setDisableNext] = useState(false)
+const [disablePre , setDisablePre] = useState(false)
+
+const pageLoad = useRef()
+
 
   const location = useLocation()
   const dispatch = useDispatch()
@@ -168,6 +173,12 @@ const handlePageChange = ()=>{
   if(5 < Math.ceil(reviewTitleUser.length/8) && changePage == 5 ){
     setChangeNum(5)
   }
+// Button****************--------
+  setDisableNext(true)
+  clearTimeout(pageLoad.current)
+  pageLoad.current = setTimeout(()=>{
+    setDisableNext(false)
+  },300)
   
 }
   
@@ -177,6 +188,13 @@ const handlePagePrevious = ()=>{
     // console.log(changePage ,"changePage   ---------------------------")
     setChangeNum(1)
   }
+
+  // For disabling the button *********--------
+  setDisablePre(true)
+  clearTimeout(pageLoad.current)
+  pageLoad.current = setTimeout(()=>{
+    setDisablePre(false)
+  },300)
 }
 
 
@@ -405,7 +423,7 @@ const handlePagePrevious = ()=>{
        {/*  End review */}
                 
                 {/* PAGINATION STARTS FROM HERE -----------*******----- */}
-                 <Pagination changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={8} />
+                 <Pagination disableNext={disableNext} disablePre={disablePre} changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={8} />
             
              </Box>
           
