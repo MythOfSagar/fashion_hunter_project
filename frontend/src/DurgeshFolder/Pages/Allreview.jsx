@@ -1,7 +1,7 @@
 import { CheckCircleIcon, StarIcon } from '@chakra-ui/icons'
 import { Box  , Button, Heading, Image , Select, Stack, Text} from '@chakra-ui/react'
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -17,7 +17,7 @@ const Allreview = () => {
   const [singleData , updateSingleData] = useState([])
   const [filterReview , setFilterReview]= useState("recent")
   const [changePage  ,setChangePage] = useState(1)
-  
+  // const [valuePagination , setValuePagination] = useState(false)
 
   const location = useLocation()
   const dispatch = useDispatch()
@@ -155,12 +155,28 @@ for(var i=0 ; i<sum.length ; i++){
       reviewTitleUser.push(reviewFilterRecent[i])
     }
   }
-  // console.log(reviewTitleUser ,"dhvbhdbd")
+}
+// ------------------------------PAGINATION *********CODE ******************
+    // Pagination Next Page ----------
+    
+    // const paginataionPage = useRef()
+// const isLoadingPage = ()=>{
+  
+//   setValuePagination(true)
+//   return ()=>{
+//     clearTimeout(paginataionPage.current)
+  
+//   paginataionPage.current= setTimeout(()=>{
+//       setValuePagination(false)
+//    },300)
+//   }
+// }
 
-
-
-
-  }
+const handlePageChange = ()=>{
+  setChangePage(changePage+1)
+  //  isLoadingPage()()
+}
+  
 
 
   return (
@@ -394,7 +410,7 @@ for(var i=0 ; i<sum.length ; i++){
                        )
                     })} 
                    
-                    <Button  ml="25px" color="#2874f0" variant="unstyled" isDisabled={changePage == Math.ceil(reviewTitleUser.length/8)} cursor="pointer" onClick={()=> setChangePage(changePage+1)} fontWeight={500}>Next</Button>
+                    <Button   ml="25px" color="#2874f0" variant="unstyled" isDisabled={changePage == Math.ceil(reviewTitleUser.length/8)} cursor="pointer" onClick={handlePageChange} fontWeight={500}>Next</Button>
                    
 
                    </Box>
