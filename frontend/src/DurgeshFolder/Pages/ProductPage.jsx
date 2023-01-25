@@ -201,12 +201,7 @@ const PaginationFunction = (queryParams)=>{
     {/* Display product data ends here ---------------------------------- */}
 
      </Box>
-
-    {/*  Filtering and display ends here --------------------------------------------------- */}
-       
      
-
-
      <Footer />
     </Box>
   )
