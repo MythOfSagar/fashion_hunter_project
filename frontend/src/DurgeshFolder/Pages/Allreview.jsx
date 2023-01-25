@@ -329,6 +329,7 @@ const handlePagePrevious = ()=>{
     <StarIcon fontSize="13px" color="#ffffff" />
     </Box> }
 
+
            {item[1] != "" && <Text textAlign="left" fontWeight={500} ml="10px" color="#2e3b4e">{item[1]}</Text>}
             </Box>
     
