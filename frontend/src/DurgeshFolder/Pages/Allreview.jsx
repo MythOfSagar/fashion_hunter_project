@@ -17,6 +17,7 @@ const Allreview = () => {
   const [singleData , updateSingleData] = useState([])
   const [filterReview , setFilterReview]= useState("recent")
   const [changePage  ,setChangePage] = useState(1)
+  const [changeNum , setChangeNum] = useState(1)
   // const [valuePagination , setValuePagination] = useState(false)
 
   const location = useLocation()
@@ -80,7 +81,7 @@ useEffect(()=>{
 //  Calculating everything 
 var answer  = 0 
 const arrayReview = []
-const reviewTitleUser = []
+const reviewTitleUser = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 const totalCountArr = []
 // count of review --------------------------
 var fiveLength = 0 
@@ -174,8 +175,21 @@ for(var i=0 ; i<sum.length ; i++){
 
 const handlePageChange = ()=>{
   setChangePage(changePage+1)
+  if(6 > Math.ceil(reviewTitleUser.length/8) && changePage == 6 ){
+    console.log(changePage ,"changePage   ---------------------------")
+    setChangeNum(6)
+  }
+  console.log(changePage ,"changePage")
+   
   //  isLoadingPage()()
 }
+  
+
+
+
+
+
+
   
 
 
@@ -400,18 +414,18 @@ const handlePageChange = ()=>{
                 <Box display="flex" alignItems="center"  mb="20px" border="2px  red" flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} > 
                   <Text pl="20px" fontWeight="500" textAlign="left">Page {changePage} of {Math.ceil(reviewTitleUser.length/8)}</Text>
                   {/* Numbers ***********  */}
-                   <Box display="flex" alignItems="center" m="auto" fontWeight="400" fontSize="18px"  >
+                   <Box display="flex" alignItems="center" m="auto" fontWeight="400" fontSize="18px" border="2px solid red"  >
                     
-                    <Button color="#2874f0" mr="13px" isDisabled={changePage == 1} cursor="pointer" variant="unstyled" onClick={()=> setChangePage(changePage-1)} fontWeight={500} >Prev</Button>
-                    {Array(Math.ceil(reviewTitleUser.length/8)).fill('').map((_,i)=>{
+                    <Button color="#2874f0" mr="13px" isDisabled={changePage == 1} cursor="pointer" variant="unstyled" onClick={handlePagePrevious} fontWeight={500} >Prev</Button>
+                    {Array(6 > Math.ceil(reviewTitleUser.length/8) ? 6 : Math.ceil(reviewTitleUser.length/8)).fill('').map((_,i)=>{
                       return (
-                        <Text ml="20px" key={i}  className={changePage == i+1 &&  "colorText"}> {i+1}</Text>
+                        <Text  ml="10px" key={i}  className={changePage == i+changeNum &&  "colorText"}> {i+ changeNum }</Text>
                     
-                       )
+                       ) 
                     })} 
                    
-                    <Button   ml="25px" color="#2874f0" variant="unstyled" isDisabled={changePage == Math.ceil(reviewTitleUser.length/8)} cursor="pointer" onClick={handlePageChange} fontWeight={500}>Next</Button>
-                   
+                    <Button   ml="25px" color="#2874f0" variant="unstyled"  cursor="pointer" onClick={handlePageChange} fontWeight={500}>Next</Button>
+                    {/* isDisabled={changePage == Math.ceil(reviewTitleUser.length/8)} */}
 
                    </Box>
                 </Box>
