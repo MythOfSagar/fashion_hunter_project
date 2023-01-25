@@ -382,19 +382,19 @@ for(var i=0 ; i<sum.length ; i++){
                 
                 {/* PAGINATION STARTS FROM HERE -----------*******----- */}
                 <Box display="flex" alignItems="center"  mb="20px" border="2px  red" flexDirection=""> 
-                  <Text pl="20px" fontWeight="500" textAlign="left">Page {changePage} of 435</Text>
+                  <Text pl="20px" fontWeight="500" textAlign="left">Page {changePage} of {Math.ceil(reviewTitleUser.length/8)}</Text>
                   {/* Numbers ***********  */}
                    <Box display="flex" alignItems="center" m="auto" fontWeight="400" fontSize="18px"  >
                     
                     <Button color="#2874f0" mr="13px" isDisabled={changePage == 1} cursor="pointer" variant="unstyled" onClick={()=> setChangePage(changePage-1)} fontWeight={500} >Prev</Button>
-                    {Array(4).fill('').map((_,i)=>{
+                    {Array(Math.ceil(reviewTitleUser.length/8)).fill('').map((_,i)=>{
                       return (
                         <Text ml="20px" key={i}  className={changePage == i+1 &&  "colorText"}> {i+1}</Text>
                     
                        )
                     })} 
                     {console.log(changePage ,"changePage")}
-                    <Button ml="25px" color="#2874f0" variant="unstyled" cursor="pointer" onClick={()=> setChangePage(changePage+1)} fontWeight={500}>Next</Button>
+                    <Button ml="25px" color="#2874f0" variant="unstyled" isDisabled={changePage == Math.ceil(reviewTitleUser.length/8)} cursor="pointer" onClick={()=> setChangePage(changePage+1)} fontWeight={500}>Next</Button>
                    
 
                    </Box>
