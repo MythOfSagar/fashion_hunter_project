@@ -405,7 +405,7 @@ const handlePagePrevious = ()=>{
        {/*  End review */}
                 
                 {/* PAGINATION STARTS FROM HERE -----------*******----- */}
-                 <Pagination changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} />
+                 <Pagination changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={8} />
             
              </Box>
           
