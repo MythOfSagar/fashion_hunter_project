@@ -424,10 +424,12 @@ const handlePagePrevious = ()=>{
                     
                     <Button color="#2874f0" mr="13px" isDisabled={changePage == 1} cursor="pointer" variant="unstyled" onClick={handlePagePrevious} fontWeight={500} >Prev</Button>
                     {Array(5 > Math.ceil(reviewTitleUser.length/8) ?Math.ceil(reviewTitleUser.length/8): 5 ).fill('').map((_,i)=>{
+                      if(i+changeNum <= Math.ceil(reviewTitleUser.length/8) ){
                       return (
                         <Text  ml="10px" key={i}  className={changePage == i+changeNum &&  "colorText"}> {i+ changeNum }</Text>
                     
                        ) 
+                      }
                     })} 
                    
                     <Button   ml="25px" color="#2874f0" variant="unstyled"  cursor="pointer" onClick={handlePageChange} fontWeight={500}>Next</Button>
