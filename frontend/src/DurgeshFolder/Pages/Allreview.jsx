@@ -426,14 +426,14 @@ const handlePagePrevious = ()=>{
                     {Array(5 > Math.ceil(reviewTitleUser.length/8) ?Math.ceil(reviewTitleUser.length/8): 5 ).fill('').map((_,i)=>{
                       if(i+changeNum <= Math.ceil(reviewTitleUser.length/8) ){
                       return (
-                        <Text  ml="10px" key={i}  className={changePage == i+changeNum &&  "colorText"}> {i+ changeNum }</Text>
+                        <Text  ml="20px" key={i}  className={changePage == i+changeNum &&  "colorText"}> {i+ changeNum }</Text>
                     
                        ) 
                       }
                     })} 
                    
-                    <Button   ml="25px" color="#2874f0" variant="unstyled"  cursor="pointer" onClick={handlePageChange} fontWeight={500}>Next</Button>
-                    {/* isDisabled={changePage == Math.ceil(reviewTitleUser.length/8)} */}
+                    <Button   ml="25px" color="#2874f0" variant="unstyled"  isDisabled={changePage == Math.ceil(reviewTitleUser.length/8)}  cursor="pointer" onClick={handlePageChange} fontWeight={500}>Next</Button>
+                    
 
                    </Box>
                 </Box>
