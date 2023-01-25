@@ -160,18 +160,6 @@ for(var i=0 ; i<sum.length ; i++){
 // ------------------------------PAGINATION *********CODE ******************
     // Pagination Next Page ----------
     
-    // const paginataionPage = useRef()
-// const isLoadingPage = ()=>{
-  
-//   setValuePagination(true)
-//   return ()=>{
-//     clearTimeout(paginataionPage.current)
-  
-//   paginataionPage.current= setTimeout(()=>{
-//       setValuePagination(false)
-//    },300)
-//   }
-// }
 
 const handlePageChange = ()=>{
   setChangePage(changePage+1)
@@ -180,8 +168,6 @@ const handlePageChange = ()=>{
     setChangeNum(5)
   }
   
-   
-  //  isLoadingPage()()
 }
   
 const handlePagePrevious = ()=>{
@@ -426,7 +412,7 @@ const handlePagePrevious = ()=>{
                     {Array(5 > Math.ceil(reviewTitleUser.length/8) ?Math.ceil(reviewTitleUser.length/8): 5 ).fill('').map((_,i)=>{
                       if(i+changeNum <= Math.ceil(reviewTitleUser.length/8) ){
                       return (
-                        <Text  ml="20px" key={i}  className={changePage == i+changeNum &&  "colorText"}> {i+ changeNum }</Text>
+                        <Text  ml={{base:"15px", sm: "20px", md: "20px", lg: "20px",xl: "20px",'2xl': "20px"}} key={i}  className={changePage == i+changeNum &&  "colorText"}> {i+ changeNum }</Text>
                     
                        ) 
                       }
