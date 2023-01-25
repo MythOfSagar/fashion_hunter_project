@@ -1,0 +1,31 @@
+import { Box  , Text , Button} from "@chakra-ui/react"
+
+
+
+function Pagination ({changePage,changeNum ,handlePagePrevious ,handlePageChange, setChangePage , reviewTitleUser }){
+    return (
+        <Box display="flex" alignItems="center"  mb="20px" border="2px  red" flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} > 
+        <Text pl="20px" fontWeight="500" textAlign="left">Page {changePage} of {Math.ceil(reviewTitleUser.length/8)}</Text>
+        {/* Numbers ***********  */}
+         <Box display="flex" alignItems="center" m="auto" fontWeight="400" fontSize="18px" border="2px  red"  >
+          
+          <Button color="#2874f0" mr="13px" isDisabled={changePage == 1} cursor="pointer" variant="unstyled" onClick={handlePagePrevious} fontWeight={500} >Prev</Button>
+          {Array(5 > Math.ceil(reviewTitleUser.length/8) ?Math.ceil(reviewTitleUser.length/8): 5 ).fill('').map((_,i)=>{
+            if(i+changeNum <= Math.ceil(reviewTitleUser.length/8) ){
+            return (
+           
+              <Text onClick={()=>setChangePage(i+1)} cursor="pointer" ml={{base:"15px", sm: "20px", md: "20px", lg: "20px",xl: "20px",'2xl': "20px"}} key={i}  className={changePage == i+changeNum &&  "colorText"}> {i+ changeNum }</Text>
+             ) 
+            }
+          })} 
+          
+         
+          <Button   ml="25px" color="#2874f0" variant="unstyled"  isDisabled={changePage == Math.ceil(reviewTitleUser.length/8)}  cursor="pointer" onClick={handlePageChange} fontWeight={500}>Next</Button>
+          
+
+         </Box>
+      </Box>
+    )
+}
+
+export {Pagination}
