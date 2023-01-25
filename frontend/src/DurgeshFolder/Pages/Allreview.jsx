@@ -394,7 +394,7 @@ for(var i=0 ; i<sum.length ; i++){
                        )
                     })} 
                    
-                    <Button ml="25px" color="#2874f0" variant="unstyled" isDisabled={changePage == Math.ceil(reviewTitleUser.length/8)} cursor="pointer" onClick={()=> setChangePage(changePage+1)} fontWeight={500}>Next</Button>
+                    <Button  ml="25px" color="#2874f0" variant="unstyled" isDisabled={changePage == Math.ceil(reviewTitleUser.length/8)} cursor="pointer" onClick={()=> setChangePage(changePage+1)} fontWeight={500}>Next</Button>
                    
 
                    </Box>
