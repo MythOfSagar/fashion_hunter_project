@@ -386,12 +386,12 @@ for(var i=0 ; i<sum.length ; i++){
                   {/* Numbers ***********  */}
                    <Box display="flex" m="auto" fontWeight="500" fontSize="16px" >
                     
-                    {/* {Array(4).fill('').map((_,i)=>{
-                      return ( */}
+                    {Array(4).fill('').map((_,i)=>{
+                      return (
                         <Text ml="20px" className="colorText"  >1</Text>
                     
-                      {/* )
-                    })} */}
+                       )
+                    })} 
                    
 
                    </Box>
