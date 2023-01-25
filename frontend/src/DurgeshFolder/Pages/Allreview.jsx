@@ -1,5 +1,5 @@
 import { CheckCircleIcon, StarIcon } from '@chakra-ui/icons'
-import { Box  , Heading, Image , Select, Stack, Text} from '@chakra-ui/react'
+import { Box  , Button, Heading, Image , Select, Stack, Text} from '@chakra-ui/react'
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
@@ -16,7 +16,7 @@ import "./Allreview.css"
 const Allreview = () => {
   const [singleData , updateSingleData] = useState([])
   const [filterReview , setFilterReview]= useState("recent")
-  const [changeColor  ,setChange] = useState(false)
+  const [changePage  ,setChangePage] = useState(1)
   
 
   const location = useLocation()
@@ -381,17 +381,20 @@ for(var i=0 ; i<sum.length ; i++){
        {/*  End review */}
                 
                 {/* PAGINATION STARTS FROM HERE -----------*******----- */}
-                <Box display="flex" alignItems="center"  mb="20px" border="2px  red"> 
-                  <Text pl="20px" fontWeight="500" textAlign="left">Page 1 of 435</Text>
+                <Box display="flex" alignItems="center"  mb="20px" border="2px  red" flexDirection=""> 
+                  <Text pl="20px" fontWeight="500" textAlign="left">Page {changePage} of 435</Text>
                   {/* Numbers ***********  */}
-                   <Box display="flex" m="auto" fontWeight="500" fontSize="16px" >
+                   <Box display="flex" alignItems="center" m="auto" fontWeight="400" fontSize="18px"  >
                     
+                    <Button color="#2874f0" mr="13px" isDisabled={changePage == 1} cursor="pointer" variant="unstyled" onClick={()=> setChangePage(changePage-1)} fontWeight={500} >Prev</Button>
                     {Array(4).fill('').map((_,i)=>{
                       return (
-                        <Text ml="20px" className="colorText"  >1</Text>
+                        <Text ml="20px" key={i}  className={changePage == i+1 &&  "colorText"}> {i+1}</Text>
                     
                        )
                     })} 
+                    {console.log(changePage ,"changePage")}
+                    <Button ml="25px" color="#2874f0" variant="unstyled" cursor="pointer" onClick={()=> setChangePage(changePage+1)} fontWeight={500}>Next</Button>
                    
 
                    </Box>
