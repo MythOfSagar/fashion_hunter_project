@@ -1,12 +1,27 @@
 
 
 /*  for changing the color ---------------- */
-.colorText{
+.colorText {
    border: 2px solid #2874f0  ;  
     background-color:#2874f0 ; 
    color:#ffffff ;
    border-radius:50% ;
-   width:28px ;
+   width:30px ; 
   
    
 }
+
+#colorText{
+   border: 2px solid #2874f0  ;  
+    background-color:#2874f0 ; 
+   color:#ffffff ;
+   border-radius:50% ;
+   width:30px ; 
+  
+   
+}
+.plainText{
+   color: black ;
+
+}
+

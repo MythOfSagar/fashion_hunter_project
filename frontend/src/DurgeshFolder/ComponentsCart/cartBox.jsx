@@ -55,7 +55,6 @@ const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice 
      }
      getDebouncing(id , payload)()
     
-   
   }
 }
 

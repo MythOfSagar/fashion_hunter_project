@@ -1,7 +1,7 @@
 import { CheckCircleIcon, StarIcon } from '@chakra-ui/icons'
-import { Box  , Heading, Image , Select, Stack, Text} from '@chakra-ui/react'
+import { Box  , Button, Heading, Image , Select, Stack, Text} from '@chakra-ui/react'
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -16,8 +16,9 @@ import "./Allreview.css"
 const Allreview = () => {
   const [singleData , updateSingleData] = useState([])
   const [filterReview , setFilterReview]= useState("recent")
-  const [changeColor  ,setChange] = useState(false)
-  
+  const [changePage  ,setChangePage] = useState(1)
+  const [changeNum , setChangeNum] = useState(1)
+  // const [valuePagination , setValuePagination] = useState(false)
 
   const location = useLocation()
   const dispatch = useDispatch()
@@ -80,7 +81,7 @@ useEffect(()=>{
 //  Calculating everything 
 var answer  = 0 
 const arrayReview = []
-const reviewTitleUser = []
+const reviewTitleUser = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 const totalCountArr = []
 // count of review --------------------------
 var fiveLength = 0 
@@ -155,12 +156,33 @@ for(var i=0 ; i<sum.length ; i++){
       reviewTitleUser.push(reviewFilterRecent[i])
     }
   }
-  // console.log(reviewTitleUser ,"dhvbhdbd")
+}
+// ------------------------------PAGINATION *********CODE ******************
+    // Pagination Next Page ----------
+    
 
-
-
-
+const handlePageChange = ()=>{
+  setChangePage(changePage+1)
+  console.log("hd" , Math.ceil(reviewTitleUser.length/8))
+  if(5 < Math.ceil(reviewTitleUser.length/8) && changePage == 5 ){
+    setChangeNum(5)
   }
+  
+}
+  
+const handlePagePrevious = ()=>{
+  setChangePage(changePage-1)
+  if(5 < Math.ceil(reviewTitleUser.length/8) && changePage == 5 ){
+    // console.log(changePage ,"changePage   ---------------------------")
+    setChangeNum(1)
+  }
+}
+
+
+
+
+
+  
 
 
   return (
@@ -307,6 +329,7 @@ for(var i=0 ; i<sum.length ; i++){
     <StarIcon fontSize="13px" color="#ffffff" />
     </Box> }
 
+
            {item[1] != "" && <Text textAlign="left" fontWeight={500} ml="10px" color="#2e3b4e">{item[1]}</Text>}
             </Box>
     
@@ -381,18 +404,24 @@ for(var i=0 ; i<sum.length ; i++){
        {/*  End review */}
                 
                 {/* PAGINATION STARTS FROM HERE -----------*******----- */}
-                <Box display="flex" alignItems="center"  mb="20px" border="2px  red"> 
-                  <Text pl="20px" fontWeight="500" textAlign="left">Page 1 of 435</Text>
+                <Box display="flex" alignItems="center"  mb="20px" border="2px  red" flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} > 
+                  <Text pl="20px" fontWeight="500" textAlign="left">Page {changePage} of {Math.ceil(reviewTitleUser.length/8)}</Text>
                   {/* Numbers ***********  */}
-                   <Box display="flex" m="auto" fontWeight="500" fontSize="16px" >
+                   <Box display="flex" alignItems="center" m="auto" fontWeight="400" fontSize="18px" border="2px  red"  >
                     
-                    {Array(4).fill('').map((_,i)=>{
+                    <Button color="#2874f0" mr="13px" isDisabled={changePage == 1} cursor="pointer" variant="unstyled" onClick={handlePagePrevious} fontWeight={500} >Prev</Button>
+                    {Array(5 > Math.ceil(reviewTitleUser.length/8) ?Math.ceil(reviewTitleUser.length/8): 5 ).fill('').map((_,i)=>{
+                      if(i+changeNum <= Math.ceil(reviewTitleUser.length/8) ){
                       return (
-                        <Text ml="20px" className="colorText"  >1</Text>
-                    
-                       )
+                     
+                        <Text onClick={()=>setChangePage(i+1)} cursor="pointer" ml={{base:"15px", sm: "20px", md: "20px", lg: "20px",xl: "20px",'2xl': "20px"}} key={i}  className={changePage == i+changeNum &&  "colorText"}> {i+ changeNum }</Text>
+                       ) 
+                      }
                     })} 
+                    
                    
+                    <Button   ml="25px" color="#2874f0" variant="unstyled"  isDisabled={changePage == Math.ceil(reviewTitleUser.length/8)}  cursor="pointer" onClick={handlePageChange} fontWeight={500}>Next</Button>
+                    
 
                    </Box>
                 </Box>
