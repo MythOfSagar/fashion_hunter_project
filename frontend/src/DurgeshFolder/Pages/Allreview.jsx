@@ -186,10 +186,10 @@ const handlePageChange = ()=>{
 const handlePagePrevious = ()=>{
   setChangePage(changePage-1)
   if(6 > Math.ceil(reviewTitleUser.length/8) && changePage == 6 ){
-    console.log(changePage ,"changePage   ---------------------------")
+    // console.log(changePage ,"changePage   ---------------------------")
     setChangeNum(1)
   }
-  console.log(changePage ,"changePage")
+  // console.log(changePage ,"changePage")
 }
 
 
