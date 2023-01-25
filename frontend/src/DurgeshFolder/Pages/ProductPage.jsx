@@ -14,15 +14,19 @@ import { useState } from 'react'
 import axios from 'axios'
 import {ChevronLeftIcon, ChevronRightIcon} from "@chakra-ui/icons" 
 import Navbar from "../../components/Navbar"
+import { Pagination } from '../ComponentsReview/Pagination'
+import Footer from '../../components/Footer'
 
 
 
 
 const ProductPage = () => {
-  const [page , setPage] = useState(1)
-  const [pageNext , setPageNext] = useState(false)
-const [pagePre , setPagePre] = useState(false)
+ 
 const [paginationData , setPaginationData] = useState([])
+// pagination ----
+const [changeNum , setChangeNum] = useState(1)
+const [changePage  ,setChangePage] = useState(1)
+
 
 // sorting and filtering part ------------------------------------------
 const location = useLocation()
@@ -65,9 +69,9 @@ const PaginationFunction = (queryParams)=>{
       }
       PaginationFunction(getLaptopParams)
 
-      dispatch(getDataProduct(getLaptopParams,page))
+      dispatch(getDataProduct(getLaptopParams,changePage))
     }
-  },[ location.search,page])
+  },[ location.search,changePage])
 
   
   
@@ -77,25 +81,24 @@ const PaginationFunction = (queryParams)=>{
   // fetch product data ENDS here ---------------------------------------------------------
    
   //  pagination logic starts  ----------------------------------------------> 
-     
-     const handleNextPage = (data)=>{
-      setPageNext(true)
-      setPage(page+data)
-      setTimeout(()=>{
-        setPageNext(false)
-      },400)
-      
-     }
-     const handlePreviosPage = (data)=>{
-      setPagePre(true)
-      setPage(page+data)
-      setTimeout(()=>{
-        setPagePre(false)
-      },400)
-     }
+  const reviewTitleUser = paginationData
 
-     const nextPageDisable = Math.ceil(paginationData.length/9)
-     //  console.log('nextPageDisable',nextPageDisable)
+  const handlePageChange = ()=>{
+    setChangePage(changePage+1)
+    if(5 < Math.ceil(reviewTitleUser.length/9) && changePage == 5 ){
+      setChangeNum(5)
+    }
+    
+  }
+    
+  const handlePagePrevious = ()=>{
+    setChangePage(changePage-1)
+    if(5 < Math.ceil(reviewTitleUser.length/9) && changePage == 5 ){
+      // console.log(changePage ,"changePage   ---------------------------")
+      setChangeNum(1)
+    }
+  }
+   
 
   //  pagination logic ends --------------------------------------------------> 
   return (
@@ -139,7 +142,7 @@ const PaginationFunction = (queryParams)=>{
      <Box id='filterMainBox_&_DisplayData' style={{border:"1px  red" ,width:"92%" , margin:"auto" , height:"auto" , display:"flex" , justifyContent:"space-between" }}>
        
         {/* Filter component---------------------------------------------------------- */}
-       <Box id='FilterMainBox' height="auto" width={{base:"none", sm: "43%", md: "24%", lg: "17%",xl: "17%",'2xl': "17%"}} shadow="md" style={{border:"0.1px solid #e7e9ee"}}>
+       <Box id='FilterMainBox' height="auto" mb="30px" width={{base:"none", sm: "43%", md: "24%", lg: "17%",xl: "17%",'2xl': "17%"}} shadow="md" style={{border:"0.1px solid #e7e9ee"}}>
          
          <Box >
          <Filter />
@@ -168,13 +171,15 @@ const PaginationFunction = (queryParams)=>{
 
             
         
+          </SimpleGrid>
         
 
 
-          </SimpleGrid>
 
          
-        
+          <Box pt="50px" pb="50px">
+          <Pagination changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={9} />
+          </Box>
        </Box>
     {/* Display product data ends here ---------------------------------- */}
 
@@ -182,18 +187,10 @@ const PaginationFunction = (queryParams)=>{
 
     {/*  Filtering and display ends here --------------------------------------------------- */}
        
-       {/*  Pagination starts from here ----------------------------------------------------- */}
-       
-       <Box style={{display:"flex" , justifyContent:"right"}}  padding="60px" >
-       <Button onClick={()=>handlePreviosPage(-1)} isLoading={pagePre} disabled={page==1}   ml="3"  pl={{base:"41px", sm: "10px", md: "10px", lg: "10px",xl: "10px",'2xl': "10px"}} pr={{base:"35px", sm: "10px", md: "10px", lg: "10px",xl: "10px",'2xl': "10px"}} > 
-      <Text fontSize="22px" fontWeight="400"><ChevronLeftIcon fontSize="26px" ml="-8px" p="0"/>Prev</Text></Button>
-       <Button ml="3" fontSize="22px" fontWeight="400"> {page} </Button>
-       <Button onClick={()=>handleNextPage(1)} isLoading={pageNext} disabled={page == nextPageDisable}  ml="3" pl={{base:"41px", sm: "10px", md: "10px", lg: "10px",xl: "10px",'2xl': "10px"}} pr={{base:"35px", sm: "2px", md: "2px", lg: "2px",xl: "2px",'2xl': "2px"}}  > 
-      <Text fontSize="22px" fontWeight="400">Next <ChevronRightIcon fontSize="26px" ml="-8px" p="0"/></Text> </Button>
-     </Box>
+     
 
-     {/* pagination ends here ----------------------------------------------- */}
-       
+
+     <Footer />
     </Box>
   )
 }

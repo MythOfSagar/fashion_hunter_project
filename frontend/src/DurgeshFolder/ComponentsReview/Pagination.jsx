@@ -1,8 +1,8 @@
 import { Box  , Text , Button} from "@chakra-ui/react"
+import "../Pages/Allreview.css"
 
 
-
-function Pagination ({changePage,changeNum ,handlePagePrevious ,handlePageChange, setChangePage , reviewTitleUser }){
+function Pagination ({changePage,changeNum ,handlePagePrevious ,handlePageChange, setChangePage , reviewTitleUser ,divideValue }){
     return (
         <Box display="flex" alignItems="center"  mb="20px" border="2px  red" flexDirection={{base:"column", sm: "column", md: "row", lg: "row",xl: "row",'2xl': "row"}} > 
         <Text pl="20px" fontWeight="500" textAlign="left">Page {changePage} of {Math.ceil(reviewTitleUser.length/8)}</Text>
