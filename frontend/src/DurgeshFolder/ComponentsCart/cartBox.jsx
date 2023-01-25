@@ -19,8 +19,7 @@ const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice 
   
   // FOR INCREASE --------------------------------
   const dispatch = useDispatch()
-  
- 
+
   //  Optimised approch for cart ----------------------USING DEBOUNCING ********** -------
    
 
@@ -32,13 +31,11 @@ const Cartbox = ({mainImage ,quantity, categories ,item,title ,price ,realPrice 
     timer.current = setTimeout(()=>{
       dispatch(changeCartData(id,payload))
             .then(()=>dispatch(getCartData))
-    },1000)
+    },700)
   }
    
 }
 
-   
-  
 
   const cartQuantityIncrease = (id)=>{
      setQuantityOfCart((prev)=>prev+1) 
