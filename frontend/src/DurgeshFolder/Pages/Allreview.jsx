@@ -10,13 +10,13 @@ import Navbar from '../../components/Navbar'
 import { getDataProduct } from '../../Redux/Laptop_reducer/action'
 import { getReviewData } from '../../Redux/Review_reducer/action'
 
-
-
+import "./Allreview.css"
 
 
 const Allreview = () => {
   const [singleData , updateSingleData] = useState([])
   const [filterReview , setFilterReview]= useState("recent")
+  const [changeColor  ,setChange] = useState(false)
   
 
   const location = useLocation()
@@ -379,7 +379,24 @@ for(var i=0 ; i<sum.length ; i++){
        
 
        {/*  End review */}
+                
+                {/* PAGINATION STARTS FROM HERE -----------*******----- */}
+                <Box display="flex" alignItems="center"  mb="20px" border="2px  red"> 
+                  <Text pl="20px" fontWeight="500" textAlign="left">Page 1 of 435</Text>
+                  {/* Numbers ***********  */}
+                   <Box display="flex" m="auto" fontWeight="500" fontSize="16px" >
+                    
+                    {/* {Array(4).fill('').map((_,i)=>{
+                      return ( */}
+                        <Text ml="20px" className="colorText"  >1</Text>
+                    
+                      {/* )
+                    })} */}
+                   
 
+                   </Box>
+                </Box>
+            
              </Box>
           
           
