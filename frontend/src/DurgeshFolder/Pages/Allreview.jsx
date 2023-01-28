@@ -22,6 +22,7 @@ const Allreview = () => {
   const [changeNum , setChangeNum] = useState(1)
   const [disableNext , setDisableNext] = useState(false)
 const [disablePre , setDisablePre] = useState(false)
+const [reviewData , setreviewData] = useState([])
 
 const pageLoad = useRef()
 
@@ -45,15 +46,22 @@ const pageLoad = useRef()
     }
     const path = (location.pathname[i+1])
   
-  const {reviewData ,isLoading,isError ,isNum} = useSelector((state) => {
-    return {
-      reviewData: state.ReviewReducer.reviewData ,
-      isLoading:state.ReviewReducer.isLoading ,
-      isError :state.ReviewReducer.isError ,
-      isNum :state.ReviewReducer.isNum ,
-    }
-},shallowEqual)   
+//   const {reviewData ,isLoading,isError ,isNum} = useSelector((state) => {
+//     return {
+//       reviewData: state.ReviewReducer.reviewData ,
+//       isLoading:state.ReviewReducer.isLoading ,
+//       isError :state.ReviewReducer.isError ,
+//       isNum :state.ReviewReducer.isNum ,
+//     }
+// },shallowEqual)   
 
+// FOR PAGINATION AND SHOWING THE DATA ---------*******--------
+  
+const getDataReview = (num)=>{
+  axios.get(`https://handsome-blue-crab.cyclic.app/review/add${num}`)
+  .then((res)=> setreviewData(res.data))
+  .catch((err)=>console.log(err ,"allReview"))
+}
  
 //  For accessing products details ---------------------------------------------------
     
@@ -63,8 +71,7 @@ const pageLoad = useRef()
     .then((res)=> updateSingleData(res.data))
     
 }
-// console.log(singleData ,"singleData")
-
+//  for photos in all review page -------
 useEffect(()=>{
   GetSinglePageData(path)
 },[])
@@ -76,10 +83,10 @@ useEffect(()=>{
   }
 
  
- 
+//  for *****review data -----
  useEffect(()=>{
    if(reviewData.length == 0){
-     dispatch(getReviewData(path))
+    getDataReview(path)
    }
  },[])
 
@@ -169,7 +176,7 @@ for(var i=0 ; i<sum.length ; i++){
 
 const handlePageChange = ()=>{
   setChangePage(changePage+1)
-  console.log("hd" , Math.ceil(reviewTitleUser.length/8))
+  // console.log("hd" , Math.ceil(reviewTitleUser.length/8))
   if(5 < Math.ceil(reviewTitleUser.length/8) && changePage == 5 ){
     setChangeNum(5)
   }
