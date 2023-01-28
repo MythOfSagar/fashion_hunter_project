@@ -74,9 +74,9 @@ GetSinglePageData(num)
 
 //  Post req for getting all the comments -------------------------------
 const handleSubmit = (payload)=>{
-
+// console.log("payload" , payload)
  // console.log(payload ,"payload")
- axios.post(`https://graceful-lion-wig.cyclic.app/review/add${num}`,payload)
+ axios.post(`https://handsome-blue-crab.cyclic.app/review/add${num}`,payload)
  .then((res)=>  dispatch(getReviewData(num)))
  .catch((err)=>console.log(`working on`))
 
@@ -91,7 +91,8 @@ const handleStarRating = (data)=>{
     like: 0 ,
     disLike: 0,
   }
-  axios.post(`https://graceful-lion-wig.cyclic.app/review/add${num}`,payload)
+  // console.log("star" , payload)
+  axios.post(`https://handsome-blue-crab.cyclic.app/review/add${num}`,payload)
   .then((res)=>  dispatch(getReviewData(num)))
   .catch((err)=>console.log('err'))
 } 

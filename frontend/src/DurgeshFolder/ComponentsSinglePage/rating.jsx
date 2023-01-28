@@ -136,7 +136,7 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
 
  
  {/* Images STARTED FROM HERE --------------- */}
-    <Box>
+  {dataImages.length > 0 &&    <Box>
     <Text textAlign="left" ml="20px" fontWeight={600} fontSize="16px"  mb="15px">Images upload by our customers</Text>
     {/* Images of customer products-------------------------- */}
     <Box>
@@ -165,7 +165,7 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
 
      </Box>
    </Box>
-   </Box>
+   </Box> }
 
    
 

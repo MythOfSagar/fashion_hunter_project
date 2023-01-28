@@ -22,6 +22,7 @@ const Allreview = () => {
   const [changeNum , setChangeNum] = useState(1)
   const [disableNext , setDisableNext] = useState(false)
 const [disablePre , setDisablePre] = useState(false)
+const [reviewData , setreviewData] = useState([])
 
 const pageLoad = useRef()
 
@@ -45,15 +46,22 @@ const pageLoad = useRef()
     }
     const path = (location.pathname[i+1])
   
-  const {reviewData ,isLoading,isError ,isNum} = useSelector((state) => {
-    return {
-      reviewData: state.ReviewReducer.reviewData ,
-      isLoading:state.ReviewReducer.isLoading ,
-      isError :state.ReviewReducer.isError ,
-      isNum :state.ReviewReducer.isNum ,
-    }
-},shallowEqual)   
+//   const {reviewData ,isLoading,isError ,isNum} = useSelector((state) => {
+//     return {
+//       reviewData: state.ReviewReducer.reviewData ,
+//       isLoading:state.ReviewReducer.isLoading ,
+//       isError :state.ReviewReducer.isError ,
+//       isNum :state.ReviewReducer.isNum ,
+//     }
+// },shallowEqual)   
 
+// FOR PAGINATION AND SHOWING THE DATA ---------*******--------
+  
+const getDataReview = (num)=>{
+  axios.get(`https://handsome-blue-crab.cyclic.app/review/add${num}`)
+  .then((res)=> setreviewData(res.data))
+  .catch((err)=>console.log(err ,"allReview"))
+}
  
 //  For accessing products details ---------------------------------------------------
     
@@ -63,8 +71,7 @@ const pageLoad = useRef()
     .then((res)=> updateSingleData(res.data))
     
 }
-// console.log(singleData ,"singleData")
-
+//  for photos in all review page -------
 useEffect(()=>{
   GetSinglePageData(path)
 },[])
@@ -76,10 +83,10 @@ useEffect(()=>{
   }
 
  
- 
+//  for *****review data -----
  useEffect(()=>{
    if(reviewData.length == 0){
-     dispatch(getReviewData(path))
+    getDataReview(path)
    }
  },[])
 
@@ -169,7 +176,7 @@ for(var i=0 ; i<sum.length ; i++){
 
 const handlePageChange = ()=>{
   setChangePage(changePage+1)
-  console.log("hd" , Math.ceil(reviewTitleUser.length/8))
+  // console.log("hd" , Math.ceil(reviewTitleUser.length/8))
   if(5 < Math.ceil(reviewTitleUser.length/8) && changePage == 5 ){
     setChangeNum(5)
   }
@@ -268,11 +275,11 @@ const handlePagePrevious = ()=>{
             </Box>
             {/*  rating box length --------- */}
             <Box  ml={{base:"0px", sm: "30px", md: "30px", lg: "30px",xl: "30px",'2xl': "30px"}} >
-             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(totalCountArr[0] == fiveLength && 28) || (totalCountArr[1] == fiveLength && 24) || (totalCountArr[2] == fiveLength && 18) || (totalCountArr[3] == fiveLength && 12) ||( totalCountArr[4] == fiveLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fiveLength}</Text>
-             <Text display="flex" alignItems="center">4 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(totalCountArr[0] == fourLength && 28) || (totalCountArr[1] == fourLength && 24) || (totalCountArr[2]== fourLength && 18) || (totalCountArr[3] == fourLength && 12 ) || ( totalCountArr[4] == fourLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fourLength}</Text>
-             <Text display="flex" alignItems="center">3 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(totalCountArr[0] == threeLength && 28) || (totalCountArr[1] == threeLength && 24) || (totalCountArr[2]  == threeLength && 18) || (totalCountArr[3] == threeLength && 12) || (totalCountArr[4] == threeLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{threeLength}</Text>
-             <Text display="flex" alignItems="center">2 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:`${(totalCountArr[0] == twoLength && 28) || (totalCountArr[1] == twoLength && 24) || (totalCountArr[2] == twoLength && 18) || (totalCountArr[3] == twoLength && 12) || (totalCountArr[4] == twoLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{twoLength}</Text>
-             <Text display="flex" alignItems="center">1 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:`${(totalCountArr[0] == oneLength && 28) || (totalCountArr[1] == oneLength && 24) || (totalCountArr[2] == oneLength && 18) || (totalCountArr[3] == oneLength && 12) || (totalCountArr[4] == oneLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{oneLength}</Text> 
+             <Text display="flex" alignItems="center">5 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(0 == fiveLength && 0.5) || (totalCountArr[0] == fiveLength && 28) || (totalCountArr[1] == fiveLength && 24) || (totalCountArr[2] == fiveLength && 18) || (totalCountArr[3] == fiveLength && 12) ||( totalCountArr[4] == fiveLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fiveLength}</Text>
+             <Text display="flex" alignItems="center">4 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(0 == fourLength && 0.5) || (totalCountArr[0] == fourLength && 28) || (totalCountArr[1] == fourLength && 24) || (totalCountArr[2]== fourLength && 18) || (totalCountArr[3] == fourLength && 12 ) || ( totalCountArr[4] == fourLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{fourLength}</Text>
+             <Text display="flex" alignItems="center">3 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#388e3c" ,width:`${(0 == threeLength && 0.5) || (totalCountArr[0] == threeLength && 28) || (totalCountArr[1] == threeLength && 24) || (totalCountArr[2]  == threeLength && 18) || (totalCountArr[3] == threeLength && 12) || (totalCountArr[4] == threeLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{threeLength}</Text>
+             <Text display="flex" alignItems="center">2 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:`${(0 == twoLength && 0.5) ||(totalCountArr[0] == twoLength && 28) || (totalCountArr[1] == twoLength && 24) || (totalCountArr[2] == twoLength && 18) || (totalCountArr[3] == twoLength && 12) || (totalCountArr[4] == twoLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{twoLength}</Text>
+             <Text display="flex" alignItems="center">1 <StarIcon fontSize="10px" ml="2px" mr="20px" /> <span style={{backgroundColor:"#ff6161" ,width:`${(0 == oneLength && 0.5) || (totalCountArr[0] == oneLength && 28) || (totalCountArr[1] == oneLength && 24) || (totalCountArr[2] == oneLength && 18) || (totalCountArr[3] == oneLength && 12) || (totalCountArr[4] == oneLength) && 5  || 1}vw`,height:"4px",borderRadius:"20px" , marginRight:"15px"}}></span>{oneLength}</Text> 
           
 
              </Box>
