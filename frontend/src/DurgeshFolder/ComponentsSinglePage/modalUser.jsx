@@ -5,7 +5,7 @@ function Modaluser({data}) {
     return (
       <Box>
         <Box position="absolute" left={{base:"180px", sm: "242px", md: "242px", lg: "242px" ,xl: "236px",'2xl': "240px",}} top={{base:"8px", sm: "15px", md: "15px", lg: "15px" ,xl: "15px",'2xl': "15px",}}  fontSize="24px" fontWeight={800} color="#ff6161"  cursor="pointer">
-        <Text  onClick={onOpen}>+{data.length-4}</Text>
+       {data.length > 4 &&  <Text  onClick={onOpen}>+{data.length-4}</Text> }
         </Box>
         <Modal  blockScrollOnMount={true} isOpen={isOpen} onClose={onClose} size={{base:"xs", sm: "sm", md: "md", lg: "md" ,xl: "md",'2xl': "md",}} >
           <ModalOverlay />
