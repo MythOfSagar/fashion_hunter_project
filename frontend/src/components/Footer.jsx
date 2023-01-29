@@ -32,14 +32,12 @@ const Footer = () => {
             gridTemplateRows={"auto"}
             gap={{ base: "2rem", md: "6rem" }}
           >
-            <Box>
+            {/* <Box>
               <Box marginBottom={"20px"}>
                 <Heading as={"h1"} fontFamily={"sans-serif"} fontSize={"25px"}>
-                  Subscribe to our awesome emails.
+                  Subscribe to emails
                 </Heading>
-                <Text color={"yellow.300"}>
-                  Get our latest offers and news straight in your inbox.
-                </Text>
+                
               </Box>
               <Box display={"flex"}>
                 <Input
@@ -58,23 +56,21 @@ const Footer = () => {
                   Subscribe
                 </Button>
               </Box>
-            </Box>
+            </Box> */}
             <Box>
               <Box marginBottom={"20px"}>
                 <Heading as={"h1"} fontFamily={"sans-serif"} fontSize={"25px"}>
                   Download our apps
                 </Heading>
-                <Text color={"yellow.300"}>
-                  Shop our products and offers on-the-go.
-                </Text>
               </Box>
-              <Box display={"flex"} justifyContent="center" gap={"20px"}>
+              <Box display={{ base: "block",md: "flex", lg: "flex" }}  justifyContent="center" gap={"20px"}>
                 <a
                   href="https://github.com/Sagar1079/fashion_hunter_project"
                   target={"_blank"}
                 >
                   <Button
                     colorScheme={"black"}
+                    margin={"auto"}
                     bgColor={"black"}
                     color={"white"}
                     py={"25px"}
@@ -100,6 +96,7 @@ const Footer = () => {
                   <Button
                     colorScheme={"black"}
                     bgColor={"black"}
+                    margin={"auto"}
                     color={"white"}
                     py={"25px"}
                     px={"15px"}
