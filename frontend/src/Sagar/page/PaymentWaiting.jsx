@@ -4,13 +4,16 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 
+
 const PaymentWaiting = () => {
 
     const navigate = useNavigate()
     const params = useParams()
     const [time, setTime] = useState(59)
-
+  
+    
     useEffect(() => {
+
         const interval = setInterval(() => {
             setTime((prev)=>prev-1)
             setTimeout(() => navigate("/paymentsuccess"), 6000)

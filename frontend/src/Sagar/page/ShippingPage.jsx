@@ -5,7 +5,7 @@ import PaymentFooter from '../components/PaymentFooter'
 import PaymentHeader from '../components/PaymentHeader'
 import { StarIcon,EditIcon, AddIcon  } from "@chakra-ui/icons"
 import { useEffect } from 'react'
-import { getLocalData } from '../../Utils/LocalStorage'
+import { getLocalData,saveLocalData } from '../../Utils/LocalStorage'
 
 const ShippingPage = () => {
 
@@ -28,7 +28,7 @@ const ShippingPage = () => {
         setFinal(data.reduce((acc,item)=>{return (item.realPrice * item.quantity)+ acc},0))
         setTotal(data.reduce((acc,item)=>{return (item.price * item.quantity) + acc},0))
 
-        
+        saveLocalData("user_ID",data[0].userID)
     }
     // console.log(cartData , "sagar")
     const toast = useToast()
@@ -104,7 +104,7 @@ const ShippingPage = () => {
     }
     useEffect(()=>{
         getData()
-       
+        
     },[])
 
     const initialRef = React.useRef(null)
@@ -218,7 +218,7 @@ const ShippingPage = () => {
             </Box>
             <PaymentBlock
             status={true}
-            disable={cartData.length===0}
+            disable={cartData.length===0 || shippingData.pincode.length<6}
             total={totalPrice}
             final={finalPrice}
             ></PaymentBlock>

@@ -1,6 +1,6 @@
 import axios from "axios"
 import { getLocalData } from "../../Utils/LocalStorage"
-import {GETCARTREQUEST ,GETCARTSUCCESS ,GETCARTFAILURE} from "./actionType" 
+import {GETCARTREQUEST,EMPTY_CART ,GETCARTSUCCESS ,GETCARTFAILURE} from "./actionType" 
 
 
 
@@ -58,4 +58,22 @@ const changeCartData = (id , payload)=>(dispatch)=>{
 
 }
 
-export {getCartData , sendCartData,deleteCartData,changeCartData }
+//empty Cart
+
+const emptyCart = (userID)=>(dispatch)=>{
+    dispatch({type:EMPTY_CART})
+  return axios.delete(`https://handsome-blue-crab.cyclic.app/cart/emptycart/${userID}`,{
+    headers:{
+        "Authorization":getLocalData("token")
+    },
+    
+})
+
+}
+
+
+
+export {getCartData,emptyCart, sendCartData,deleteCartData,changeCartData }
+
+
+
