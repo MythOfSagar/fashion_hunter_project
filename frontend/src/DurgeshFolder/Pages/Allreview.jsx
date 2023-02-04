@@ -99,7 +99,7 @@ useEffect(()=>{
 //  Calculating everything 
 var answer  = 0 
 const arrayReview = []
-const reviewTitleUser = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+const reviewTitleUser = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 const totalCountArr = []
 // count of review --------------------------
 var fiveLength = 0 
@@ -192,11 +192,11 @@ const handlePageChange = ()=>{
     setDisableNext(false)
   },300)
   
-  // setBack((prev)=>prev+8)
-  // setFront((prev)=>prev+8)
+  setBack((prev)=>prev+8)
+  setFront((prev)=>prev+8)
 
 
-  console.log(changeNum ,"changeNum")
+  
   
 }
   
@@ -214,21 +214,30 @@ const handlePagePrevious = ()=>{
     setDisablePre(false)
   },300)
 
-  // setBack((prev)=>prev-8)
-  // setFront((prev)=>prev-8)
+  setBack((prev)=>prev-8)
+  setFront((prev)=>prev-8)
 
-  console.log(changeNum ,"changeNum")
+  
 }
 
 const handlePaginationCount = (num)=>{
-  // if(num == 1){
-  //   setBack((prev)=>prev+8)
-  //  setFront((prev)=>prev+8)
-  // }
-  console.log(changePage , "change" , num)
+   let sum = Math.abs(changePage-num)
+
+   for(var i=0 ; i<sum ;i++){
+      if(changePage < num){
+        setBack((prev)=>prev+8)
+         setFront((prev)=>prev+8)
+      }
+      else if(changePage > num){
+         setBack((prev)=>prev-8)
+        setFront((prev)=>prev-8)
+      }
+
+   }
+   console.log(back , front ,"djjd")
   setChangePage(num)
 
-  console.log(num ,"changeNum")
+ 
 
 
 }
