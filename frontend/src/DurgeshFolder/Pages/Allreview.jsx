@@ -63,7 +63,7 @@ const pageLoad = useRef()
 // FOR PAGINATION AND SHOWING THE DATA ---------*******--------
   
 const getDataReview = (num)=>{
-  axios.get(`https://handsome-blue-crab.cyclic.app/review/add${num}?limit=100`)
+  axios.get(`https://handsome-blue-crab.cyclic.app/review/add${num}?limit=500`)
   .then((res)=> setreviewData(res.data))
   .catch((err)=>console.log(err ,"allReview"))
 }
@@ -90,16 +90,16 @@ useEffect(()=>{
  
 //  for *****review data -----
  useEffect(()=>{
-   if(reviewData.length == 0){
+ 
     getDataReview(path)
-   }
- },[])
+   
+ },[back , front])
 
 
 //  Calculating everything 
 var answer  = 0 
 const arrayReview = []
-const reviewTitleUser = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+const reviewTitleUser = []
 const totalCountArr = []
 // count of review --------------------------
 var fiveLength = 0 
@@ -181,6 +181,7 @@ for(var i=0 ; i<sum.length ; i++){
 
 const handlePageChange = ()=>{
   setChangePage(changePage+1)
+  // handlePaginationCount(changePage+1)
   // console.log("hd" , Math.ceil(reviewTitleUser.length/8))
   if(5 < Math.ceil(reviewTitleUser.length/8) && changePage == 5 ){
     setChangeNum(5)
@@ -197,11 +198,13 @@ const handlePageChange = ()=>{
 
 
   
-  
+  // console.log(back , front ,"front")
 }
+console.log(back , front ,"front")
   
 const handlePagePrevious = ()=>{
   setChangePage(changePage-1)
+  // handlePaginationCount(changePage-1)
   if(5 < Math.ceil(reviewTitleUser.length/8) && changePage == 5 ){
     // console.log(changePage ,"changePage   ---------------------------")
     setChangeNum(1)
@@ -217,7 +220,8 @@ const handlePagePrevious = ()=>{
   setBack((prev)=>prev-8)
   setFront((prev)=>prev-8)
 
-  
+  // console.log(back , front ,"back")
+ 
 }
 
 const handlePaginationCount = (num)=>{
@@ -236,6 +240,7 @@ const handlePaginationCount = (num)=>{
    }
    console.log(back , front ,"djjd")
   setChangePage(num)
+ 
 
  
 
@@ -325,7 +330,8 @@ const handlePaginationCount = (num)=>{
          {/* FOR RECENT -----***** */}
             {reviewData?.length > 0 && filterReview == "recent" && reviewData?.map((item , i)=>{
           // && i < front  && i > back
-          if(item?.review >=1 && item?.title.length > 1  ){
+          
+          if(item?.review >=1 && item?.title.length > 1 && i < front && i >= back  ){
           return (
             <Box  ml="20px" mb="15px" key={i}>
 
