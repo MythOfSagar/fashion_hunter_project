@@ -377,7 +377,7 @@ const handlePaginationCount = (num)=>{
 {reviewTitleUser?.length > 0 && filterReview == "positive" &&  reviewTitleUser?.sort((a,b)=>b[0]-a[0]).map((item , i)=>{
               //  console.log(item[1]?.length)
   
-          if(item[0] >=1 && item[1]?.length > 1 ){
+          if(item[0] >=1 && item[1]?.length > 1 && i < front && i >= back ){
            
           return (
             <Box  ml="20px" mb="15px" key={i}>
@@ -424,7 +424,7 @@ const handlePaginationCount = (num)=>{
 {reviewTitleUser?.length > 0 && filterReview == "negative" &&  reviewTitleUser?.sort((a,b)=>a[0]-b[0]).map((item , i)=>{
               //  console.log(item[1]?.length)
   
-          if(item[0] >=1 && item[1]?.length > 1 ){
+          if(item[0] >=1 && item[1]?.length > 1 && i < front && i >= back){
            
           return (
             <Box  ml="20px" mb="15px" key={i}>
