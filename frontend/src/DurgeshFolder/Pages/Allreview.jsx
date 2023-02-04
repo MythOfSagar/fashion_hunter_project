@@ -24,6 +24,11 @@ const Allreview = () => {
 const [disablePre , setDisablePre] = useState(false)
 const [reviewData , setreviewData] = useState([])
 
+//  Splicing for pagination -------------- 
+const [back , setBack]=useState(0)
+const [front , setFront]=useState(8)
+// splice end ---------
+
 const pageLoad = useRef()
 
 
@@ -58,7 +63,7 @@ const pageLoad = useRef()
 // FOR PAGINATION AND SHOWING THE DATA ---------*******--------
   
 const getDataReview = (num)=>{
-  axios.get(`https://handsome-blue-crab.cyclic.app/review/add${num}`)
+  axios.get(`https://handsome-blue-crab.cyclic.app/review/add${num}?limit=100`)
   .then((res)=> setreviewData(res.data))
   .catch((err)=>console.log(err ,"allReview"))
 }
@@ -94,7 +99,7 @@ useEffect(()=>{
 //  Calculating everything 
 var answer  = 0 
 const arrayReview = []
-const reviewTitleUser = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+const reviewTitleUser = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 const totalCountArr = []
 // count of review --------------------------
 var fiveLength = 0 
@@ -187,6 +192,12 @@ const handlePageChange = ()=>{
     setDisableNext(false)
   },300)
   
+  // setBack((prev)=>prev+8)
+  // setFront((prev)=>prev+8)
+
+
+  console.log(changeNum ,"changeNum")
+  
 }
   
 const handlePagePrevious = ()=>{
@@ -202,13 +213,28 @@ const handlePagePrevious = ()=>{
   pageLoad.current = setTimeout(()=>{
     setDisablePre(false)
   },300)
+
+  // setBack((prev)=>prev-8)
+  // setFront((prev)=>prev-8)
+
+  console.log(changeNum ,"changeNum")
+}
+
+const handlePaginationCount = (num)=>{
+  // if(num == 1){
+  //   setBack((prev)=>prev+8)
+  //  setFront((prev)=>prev+8)
+  // }
+  console.log(changePage , "change" , num)
+  setChangePage(num)
+
+  console.log(num ,"changeNum")
+
+
 }
 
 
 
-
-
-  
 
 
   return (
@@ -289,8 +315,8 @@ const handlePagePrevious = ()=>{
           
          {/* FOR RECENT -----***** */}
             {reviewData?.length > 0 && filterReview == "recent" && reviewData?.map((item , i)=>{
-          
-          if(item?.review >=1 && item?.title.length > 1 ){
+          // && i < front  && i > back
+          if(item?.review >=1 && item?.title.length > 1  ){
           return (
             <Box  ml="20px" mb="15px" key={i}>
 
@@ -430,7 +456,7 @@ const handlePagePrevious = ()=>{
        {/*  End review */}
                 
                 {/* PAGINATION STARTS FROM HERE -----------*******----- */}
-                 <Pagination disableNext={disableNext} disablePre={disablePre} changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={8} />
+                 <Pagination handlePaginationCount={handlePaginationCount} disableNext={disableNext} disablePre={disablePre} changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={8} />
             
              </Box>
           
