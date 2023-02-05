@@ -194,9 +194,9 @@ const PaginationFunction = (queryParams)=>{
 
 
          
-          <Box pt="50px" pb="50px">
+          {productArrayLaptop.length > 0 && <Box pt="50px" pb="50px">
           <Pagination disableNext={disableNext} disablePre={disablePre} changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={9}  />
-          </Box>
+          </Box>}
        </Box>
     {/* Display product data ends here ---------------------------------- */}
 
