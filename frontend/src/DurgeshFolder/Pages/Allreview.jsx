@@ -4,7 +4,7 @@ import axios from 'axios'
 import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import { getDataProduct } from '../../Redux/Laptop_reducer/action'
@@ -291,7 +291,7 @@ const handlePaginationCount = (num)=>{
 
            <Box border="2px solid #f0f0f0" mt={{base:"-20px", sm: "-20px", md: "0", lg: "0",xl: "0",'2xl': "0"}} width={{base:"", sm: "", md: "68%", lg: "60%",xl: "60%",'2xl': "60%"}} height="auto" mb="30px" >
             <Box p="20px" borderBottom="1px solid #f0f0f0" display="flex" justifyContent="space-between">
-             <Heading fontWeight={500} fontSize="20px" textAlign="left">{singleData?.title}</Heading>
+            <Link to={`/mens/${path}`}> <Heading fontWeight={500} fontSize="20px" textAlign="left">{singleData?.title}</Heading> </Link>
             {/* Selects tags -------------------------- */}
              <Box >
             
