@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react' 
-import { Box, Heading , Text,Image, Button, SimpleGrid } from '@chakra-ui/react'
+import { Box, Heading , Text,Image, Button, SimpleGrid, useToast } from '@chakra-ui/react'
 import { CheckCircleIcon, ChevronRightIcon, StarIcon } from '@chakra-ui/icons';
 import "./recent.css"
 import { Modaluser } from './modalUser';
@@ -7,7 +7,8 @@ import { Modelrating } from './modelRating';
 import { AiFillDislike, AiFillLike } from 'react-icons/ai';
 import axios from 'axios';
 import { Modelreview } from './modelReview';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { getLocalData } from '../../Utils/LocalStorage';
 
 const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , handleStarRating ,ratingLength}) => {
  
@@ -71,8 +72,19 @@ let arrDataReview = []
  }
 
 
+ const toast = useToast()
+ const navigate = useNavigate()
 
-
+ const handleLogin=()=>{
+  if (!getLocalData("token")){
+    navigate("/login")
+    toast({
+      title: `You are not login, login first`,
+      status: 'error',
+      isClosable: true,
+    })
+  }
+}
 
 
 
@@ -103,9 +115,9 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
 {/*  Rate here -----------------AND GIVE REVIEW ------------ */}
 <Box className='ratingReviewBox' textAlign="left" ml="20px" mt="10px" mb="35px">
   {/*  Model for rating */}
-  <Modelrating handleStarRating={handleStarRating} />
+  <Modelrating handleStarRating={handleStarRating} handleLogin={handleLogin}/>
   {/* Model for review */}
-  <Modelreview handleSubmit={handleSubmit}/>
+  <Modelreview handleSubmit={handleSubmit} handleLogin={handleLogin}/>
 </Box>
 
 

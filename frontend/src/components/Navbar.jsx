@@ -19,6 +19,7 @@ const Navbar = () => {
   const [height,width]=useWindowsize();
   const navigate = useNavigate()
   const toast = useToast()
+  
   const handleLogin=()=>{
     if (!getLocalData("token")){
       navigate("/login")

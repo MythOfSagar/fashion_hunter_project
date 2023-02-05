@@ -2,7 +2,7 @@ import { StarIcon } from '@chakra-ui/icons'
 import {Modal,ModalOverlay,ModalContent,ModalHeader,ModalFooter,ModalBody,ModalCloseButton, Button, useDisclosure , Text, Box , Image, SimpleGrid} from '@chakra-ui/react'
 import { useState } from 'react'
 
-function Modelrating({handleStarRating}) {
+function Modelrating({handleStarRating ,handleLogin}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [star , setStar] = useState(0)
 
@@ -20,9 +20,15 @@ function Modelrating({handleStarRating}) {
     setStar(0)
   }
 
+//  For opening Button ---------
+  const handleOpenButton = ()=>{
+    onOpen()
+    handleLogin()
+  }
+
     return (
       <Box >
-         <Button  colorScheme='#2874f0' variant="solid" color="#ffffff" borderRadius="4px" mr="10px" mt="10px" backgroundColor="#2874f0" onClick={onOpen}>Rate Product</Button>
+         <Button  colorScheme='#2874f0' variant="solid" color="#ffffff" borderRadius="4px" mr="10px" mt="10px" backgroundColor="#2874f0" onClick={handleOpenButton}>Rate Product</Button>
         <Modal  blockScrollOnMount={true} isOpen={isOpen} onClose={()=>handleChange()} size={{base:"xs", sm: "sm", md: "md", lg: "md" ,xl: "md",'2xl': "md",}}>
           <ModalOverlay />
           <ModalContent>
