@@ -18,8 +18,6 @@ import { Pagination } from '../ComponentsReview/Pagination'
 import Footer from '../../components/Footer'
 
 
-
-
 const ProductPage = () => {
  
 const [paginationData , setPaginationData] = useState([])
@@ -35,6 +33,7 @@ const pageLoad = useRef()
 // sorting and filtering part ------------------------------------------
 const location = useLocation()
 const [searchParams] = useSearchParams()
+const dispatch = useDispatch() 
 
 
 
@@ -45,7 +44,7 @@ const PaginationFunction = (queryParams)=>{
   
   
 }
-   
+
 
   //  fetch product data is here ---------------------------------------------------------
   const {isLaptopError ,isLaptopLoading,productArrayLaptop} = useSelector((state) => {
@@ -56,7 +55,6 @@ const PaginationFunction = (queryParams)=>{
     }
 })   
 
-  const dispatch = useDispatch() 
   
   useEffect(()=>{
     if(location || productArrayLaptop.length === 0  ){
