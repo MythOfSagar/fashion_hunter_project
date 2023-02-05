@@ -1,9 +1,8 @@
-import { Box, Heading, Text, Input, Button, Image } from "@chakra-ui/react";
+import { Box, Heading, Text, Button, Image } from "@chakra-ui/react";
 import React from "react";
-import { BsApple, BsTelephoneFill } from "react-icons/bs";
+import { BsApple } from "react-icons/bs";
 import { FaGooglePlay, FaFacebookF } from "react-icons/fa";
-import { MdHelpCenter } from "react-icons/md";
-import { HiOutlineMail } from "react-icons/hi";
+
 import { AiOutlineTwitter, AiOutlineInstagram } from "react-icons/ai";
 
 
@@ -647,93 +646,24 @@ const Footer = () => {
           </Box>
 
           <Box
+          
             width={"100%"}
             py={{ base: "15px", md: "25px" }}
             borderBottom={"1px solid rgb(236, 237, 235)"}
           >
             <Box
-              display={"flex"}
+              display={{ base: "block", md: "flex", lg: "flex" }}
               justifyContent={"space-between"}
               alignItems={"center"}
+             
             >
+              
               <Box
-                display={"flex"}
-                flexDirection={{ base: "column", lg: "row" }}
-                justifyContent={"space-between"}
-                alignItems={"center"}
-                gap={{ base: "20px", md: "50px" }}
-              >
-                <Box
-                  display={"flex"}
-                  justifyContent={"center"}
-                  gap={"10px"}
-                  cursor={"pointer"}
-                >
-                  <Box
-                    display={"flex"}
-                    alignItems={"center"}
-                    justifyContent={"center"}
-                    padding={"15px"}
-                    border={"1px solid rgb(236, 237, 235)"}
-                    borderRadius={"50%"}
-                  >
-                    <BsTelephoneFill size={20} />
-                  </Box>
-                  <Box>
-                    <Text color={"yellow.300"}>Talk to us</Text>
-                    <Text>1800-123-1555</Text>
-                  </Box>
-                </Box>
-
-                <Box
-                  display={"flex"}
-                  justifyContent={"center"}
-                  gap={"10px"}
-                  cursor={"pointer"}
-                >
-                  <Box
-                    display={"flex"}
-                    alignItems={"center"}
-                    justifyContent={"center"}
-                    padding={"15px"}
-                    border={"1px solid rgb(236, 237, 235)"}
-                    borderRadius={"50%"}
-                  >
-                    <MdHelpCenter size={20} />
-                  </Box>
-                  <Box>
-                    <Text color={"yellow.300"}>Helpcentre</Text>
-                    <Text>help.fashionhunter.com</Text>
-                  </Box>
-                </Box>
-
-                <Box
-                  display={"flex"}
-                  justifyContent={"center"}
-                  gap={"10px"}
-                  cursor={"pointer"}
-                >
-                  <Box
-                    display={"flex"}
-                    alignItems={"center"}
-                    justifyContent={"center"}
-                    padding={"15px"}
-                    border={"1px solid rgb(236, 237, 235)"}
-                    borderRadius={"50%"}
-                  >
-                    <HiOutlineMail size={20} />
-                  </Box>
-                  <Box>
-                    <Text color={"yellow.300"}>Write to us</Text>
-                    <Text>help@fashionhunter.com</Text>
-                  </Box>
-                </Box>
-              </Box>
-              <Box
-                display={"flex"}
+                display="flex"
                 justifyContent={"center"}
                 alignItems={"center"}
                 gap={"20px"}
+                margin={"auto"}
               >
                 <a
                   href="https://github.com/Sagar1079/fashion_hunter_project"

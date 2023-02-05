@@ -2,9 +2,8 @@ import React from "react";
 import useWindowsize from "../Hook/HandW.hook";
 import "./Navbar.css";
 import DraweExample from "./dwrawer"
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import {FaHeart} from "react-icons/fa"
-import { BsFillHandbagFill, BsHandbag } from "react-icons/bs";
+import { BsFillHandbagFill} from "react-icons/bs";
 import Action from "./action"
 import { Link, useNavigate } from "react-router-dom";
 import { InputGroup, InputLeftElement , Input, useToast, Box } from "@chakra-ui/react";
@@ -21,7 +20,7 @@ const Navbar = () => {
   const cartArrayData = useSelector(state=>state.CartReducer.cartArrayData)
   const wishListArray = useSelector(state=>state.WishlistReducer.wishListArray)
   
-  const [height,width]=useWindowsize();
+  const [width]=useWindowsize();
   const navigate = useNavigate()
   const toast = useToast()
 
@@ -81,7 +80,7 @@ const Navbar = () => {
             {/*  Wishlist -------------durgesh */}
             <Box className="icon-div" position="relative">
              <Link to="/wishlist"> <FaHeart /> </Link>
-          { (wishListArray[0] != "P" && wishListArray.length != 0) &&  <Box className="wishListClass" position="absolute" left="22px" top="-2px" color="#ffffff" backgroundColor="#ff6161" width="23px" height="25px" fontWeight="700" borderRadius="50%"  fontSize="18px" border="1px solid #ffffff">{wishListArray.length}</Box> }
+          { (wishListArray[0] !== "P" && wishListArray.length !== 0) &&  <Box className="wishListClass" position="absolute" left="22px" top="-2px" color="#ffffff" backgroundColor="#ff6161" width="23px" height="25px" fontWeight="700" borderRadius="50%"  fontSize="18px" border="1px solid #ffffff">{wishListArray.length}</Box> }
 
 
             </Box>
@@ -90,7 +89,7 @@ const Navbar = () => {
             <Box className="icon-div" position="relative" > 
             <Link to="/cart"> <Box><BsFillHandbagFill /></Box></Link>
                
-            {(cartArrayData[0] != "P" && cartArrayData.length != 0) && <Box className="manoj" position="absolute" left="22px" top="-2px" color="#ffffff" backgroundColor="#ff6161" width="23px" height="25px" fontWeight="700" borderRadius="50%"  fontSize="18px" border="1px solid #ffffff" >{ cartArrayData.length }</Box> }
+            {(cartArrayData[0] !== "P" && cartArrayData.length !== 0) && <Box className="manoj" position="absolute" left="22px" top="-2px" color="#ffffff" backgroundColor="#ff6161" width="23px" height="25px" fontWeight="700" borderRadius="50%"  fontSize="18px" border="1px solid #ffffff" >{ cartArrayData.length }</Box> }
             </Box>
             {/* main end ------------------- */}
           </div>

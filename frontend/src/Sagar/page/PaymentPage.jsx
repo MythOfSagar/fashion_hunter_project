@@ -1,9 +1,8 @@
-import { Box, Image, Button, FormControl, FormLabel, Input, useToast, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useDisclosure, Heading } from '@chakra-ui/react'
+import { Box,  Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import PaymentBlock from '../components/PaymentBlock'
 import PaymentFooter from '../components/PaymentFooter'
 import PaymentHeader from '../components/PaymentHeader'
-import { StarIcon, EditIcon, AddIcon } from "@chakra-ui/icons"
 import { useEffect } from 'react'
 import COD from '../components/COD'
 import CardPayment from '../components/CardPayment'
