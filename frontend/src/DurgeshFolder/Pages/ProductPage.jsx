@@ -16,6 +16,8 @@ import {ChevronLeftIcon, ChevronRightIcon} from "@chakra-ui/icons"
 import Navbar from "../../components/Navbar"
 import { Pagination } from '../ComponentsReview/Pagination'
 import Footer from '../../components/Footer'
+import { getCartData } from '../../Redux/Cart_reducer/action'
+import { getWishListData } from '../../Redux/Wishlist_reducer/action'
 
 
 const ProductPage = () => {
@@ -72,6 +74,8 @@ const PaginationFunction = (queryParams)=>{
       PaginationFunction(getLaptopParams)
 
       dispatch(getDataProduct(getLaptopParams,changePage))
+      // dispatch(getCartData)
+      // dispatch(getWishListData)
     }
   },[ location.search,changePage])
 
