@@ -13,6 +13,7 @@ import { getLocalData } from "../Utils/LocalStorage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCartData } from "../Redux/Cart_reducer/action"; 
+import { getWishListData } from "../Redux/Wishlist_reducer/action";
 
 
 const Navbar = () => {
@@ -38,6 +39,7 @@ const Navbar = () => {
 
   useEffect(()=>{
     dispatch(getCartData)
+    dispatch(getWishListData)
 
   },[])
 
