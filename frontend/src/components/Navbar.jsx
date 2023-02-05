@@ -37,11 +37,11 @@ const Navbar = () => {
   }
 
 
-  // useEffect(()=>{
-  //   dispatch(getCartData)
-  //   dispatch(getWishListData)
+  useEffect(()=>{
+    dispatch(getCartData)
+    dispatch(getWishListData)
 
-  // },[])
+  },[])
 
   return (
     <div id="navbar">
