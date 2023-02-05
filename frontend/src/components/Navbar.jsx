@@ -35,7 +35,7 @@ const Navbar = () => {
       })
     }
   }
-  console.log(cartArrayData[0] , "cartArrayData")
+
 
   useEffect(()=>{
     dispatch(getCartData)
@@ -81,7 +81,7 @@ const Navbar = () => {
             {/*  Wishlist -------------durgesh */}
             <Box className="icon-div" position="relative">
              <Link to="/wishlist"> <FaHeart /> </Link>
-             <Box className="wishListClass" position="absolute" left="22px" top="-2px" color="#ffffff" backgroundColor="#ff6161" width="23px" height="25px" fontWeight="700" borderRadius="50%"  fontSize="18px" border="1px solid #ffffff" >10</Box>
+          { (wishListArray[0] != "P" && wishListArray.length != 0) &&  <Box className="wishListClass" position="absolute" left="22px" top="-2px" color="#ffffff" backgroundColor="#ff6161" width="23px" height="25px" fontWeight="700" borderRadius="50%"  fontSize="18px" border="1px solid #ffffff">{wishListArray.length}</Box> }
 
 
             </Box>
