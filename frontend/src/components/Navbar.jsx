@@ -2,7 +2,8 @@ import React from "react";
 import useWindowsize from "../Hook/HandW.hook";
 import "./Navbar.css";
 import DraweExample from "./dwrawer"
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import {FaHeart} from "react-icons/fa"
 import { BsFillHandbagFill, BsHandbag } from "react-icons/bs";
 import Action from "./action"
 import { Link, useNavigate } from "react-router-dom";
@@ -11,11 +12,14 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { getLocalData } from "../Utils/LocalStorage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getCartData } from "../Redux/Cart_reducer/action";
+import { getCartData } from "../Redux/Cart_reducer/action"; 
+
 
 const Navbar = () => {
   const dispatch = useDispatch()
   const cartArrayData = useSelector(state=>state.CartReducer.cartArrayData)
+  const wishListArray = useSelector(state=>state.WishlistReducer.wishListArray)
+  
   const [height,width]=useWindowsize();
   const navigate = useNavigate()
   const toast = useToast()
@@ -34,6 +38,7 @@ const Navbar = () => {
 
   useEffect(()=>{
     dispatch(getCartData)
+
   },[])
 
   return (
@@ -71,10 +76,15 @@ const Navbar = () => {
   {/*  Search bar end ----------------------- */}
 
           <div className="icon" onClick={handleLogin}>
-            <div className="icon-div">
-             <Link to="/wishlist"> <AiOutlineHeart /> </Link>
-            </div>
-            {/*  Main ------------- */}
+            {/*  Wishlist -------------durgesh */}
+            <Box className="icon-div" position="relative">
+             <Link to="/wishlist"> <FaHeart /> </Link>
+             <Box className="wishListClass" position="absolute" left="22px" top="-2px" color="#ffffff" backgroundColor="#ff6161" width="23px" height="25px" fontWeight="700" borderRadius="50%"  fontSize="18px" border="1px solid #ffffff" >10</Box>
+
+
+            </Box>
+
+            {/*  cart ------------- durgesh ----*/}
             <Box className="icon-div" position="relative" > 
             <Link to="/cart"> <Box><BsFillHandbagFill /></Box></Link>
                
