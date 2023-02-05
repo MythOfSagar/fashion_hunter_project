@@ -78,7 +78,7 @@ const Navbar = () => {
             <Box className="icon-div" position="relative" > 
             <Link to="/cart"> <Box><BsFillHandbagFill /></Box></Link>
                
-            {cartArrayData[0] != "P" && <Box className="manoj" position="absolute" left="22px" top="-2px" color="#ffffff" backgroundColor="#ff6161" width="23px" height="25px" fontWeight="700" borderRadius="50%"  fontSize="18px" border="1px solid #ffffff" >{ cartArrayData.length}</Box> }
+            {(cartArrayData[0] != "P" && cartArrayData.length != 0) && <Box className="manoj" position="absolute" left="22px" top="-2px" color="#ffffff" backgroundColor="#ff6161" width="23px" height="25px" fontWeight="700" borderRadius="50%"  fontSize="18px" border="1px solid #ffffff" >{ cartArrayData.length }</Box> }
             </Box>
             {/* main end ------------------- */}
           </div>
