@@ -33,7 +33,7 @@ const reducer = (state , action)=>{
 //  Reducer and initial State are up above -------------------------------------
 
 
-function Modelreview({handleSubmit}) {
+function Modelreview({handleSubmit ,handleLogin}) {
   const [state , dispatch] = useReducer(reducer , initialState)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [star , setStar] = useState(0)  
@@ -59,11 +59,15 @@ function Modelreview({handleSubmit}) {
 
         // console.log(state)
       } 
-
+    //  For chexking user is login or not
+      const handleOpenButton = ()=>{
+        onOpen()
+        handleLogin()
+      }
 
     return (
       <>
-        <Button colorScheme='#2874f0' borderRadius="4px"  mt="10px" backgroundColor="#2874f0" onClick={onOpen}>Write a review</Button>
+        <Button colorScheme='#2874f0' borderRadius="4px"  mt="10px" backgroundColor="#2874f0" onClick={handleOpenButton}>Write a review</Button>
   
         <Modal isOpen={isOpen} onClose={()=>handleChange()} size={{base:"xs", sm: "sm", md: "md", lg: "md" ,xl: "md",'2xl': "md",}} >
           <ModalOverlay />
