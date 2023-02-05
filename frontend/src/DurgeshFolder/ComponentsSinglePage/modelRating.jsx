@@ -49,7 +49,7 @@ function Modelrating({handleStarRating}) {
             <Button  mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button variant='solid' colorScheme='#2874f0' backgroundColor="#2874f0" onClick={handleRating} disabled={star == 0} >Rate</Button>
+            <Button variant='solid' colorScheme='#2874f0' backgroundColor="#2874f0" onClick={handleRating} isDisabled={star == 0} >Rate</Button>
           </ModalFooter>
 
           </ModalContent>

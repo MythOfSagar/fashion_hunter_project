@@ -36,13 +36,12 @@ const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , hand
   // console.log("dataImages" , dataImages)
      
   const getData = [
-    {
-      feeling:"Fabric Quality" } ,
-    {  
-      feeling:"Comfort" ,
+  
+      {  
+      feeling:"Value" ,
       } ,
       {
-        feeling:"Style" ,
+        feeling:"Delievery" ,
       } ,
       { 
         feeling:"Comfort" ,

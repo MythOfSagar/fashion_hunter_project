@@ -102,7 +102,7 @@ function Modelreview({handleSubmit}) {
               <Button  mr={3} onClick={onClose}>
                 Close
               </Button>
-              <Button variant='solid' disabled={state.review == 0 || state.title == "" } colorScheme='#2874f0' backgroundColor="#2874f0" onClick={sendReview} >Send</Button>
+              <Button variant='solid' isDisabled={state.review == 0 || state.title == "" } colorScheme='#2874f0' backgroundColor="#2874f0" onClick={sendReview} >Send</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
