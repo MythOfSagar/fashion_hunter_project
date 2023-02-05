@@ -470,7 +470,7 @@ const handlePaginationCount = (num)=>{
        {/*  End review */}
                 
                 {/* PAGINATION STARTS FROM HERE -----------*******----- */}
-                 <Pagination handlePaginationCount={handlePaginationCount} disableNext={disableNext} disablePre={disablePre} changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={8} />
+                {reviewData?.length > 0 && <Pagination handlePaginationCount={handlePaginationCount} disableNext={disableNext} disablePre={disablePre} changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={8} /> }
             
              </Box>
           
