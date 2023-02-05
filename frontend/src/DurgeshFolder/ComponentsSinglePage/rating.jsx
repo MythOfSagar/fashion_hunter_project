@@ -219,7 +219,7 @@ style={{display:"flex" ,alignItems:"center" ,justifyContent:"space-evenly"}}>
             
         })}
        
-     <Link to="reviews"> <Text color="#418ef3" cursor="pointer" textAlign="left" ml="22px" fontWeight="500" fontSize="18px" mb="10px" >See All {arrayReview.length} reviews <ChevronRightIcon fontSize="24px" /> </Text></Link>    
+     {arrayReview.length > 3 && <Link to="reviews"> <Text color="#418ef3" cursor="pointer" textAlign="left" ml="22px" fontWeight="500" fontSize="18px" mb="10px" >See All {arrayReview.length} reviews <ChevronRightIcon fontSize="24px" /> </Text></Link>  }  
             
 
       

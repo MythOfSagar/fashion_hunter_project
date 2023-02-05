@@ -250,7 +250,6 @@ const handlePaginationCount = (num)=>{
 
 
 
-
   return (
     <Box>
         <Navbar />
