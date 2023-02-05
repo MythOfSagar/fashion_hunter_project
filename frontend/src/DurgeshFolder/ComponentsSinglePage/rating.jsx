@@ -36,7 +36,6 @@ const Rating = ({num ,answerRating ,reviewData ,handleSubmit ,arrayReview , hand
   // console.log("dataImages" , dataImages)
      
   const getData = [
-  
       {  
       feeling:"Value" ,
       } ,
