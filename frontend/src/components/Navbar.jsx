@@ -57,7 +57,7 @@ const Navbar = () => {
       <div id="navbar-right">
         <div id="right-upper">
           <p id="ru">Customer Care</p>
-          <button id="navbar-button">Visit AJIOLUXE</button>
+          <button id="navbar-button">Visit Fashion</button>
           <Action />
 
         </div>
