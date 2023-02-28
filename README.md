@@ -43,4 +43,8 @@ Cart page
 
 Rating & Review page
 
-![rating review page](https://user-images.githubusercontent.com/103739534/213977584-0fbafd79-7b1d-422e-8de5-50d2c8b11d5f.png) 
+![rating review page](https://github.com/Durgesh9871/ReadmeImages/blob/main/Fashion_Hunter/Screenshot%20(118).png?raw=true) 
+
+Review page
+
+![review page](https://github.com/Durgesh9871/ReadmeImages/blob/main/Fashion_Hunter/Screenshot%20(117).png?raw=true) 
