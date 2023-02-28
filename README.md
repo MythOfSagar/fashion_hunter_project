@@ -40,3 +40,7 @@ Product page
 Cart page
 
 ![cart page](https://user-images.githubusercontent.com/103739534/213977584-0fbafd79-7b1d-422e-8de5-50d2c8b11d5f.png) 
+
+Rating & Review page
+
+![rating review page](https://user-images.githubusercontent.com/103739534/213977584-0fbafd79-7b1d-422e-8de5-50d2c8b11d5f.png) 
