@@ -1,4 +1,5 @@
 import axios from "axios"
+import { serverUrl } from "../../App"
 import { getLocalData } from "../../Utils/LocalStorage"
 import {GETCARTREQUEST,EMPTY_CART ,GETCARTSUCCESS ,GETCARTFAILURE} from "./actionType" 
 
@@ -7,7 +8,7 @@ import {GETCARTREQUEST,EMPTY_CART ,GETCARTSUCCESS ,GETCARTFAILURE} from "./actio
 
 const getCartData = (dispatch)=>{
     dispatch({type:GETCARTREQUEST})
-    return axios.get('https://handsome-blue-crab.cyclic.app/cart',{
+    return axios.get(`${serverUrl}/cart`,{
         headers:{
             "Authorization":getLocalData("token")
         },
@@ -21,7 +22,7 @@ const getCartData = (dispatch)=>{
 //  Post --------------------------------------------
 const sendCartData = (payload)=>(dispatch)=>{
     dispatch({type:"POSTCARTREQUEST"})
-    return axios.post('https://handsome-blue-crab.cyclic.app/cart/add',payload, {
+    return axios.post(`${serverUrl}/cart/add`,payload, {
         headers:{
             "Authorization":getLocalData("token")
         },
@@ -34,7 +35,7 @@ const sendCartData = (payload)=>(dispatch)=>{
 //  delete req --------------------------------------
 const deleteCartData = (id)=>(dispatch)=>{
     dispatch({type:"DELETECARTREQUEST"})
-  return axios.delete(`https://handsome-blue-crab.cyclic.app/cart/delete/${id}`,{
+  return axios.delete(`${serverUrl}/cart/delete/${id}`,{
     headers:{
         "Authorization":getLocalData("token")
     },
@@ -48,7 +49,7 @@ const deleteCartData = (id)=>(dispatch)=>{
 const changeCartData = (id , payload)=>(dispatch)=>{
    
     dispatch({type:"PATCH_CART_REQUEST"})
-  return axios.patch(`https://handsome-blue-crab.cyclic.app/cart/update/${id}`,payload , {
+  return axios.patch(`${serverUrl}/cart/update/${id}`,payload , {
     headers:{
         "Authorization":getLocalData("token")
     },
@@ -62,7 +63,7 @@ const changeCartData = (id , payload)=>(dispatch)=>{
 
 const emptyCart = (userID)=>(dispatch)=>{
     dispatch({type:EMPTY_CART})
-  return axios.delete(`https://handsome-blue-crab.cyclic.app/cart/emptycart/${userID}`,{
+  return axios.delete(`${serverUrl}/cart/emptycart/${userID}`,{
     headers:{
         "Authorization":getLocalData("token")
     },

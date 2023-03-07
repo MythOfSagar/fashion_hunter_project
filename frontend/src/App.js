@@ -21,3 +21,5 @@ function App() {
 }
 
 export default App;
+
+export const serverUrl='https://fashion-hunter.onrender.com'

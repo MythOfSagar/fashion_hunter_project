@@ -1,6 +1,6 @@
 import { Box, Button, Input, Select, Text,useToast } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const CardPayment = () => {
     const years = new Array(25).fill(2023)

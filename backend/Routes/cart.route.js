@@ -68,6 +68,26 @@ CartRouter.delete("/delete/:id",async(req,res)=>{
     }
 })
 
+CartRouter.delete("/emptycart/:userID",async(req,res)=>{
+   
+    const userID=req.params.userID;
+    const post =await CartModel.findOne({"userID":userID});
+    const userID_in_post=post.userID;
+    const userID_in_req=req.body.userID;
+    try {
+        if(userID_in_post!==userID_in_req){
+            res.send({"msg":"You are not authorized"});
+        }
+        else{
+          await CartModel.deleteMany({"userID":userID})
+          res.send("Deleted the post the cart");
+        }
+    } catch (error) {
+        console.log(err);
+        res.send("something went wrong");
+    }
+})
+
 module.exports={
     CartRouter
 }

@@ -6,6 +6,7 @@ import PaymentHeader from '../components/PaymentHeader'
 import { StarIcon,EditIcon, AddIcon  } from "@chakra-ui/icons"
 import { useEffect } from 'react'
 import { getLocalData,saveLocalData } from '../../Utils/LocalStorage'
+import { serverUrl } from '../../App'
 
 const ShippingPage = () => {
 
@@ -16,7 +17,7 @@ const ShippingPage = () => {
     const [finalPrice,setFinal]=useState(0)
     
     const getData = async () => {
-        const resp = await fetch("https://handsome-blue-crab.cyclic.app/cart",{
+        const resp = await fetch(`${serverUrl}/cart`,{
             headers:{
                 "Authorization":getLocalData("token")
             },

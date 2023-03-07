@@ -1,4 +1,5 @@
 import axios from "axios"
+import { serverUrl } from "../../App"
 import { getLocalData } from "../../Utils/LocalStorage"
 import {GETWISHLISTREQUEST , GETWISHLISTSUCCESS , GETWISHLISTFAILURE} from "./actionType"
 import {POSTWISHLISTREQUEST , POSTWISHLISTSUCCESS , POSTWISHLISTFAILURE} from "./actionType"
@@ -7,7 +8,7 @@ import {POSTWISHLISTREQUEST , POSTWISHLISTSUCCESS , POSTWISHLISTFAILURE} from ".
 
 const getWishListData = (dispatch)=>{
     dispatch({type:GETWISHLISTREQUEST}) 
-    return axios.get('https://handsome-blue-crab.cyclic.app/wishlist' , {
+    return axios.get(`${serverUrl}/wishlist` , {
         headers:{
             "Authorization":getLocalData("token")
         }
@@ -19,7 +20,7 @@ const getWishListData = (dispatch)=>{
 
 const sendWishListData =(payload)=>(dispatch)=>{
     dispatch({type:POSTWISHLISTREQUEST})
-    return axios.post('https://handsome-blue-crab.cyclic.app/wishlist/add',payload ,{
+    return axios.post(`${serverUrl}/wishlist/add`,payload ,{
         headers:{
             "Authorization":getLocalData("token")
         },
@@ -31,7 +32,7 @@ const sendWishListData =(payload)=>(dispatch)=>{
 
 const deleteWishListData =(id)=>(dispatch)=>{
     dispatch({type:"DELETEWISHLISTREQUEST"})
-    return axios.delete(`https://handsome-blue-crab.cyclic.app/wishlist/delete/${id}`,{
+    return axios.delete(`${serverUrl}/wishlist/delete/${id}`,{
         headers:{
             "Authorization":getLocalData("token")
         },

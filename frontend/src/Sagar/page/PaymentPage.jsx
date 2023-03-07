@@ -10,6 +10,7 @@ import UpiTypes from '../components/UpiTypes'
 import data from "../db"
 import OfferCard from '../components/OfferCard'
 import { getLocalData } from '../../Utils/LocalStorage'
+import { serverUrl } from '../../App'
 
 const PaymentPage = () => {
 
@@ -19,7 +20,7 @@ const PaymentPage = () => {
     const [finalPrice,setFinal]=useState(0)
     
     const getData = async () => {
-        const resp = await fetch("https://handsome-blue-crab.cyclic.app/cart",{
+        const resp = await fetch(`${serverUrl}/cart`,{
             headers:{
                 "Authorization":getLocalData("token")
             },
