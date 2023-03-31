@@ -196,13 +196,16 @@ const PaginationFunction = (queryParams)=>{
 
 
          
-          {productArrayLaptop.length > 0 && <Box pt="50px" pb="50px">
+          {productArrayLaptop.length > 0 && <Box pt="50px" pb="50px" border="2px  red"  display={{base:"none", sm: "block", md: "block", lg: "block",xl: "block",'2xl': "block"}}  >
           <Pagination disableNext={disableNext} disablePre={disablePre} changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={9}  />
           </Box>}
        </Box>
     {/* Display product data ends here ---------------------------------- */}
 
      </Box>
+     {productArrayLaptop.length > 0 && <Box pt="50px" pb="50px" border="2px  red"  display={{base:"block", sm: "none", md: "none", lg: "none",xl: "none",'2xl': "none"}}  >
+          <Pagination disableNext={disableNext} disablePre={disablePre} changePage={changePage} changeNum={changeNum} handlePagePrevious={handlePagePrevious} handlePageChange={handlePageChange} setChangePage={setChangePage} reviewTitleUser={reviewTitleUser} divideValue={9}  />
+          </Box>}
      
      <Footer />
     </Box>
