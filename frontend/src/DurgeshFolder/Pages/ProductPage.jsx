@@ -176,6 +176,7 @@ const PaginationFunction = (queryParams)=>{
               return (<ProductSkeleton key={id}/>)
             })}
             
+            
             {allProductData.length > 0 && allProductData.map((item)=>{
               return (
                <Link to={`/product/${item.id}`} key={item.id} > <ProductMainData  src={item.imgUrl} name={item.name} weight={item.weight} price={item.price} des={item.des} /></Link>
@@ -189,7 +190,7 @@ const PaginationFunction = (queryParams)=>{
             })}
 
             
-            
+
         
           </SimpleGrid>
         
