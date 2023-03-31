@@ -2,7 +2,7 @@ Fashion hunter is a ecommerce website which is India’s fastest growing online 
 
 Team Members 
 
-1. Sagar Wankhade(Leader),
+1. Sagar Wankhade
 2. Hilton Kumar Borah,
 3. Manoj Kumar,
 4. Durgesh Singh
