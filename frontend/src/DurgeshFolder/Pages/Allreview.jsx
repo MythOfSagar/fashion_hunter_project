@@ -10,6 +10,8 @@ import Navbar from '../../components/Navbar'
 import { getDataProduct } from '../../Redux/Laptop_reducer/action'
 import { getReviewData } from '../../Redux/Review_reducer/action'
 import { Pagination } from '../ComponentsReview/Pagination'
+import { serverUrl } from "../../App"
+
 
 import "./Allreview.css"
 
@@ -63,11 +65,12 @@ const pageLoad = useRef()
 // FOR PAGINATION AND SHOWING THE DATA ---------*******--------
   
 const getDataReview = (num)=>{
-  axios.get(`https://handsome-blue-crab.cyclic.app/review/add${num}?limit=500`)
+  axios.get(`${serverUrl}/review/add${num}?limit=500`)
   .then((res)=> setreviewData(res.data))
   .catch((err)=>console.log(err ,"allReview"))
 }
  
+// console.log(reviewData ,"err")
 //  For accessing products details ---------------------------------------------------
     
   const GetSinglePageData = (num) =>{

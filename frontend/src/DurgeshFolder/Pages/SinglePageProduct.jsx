@@ -12,6 +12,7 @@ import Navbar from '../../components/Navbar'
 import Footer from "../../components/Footer"
 import { useDispatch, useSelector } from 'react-redux'
 import { getReviewData } from '../../Redux/Review_reducer/action'
+import { serverUrl } from '../../App'
 
 
 
@@ -76,7 +77,7 @@ GetSinglePageData(num)
 const handleSubmit = (payload)=>{
 // console.log("payload" , payload)
  // console.log(payload ,"payload")
- axios.post(`https://handsome-blue-crab.cyclic.app/review/add${num}`,payload)
+ axios.post(`${serverUrl}/review/add${num}`,payload)
  .then((res)=>  dispatch(getReviewData(num)))
  .catch((err)=>console.log(`working on`))
 
@@ -92,7 +93,7 @@ const handleStarRating = (data)=>{
     disLike: 0,
   }
   // console.log("star" , payload)
-  axios.post(`https://handsome-blue-crab.cyclic.app/review/add${num}`,payload)
+  axios.post(`${serverUrl}/review/add${num}`,payload)
   .then((res)=>  dispatch(getReviewData(num)))
   .catch((err)=>console.log('err'))
 } 
